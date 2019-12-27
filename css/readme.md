@@ -1,3 +1,0 @@
-# Practica-Interna
-
-Descripción 
