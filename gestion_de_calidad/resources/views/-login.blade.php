@@ -19,55 +19,29 @@
         </div>
     </header>
 
-    <section id="right_buttons" class="mx-5 my-3 d-flex justify-content-end">
-        <div class="row">
-            <div class="col">
-                <button type="button" class="btn btn-secondary btn-block">Pendientes</button>
-            </div>
-            
-            <div class="col">
-                <button type="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></button>
-            </div>
-        </div>
-    </section>
-
-    <section id="timeline_section" class="container">
-        <div class="row my-5">
-            <h1>Gestión</h1>
-        </div>
-        <div class="row my-10">
-            <div id="timeline" class="mx-auto">
-                <img src="images/timeline.png" alt="timeline">
-            </div>
-        </div>
-        
-    </section>
-
-    <section id="options" class="container">
-        <div class="row my-5">
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Planificador de Auditorías</button>
-            </div>
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Auditorías Pendientes/Cerradas</button>
-            </div>
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Revisar Respuestas</button>
+    <div class="container">
+        <div class="row justify-content-center align-items-center" style="height:100vh">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div id="logintitle">
+                            <img src="/img/user.jpg" id="icon" alt="User Icon" />
+                            <h1> Sisgesca </h1>
+                        </div>
+                       
+                        <form action="" autocomplete="off">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="username" placeholder="Usuario"> 
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                            </div>
+                            <button type="button" id="sendlogin" class="btn btn-login">Login</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="row my-5">
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Cronograma</button>
-            </div>
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Mandar Formulario de Justificaciones</button>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-
-    </footer>
+    </div>
 </body>
 </html>
