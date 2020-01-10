@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);
 
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
@@ -11355,6 +11355,8 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
+
+/* BANNER CSS IMAGE COLOR STYLE */
 
 #banner {
   background-color: #1A245A;
