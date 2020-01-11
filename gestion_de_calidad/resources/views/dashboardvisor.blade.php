@@ -52,16 +52,13 @@
                 <button type="button" class="py-4 btn btn-outline-secondary btn-block">Auditorías Pendientes/Cerradas</button>
             </div>
             <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Revisar Respuestas</button>
+                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Banderas</button>
             </div>
         </div>
 
         <div class="row my-5">
             <div class="col">
                 <button type="button" class="py-4 btn btn-outline-secondary btn-block">Cronograma</button>
-            </div>
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Mandar Formulario de Justificaciones</button>
             </div>
         </div>
     </section>

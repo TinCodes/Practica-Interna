@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     <link rel="stylesheet" href="{{ mix('/js/app.js') }}">
 
-    <title>Gestión de Control de Calidad</title>
+    <title> Gestión de Control de Calidad </title>
 </head>
 <body>
     <header>
@@ -21,7 +21,7 @@
 
     <div class="container">
         <div class="row justify-content-center align-items-center" style="height:100vh">
-            <div class="col-4">
+            <div class="col-5">
                 <div class="card">
                     <div class="card-body">
                         <div id="logintitle">

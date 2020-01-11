@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@charset "UTF-8";
 
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
@@ -11356,7 +11356,7 @@ a.text-dark:focus {
   }
 }
 
-/* BANNER CSS IMAGE COLOR STYLE */
+/* BANNER STYLE (ALL PAGES) */
 
 #banner {
   background-color: #1A245A;
@@ -11367,6 +11367,8 @@ a.text-dark:focus {
   width: 50px;
   height: 50px;
 }
+
+/* LOGIN STYLE */
 
 .btn-login {
   color: #fff;
@@ -11383,5 +11385,24 @@ a.text-dark:focus {
   text-align: center;
   display: block;
   margin: 0 auto;
+}
+
+/* DASHBOARD JEFE DE CARRERA */
+
+.list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: #1A245A;
+  border-color: #1A245A;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #6c757d;
+  text-decoration: underline;
 }
 

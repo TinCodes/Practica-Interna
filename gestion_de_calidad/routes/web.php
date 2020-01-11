@@ -16,9 +16,17 @@ Route::get('/', function () {
 });
 
 Route::get('/login', function () {
-    return view('-login');
+    return view('login');
 });
 
 Route::get('/dashboardauditor', function () {
     return view('dashboardauditor');
+});
+
+Route::get('/dashboardvisor', function () {
+    return view('dashboardvisor');
+});
+
+Route::get('/dashboardjc', function () {
+    return view('-dashboardjc');
 });

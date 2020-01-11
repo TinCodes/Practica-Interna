@@ -1,13 +1,11 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-/* BANNER CSS IMAGE COLOR STYLE */
+
+/* BANNER STYLE (ALL PAGES) */
 
 #banner {
     background-color: #1A245A;
@@ -18,6 +16,8 @@
     width: 50px;
     height: 50px;
 }
+
+/* LOGIN STYLE */
 
 .btn-login {
     color: #fff;
@@ -36,7 +36,23 @@
     margin: 0 auto;
 }
 
+/* DASHBOARD JEFE DE CARRERA */
 
+// ** Cambios permanentes a estas clases ** 
+
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color:#1A245A;
+    border-color:#1A245A;
+}
   
-  
- 
+a {
+    color:#000;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #6c757d;
+    text-decoration: underline;
+}
