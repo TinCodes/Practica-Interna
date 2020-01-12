@@ -11406,3 +11406,9 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Respuesta a auditoria */
+
+fieldset {
+  padding-bottom: 30px;
+}
+

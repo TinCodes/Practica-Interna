@@ -35,37 +35,27 @@
         <div class="row my-5">
             <h1>Gestión</h1>
         </div>
-        <div class="row my-10">
-            <div id="timeline" class="mx-auto">
-                <img src="images/timeline.png" alt="timeline">
-            </div>
-        </div>
+
         
+        <form>
+            <fieldset class="border p-4">
+                <legend  class="w-auto"> Descripción del problema </legend>
+                    <textarea class="form-control" id="descripProblema" rows="3"></textarea>
+            </fieldset>
+            <fieldset class="border p-4">
+                <legend  class="w-auto"> Plan de acción </legend>
+                    <textarea class="form-control" id="planAccion" rows="3"></textarea>
+            </fieldset>
+            <div class="form-group row">
+                <label for="example-date-input" class="col-2 col-form-label">Fecha determinada para cumplimiento</label>
+                <div class="col-6">
+                    <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                </div>
+            </div>
+
+            <button type="button" id="sendresponse" class="btn btn-login"> Send </button>
+        </form>
     </section>
-
-    <section id="options" class="container">
-        <div class="row my-5">
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Planificador de Auditorías</button>
-            </div>
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Auditorías Pendientes/Cerradas</button>
-            </div>
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Revisar Respuestas</button>
-            </div>
-        </div>
-
-        <div class="row my-5">
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Cronograma</button>
-            </div>
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Mandar Formulario de Justificaciones</button>
-            </div>
-        </div>
-    </section>
-
     <footer>
 
     </footer>

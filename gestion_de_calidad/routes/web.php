@@ -28,5 +28,10 @@ Route::get('/dashboardvisor', function () {
 });
 
 Route::get('/dashboardjc', function () {
-    return view('-dashboardjc');
+    return view('dashboardjc');
+});
+
+
+Route::get('/auditoriaresp', function () {
+    return view('-respuestauditoria');
 });
