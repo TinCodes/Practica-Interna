@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
-    <link rel="stylesheet" href="{{ mix('/js/app.js') }}">
 
     <title>Cronograma</title>
 </head>
@@ -70,4 +69,7 @@
 
     </footer>
 </body>
+
+<script type="text/javascript" src= "{{ URL::asset('js/app.js') }}"></script>
+
 </html>
