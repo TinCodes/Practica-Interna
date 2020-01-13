@@ -33,5 +33,9 @@ Route::get('/dashboardjc', function () {
 
 
 Route::get('/auditoriaresp', function () {
-    return view('-respuestauditoria');
+    return view('respuestauditoria');
+});
+
+Route::get('/pendienteauditoria', function () {
+    return view('auditoriaspendientes');
 });

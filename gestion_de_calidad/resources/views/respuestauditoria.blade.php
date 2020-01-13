@@ -19,18 +19,6 @@
         </div>
     </header>
 
-    <section id="right_buttons" class="mx-5 my-3 d-flex justify-content-end">
-        <div class="row">
-            <div class="col">
-                <button type="button" class="btn btn-secondary btn-block">Pendientes</button>
-            </div>
-            
-            <div class="col">
-                <button type="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></button>
-            </div>
-        </div>
-    </section>
-
     <section id="timeline_section" class="container">
         <div class="row my-5">
             <h1>Gestión</h1>
@@ -46,14 +34,15 @@
                 <legend  class="w-auto"> Plan de acción </legend>
                     <textarea class="form-control" id="planAccion" rows="3"></textarea>
             </fieldset>
-            <div class="form-group row">
+            <div class="text-center">
+            <div class="form-group row mt-md-5">
                 <label for="example-date-input" class="col-2 col-form-label">Fecha determinada para cumplimiento</label>
-                <div class="col-6">
+                <div class="col-8">
                     <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
                 </div>
             </div>
-
-            <button type="button" id="sendresponse" class="btn btn-login"> Send </button>
+            <button type="button" id="sendresponse" class="btn btn-login mb-md-5"> Enviar </button>
+            </div>
         </form>
     </section>
     <footer>
