@@ -39,3 +39,11 @@ Route::get('/auditoriaresp', function () {
 Route::get('/pendienteauditoria', function () {
     return view('auditoriaspendientes');
 });
+
+Route::get('/evalauditoria', function () {
+    return view('evalrespuestauditoria');
+});
+
+Route::get('/estadoresp', function () {
+    return view('estadorespuestas');
+});

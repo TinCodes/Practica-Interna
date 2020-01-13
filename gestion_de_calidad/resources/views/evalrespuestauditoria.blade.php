@@ -38,10 +38,23 @@
             <div class="form-group row mt-md-5">
                 <label for="example-date-input" class="col-4 col-form-label"> <strong>Fecha determinada para cumplimiento: </strong></label>
                 <div class="col-8">
-                    <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                    <p> Fecha BDD </p>
                 </div>
             </div>
-            <button type="button" id="sendresponse" class="btn btn-login mb-md-5"> Enviar </button>
+
+            <section id="eval_buttons" class="center-block">
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-success btn-block">Aceptar</button>
+                    </div>
+            
+                    <div class="col">
+                        <button type="button" class="btn btn-danger btn-block">Rechazar</button>
+                    </div>
+                </div>
+                <button type="button" id="sendresponse" class="btn btn-login mt-4 mb-4"> Enviar </button>
+            </section>
+           
             </div>
         </form>
     </section>
