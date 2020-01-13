@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
-    <link rel="stylesheet" href="{{ mix('/js/app.js') }}">
-
+    
     <title>Gestión de Control de Calidad</title>
 </head>
 <body>
@@ -18,56 +17,43 @@
             </div>
         </div>
     </header>
-
-    <section id="right_buttons" class="mx-5 my-3 d-flex justify-content-end">
-        <div class="row">
-            <div class="col">
-                <button type="button" class="btn btn-secondary btn-block">Pendientes</button>
-            </div>
-            
-            <div class="col">
-                <button type="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></button>
-            </div>
-        </div>
-    </section>
-
+    
     <section id="timeline_section" class="container">
         <div class="row my-5">
-            <h1>Gestión</h1>
+            <h1>Justificación de auditoria</h1>
         </div>
-        <div class="row my-10">
-            <div id="timeline" class="mx-auto">
-                <img src="images/timeline.png" alt="timeline">
-            </div>
-        </div>
+
         
+        <form>
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary ">Action</button>
+                <button type="button" class="btn btn-secondary  dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+            </div>
+            
+            <fieldset class="border p-4">
+                <legend  class="w-auto"> Descripción del problema </legend>
+                <textarea class="form-control" id="planAccion" rows="3"></textarea>
+            </fieldset>
+            <div class="text-center mt-md-5">
+            
+                <button type="button" id="sendresponse" class="btn btn-login mb-md-5"> Enviar </button>
+            </div>
+        </form>
     </section>
-
-    <section id="options" class="container">
-        <div class="row my-5">
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Planificador de Auditorías</button>
-            </div>
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Auditorías Pendientes/Cerradas</button>
-            </div>
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Revisar Respuestas</button>
-            </div>
-        </div>
-
-        <div class="row my-5">
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Cronograma</button>
-            </div>
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Mandar Formulario de Justificaciones</button>
-            </div>
-        </div>
-    </section>
-
     <footer>
-
+        
     </footer>
 </body>
+
+<script type="text/javascript" src= "{{ URL::asset('js/app.js') }}"></script>
+
 </html>

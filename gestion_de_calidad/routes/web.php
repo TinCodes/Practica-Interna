@@ -47,3 +47,11 @@ Route::get('/evalauditoria', function () {
 Route::get('/estadoresp', function () {
     return view('estadorespuestas');
 });
+
+Route::get('/formjusti', function () {
+    return view('-formulariojustificacion');
+});
+
+Route::get('/respjustificaciones', function () {
+    return view('responderjustificaciones');
+});
