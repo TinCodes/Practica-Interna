@@ -31,15 +31,10 @@ $(document).ready(function() {
     }
 
     window.addAud = function addAud(elem, day, month, year) {
-        // Special function to get the selected date and schedule something
-        // for now it only paints the selected cell
+        // Gets the selected date and adds it to the input
+        elem.classList.add("bg-info-selected");
 
-        // TODO Make each selected cell have a form to add info to it
-
-        elem.append("<form>")
-
-        elem.classList.add("bg-info");
-        alert("Current date: " + day + "/" + month + "/" + year);
+        $("#date").innerText(day + "/" + month + "/" + year);
     }
 
     function showCalendar(month, year) {

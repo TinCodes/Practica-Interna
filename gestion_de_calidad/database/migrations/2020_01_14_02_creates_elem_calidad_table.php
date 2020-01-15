@@ -15,9 +15,16 @@ class CreatesElemCalidadTable extends Migration
     {
         Schema::create('elemCalidads', function (Blueprint $table) {
             $table->bigIncrements('id_elem_calidad');
+            $table->string('nombre');
             $table->text('descripcion');
             $table->timestamps();
         });
+
+        \Illuminate\Support\Facades\DB::table('elemCalidads')->insert([
+            ['nombre' => 'Uno', 'descripcion' => 'First element', 'created_at' => now(), 'updated_at' => now()],
+            ['nombre' => 'Dos', 'descripcion' => 'Second element', 'created_at' => now(), 'updated_at' => now()],
+            ['nombre' => 'Tres', 'descripcion' => 'Third element', 'created_at' => now(), 'updated_at' => now()]
+        ]);
     }
 
     /**

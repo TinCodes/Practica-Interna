@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('admin.cronograma');
 });
 
+Route::post('/auditoria', 'CronogramaController@store');
+
 Route::get('/login', function () {
     return view('login');
 });
