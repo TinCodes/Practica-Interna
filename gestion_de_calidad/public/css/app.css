@@ -11514,3 +11514,7 @@ fieldset {
   margin-top: 25px;
 }
 
+.bg-info {
+  background-color: #ddeb93 !important;
+}
+

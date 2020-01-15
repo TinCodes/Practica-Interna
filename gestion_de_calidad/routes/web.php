@@ -73,3 +73,11 @@ Route::get('/banderas', function () {
 Route::get('/realizarauditorias', function () {
     return view('realizarauditorias');
 });
+
+Route::get('/planauditor', function () {
+    return view('planificacionauditor');
+});
+
+Route::get('/planvisor', function () {
+    return view('planificacionvisor');
+});
