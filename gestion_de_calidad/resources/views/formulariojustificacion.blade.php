@@ -25,19 +25,12 @@
 
         
         <form>
-            <div class="btn-group">
-                <button type="button" class="btn btn-secondary ">Action</button>
-                <button type="button" class="btn btn-secondary  dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
-                </div>
-            </div>
+            <select class="mdb-select md-form mb-5">
+                <option value="" disabled selected>Seleccionar auditoria</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </select>
             
             <fieldset class="border p-4">
                 <legend  class="w-auto"> Descripción del problema </legend>
@@ -55,5 +48,4 @@
 </body>
 
 <script type="text/javascript" src= "{{ URL::asset('js/app.js') }}"></script>
-
 </html>

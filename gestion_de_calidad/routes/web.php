@@ -48,10 +48,20 @@ Route::get('/estadoresp', function () {
     return view('estadorespuestas');
 });
 
+// MEJORAR EL SELECT
+
 Route::get('/formjusti', function () {
-    return view('-formulariojustificacion');
+    return view('formulariojustificacion');
 });
 
 Route::get('/respjustificaciones', function () {
     return view('responderjustificaciones');
+});
+
+Route::get('/revauditorias', function () {
+    return view('revisionauditorias');
+});
+
+Route::get('/clasificarbanderas', function () {
+    return view('clasificarbanderas');
 });

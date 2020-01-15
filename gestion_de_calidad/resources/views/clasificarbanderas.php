@@ -32,37 +32,24 @@
 
     <section id="timeline_section" class="container">
         <div class="row my-5">
-            <h1>Gestión</h1>
-        </div>
-        <div class="row my-10">
-            <div id="timeline" class="mx-auto">
-                <img src="images/timeline.png" alt="timeline">
-            </div>
+            <h1>Clasificación de banderas</h1>
         </div>
         
     </section>
 
-    <section id="options" class="container">
-        <div class="row my-5">
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Planificador de Auditorías</button>
-            </div>
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Auditorías Pendientes/Cerradas</button>
-            </div>
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Revisar Respuestas</button>
-            </div>
+    <section id="options" class="d-flex justify-content-center">
+    <form>
+        <select id='banderas' multiple='multiple'>
+            <option value='elem_1' selected>elem 1</option>
+            <option value='elem_2'>elem 2</option>
+            <option value='elem_3'>elem 3</option>
+            <option value='elem_4' selected>elem 4</option>
+            <option value='elem_100'>elem 100</option>
+        </select>
+        <div class="text-center mt-4">
+            <button type="button" id="sendresponse" class="btn btn-secondary"> Terminado </button>
         </div>
-
-        <div class="row my-5">
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Cronograma</button>
-            </div>
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Mandar Formulario de Justificaciones</button>
-            </div>
-        </div>
+    </form>
     </section>
 
     <footer>
@@ -71,5 +58,10 @@
 </body>
 
 <script type="text/javascript" src= "{{ URL::asset('js/app.js') }}"></script>
-
+<script> 
+$('#banderas').multiSelect({
+  selectableHeader: "<div class='custom-header'> <strong> No conformidades </strong></div>",
+  selectionHeader: "<div class='custom-header'> <strong> Observaciones </strong></div>"
+});
+</script>
 </html>
