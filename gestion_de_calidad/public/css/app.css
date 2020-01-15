@@ -11502,3 +11502,7 @@ fieldset {
   cursor: text;
 }
 
+.custom-header {
+  font-size: 16px;
+}
+
