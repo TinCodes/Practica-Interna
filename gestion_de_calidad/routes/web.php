@@ -65,3 +65,11 @@ Route::get('/revauditorias', function () {
 Route::get('/clasificarbanderas', function () {
     return view('clasificarbanderas');
 });
+
+Route::get('/banderas', function () {
+    return view('banderas');
+});
+
+Route::get('/realizarauditorias', function () {
+    return view('realizarauditorias');
+});

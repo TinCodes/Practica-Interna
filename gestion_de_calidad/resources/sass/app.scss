@@ -19,6 +19,9 @@
     height: 50px;
 }
 
+.row {
+    margin: 0px;
+}
 /* LOGIN STYLE */
 
 .btn-login {
@@ -163,4 +166,9 @@ fieldset {
 
   .custom-header{
       font-size: 16px;
+  }
+
+  .col {
+      margin-top: 25px;
+
   }

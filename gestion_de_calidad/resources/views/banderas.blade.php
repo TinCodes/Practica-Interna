@@ -32,38 +32,45 @@
 
     <section id="timeline_section" class="container">
         <div class="row my-5">
-            <h1>Gestión</h1>
-        </div>
-        <div class="row my-10">
-            <div id="timeline" class="mx-auto">
-                <img src="images/timeline.png" alt="timeline">
-            </div>
-        </div>
-        
+            <h1>Banderas</h1>
+        </div>        
     </section>
 
-    <section id="options" class="container">
-        <div class="row my-5">
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Planificador de Auditorías</button>
-            </div>
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Auditorías Pendientes/Cerradas</button>
-            </div>
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Revisar Respuestas</button>
-            </div>
-        </div>
-
-        <div class="row my-5">
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Cronograma</button>
-            </div>
-            <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Mandar Formulario de Justificaciones</button>
-            </div>
-        </div>
-    </section>
+    <div class="container">
+        <input class="form-control" id="myInput" type="text" placeholder="Buscar..">
+        <br>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody id="myTable">
+            <tr>
+                <td>John</td>
+                <td>Doe</td>
+                <td>john@example.com</td>
+            </tr>
+            <tr>
+                <td>Mary</td>
+                <td>Moe</td>
+                <td>mary@mail.com</td>
+            </tr>
+            <tr>
+                <td>July</td>
+                <td>Dooley</td>
+                <td>july@greatstuff.com</td>
+            </tr>
+            <tr>
+                <td>Anja</td>
+                <td>Ravendale</td>
+                <td>a_r@test.com</td>
+            </tr>
+            </tbody>
+        </table> 
+    </div>
 
     <footer>
 
@@ -71,5 +78,14 @@
 </body>
 
 <script type="text/javascript" src= "{{ URL::asset('js/app.js') }}"></script>
-
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 </html>
