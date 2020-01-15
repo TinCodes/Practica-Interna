@@ -6,7 +6,7 @@ $(document).ready(function() {
     let selectYear = document.getElementById("year");
     let selectMonth = document.getElementById("month");
 
-    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let months = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dec"];
 
     let monthAndYear = document.getElementById("monthAndYear");
     showCalendar(currentMonth, currentYear);
@@ -33,6 +33,11 @@ $(document).ready(function() {
     window.addAud = function addAud(elem, day, month, year) {
         // Special function to get the selected date and schedule something
         // for now it only paints the selected cell
+
+        // TODO Make each selected cell have a form to add info to it
+
+        elem.append("<form>")
+
         elem.classList.add("bg-info");
         alert("Current date: " + day + "/" + month + "/" + year);
     }
