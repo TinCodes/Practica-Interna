@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('admin.cronograma');
 });
+
+Route::post('/auditoria', 'CronogramaController@store');

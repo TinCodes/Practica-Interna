@@ -21,9 +21,9 @@ class CreatesRolesTable extends Migration
 
         // This may stay due to being what we need all the time
         \Illuminate\Support\Facades\DB::table('rols')->insert([
-            ['nombre' => 'Auditor', 'created_at' => "now()", 'updated_at' => "now()"],
-            ['nombre' => 'Supervisor', 'created_at' => "now()", 'updated_at' => "now()"],
-            ['nombre' => 'JefeDeCarrera', 'created_at' => "now()", 'updated_at' => "now()"]
+            ['nombre' => 'Auditor', 'created_at' => now(), 'updated_at' => now()],
+            ['nombre' => 'Supervisor', 'created_at' => now(), 'updated_at' => now()],
+            ['nombre' => 'JefeDeCarrera', 'created_at' => now(), 'updated_at' => now()]
         ]);
     }
 
