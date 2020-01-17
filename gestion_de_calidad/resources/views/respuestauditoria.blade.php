@@ -20,27 +20,29 @@
 
     <section id="timeline_section" class="container">
         <div class="row my-5">
-            <h1>Gestión</h1>
+            <h1>Responder auditoría</h1>
         </div>
 
         
-        <form>
+        <form action="" method="post">
             <fieldset class="border p-4">
                 <legend  class="w-auto"> Descripción del problema </legend>
-                    <textarea class="form-control" id="descripProblema" rows="3"></textarea>
+                    <textarea class="form-control" name="descripProblema" id="descripProblema" rows="3"></textarea>
             </fieldset>
             <fieldset class="border p-4">
                 <legend  class="w-auto"> Plan de acción </legend>
-                    <textarea class="form-control" id="planAccion" rows="3"></textarea>
+                    <textarea class="form-control" name="planAccion" id="planAccion" rows="3"></textarea>
             </fieldset>
             <div class="text-center">
             <div class="form-group row mt-md-5">
                 <label for="example-date-input" class="col-4 col-form-label"> <strong>Fecha determinada para cumplimiento: </strong></label>
                 <div class="col-8">
-                    <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                    <input class="form-control" type="date" value="YYYY-MM-DD" id="fechaPlan" name="fechaPlan">
                 </div>
             </div>
-            <button type="button" id="sendresponse" class="btn btn-login mb-md-5"> Enviar </button>
+            <div class="text-center mt-4">
+                <button type="submit" id="sendPlan" name="sendPlan" class="btn btn-secondary"> Enviar </button>
+            </div>
             </div>
         </form>
     </section>
