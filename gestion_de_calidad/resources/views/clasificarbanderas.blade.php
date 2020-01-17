@@ -18,18 +18,6 @@
         </div>
     </header>
 
-    <section id="right_buttons" class="mx-5 my-3 d-flex justify-content-end">
-        <div class="row">
-            <div class="col">
-                <button type="button" class="btn btn-secondary btn-block">Pendientes</button>
-            </div>
-            
-            <div class="col">
-                <button type="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></button>
-            </div>
-        </div>
-    </section>
-
     <section id="timeline_section" class="container">
         <div class="row my-5">
             <h1>Clasificación de banderas</h1>
@@ -38,7 +26,7 @@
     </section>
 
     <section id="options" class="d-flex justify-content-center">
-    <form>
+    <form action="" method="post">
         <select id='banderas' multiple='multiple'>
             <option value='elem_1' selected>elem 1</option>
             <option value='elem_2'>elem 2</option>
@@ -47,7 +35,7 @@
             <option value='elem_100'>elem 100</option>
         </select>
         <div class="text-center mt-4">
-            <button type="button" id="sendresponse" class="btn btn-secondary"> Terminado </button>
+            <button type="submit" id="sendClas" name="sendClas" class="btn btn-secondary"> Terminado </button>
         </div>
     </form>
     </section>
