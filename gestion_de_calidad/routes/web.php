@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('admin.cronograma');
 });
 
+Route::get('/cronograma', function () {
+    return view('admin.cronograma');
+});
+
 Route::post('/auditoria', 'CronogramaController@store');
 
 Route::get('/login', function () {
@@ -83,3 +87,4 @@ Route::get('/planauditor', function () {
 Route::get('/planvisor', function () {
     return view('planificacionvisor');
 });
+

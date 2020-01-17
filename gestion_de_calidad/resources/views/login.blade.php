@@ -30,7 +30,7 @@
                        
                         <form action="" autocomplete="off">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="username" placeholder="Usuario"> 
+                                <input type="text" class="form-control" name="user" placeholder="Usuario"> 
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" name="password" placeholder="Contraseña">
