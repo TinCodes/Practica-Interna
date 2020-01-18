@@ -21,7 +21,7 @@
     <section id="timeline_section" class="container">
         <div class="row my-5">
             <h1>Revisión de auditorias</h1>
-        </div>        
+        </div>
     </section>
     <div class="container-fluid">
 		<div class="container">
@@ -63,7 +63,7 @@
             </div>
 		</div>
     </div>
-    
+
 
     <footer>
 

@@ -23,7 +23,7 @@
             <div class="col">
                 <button type="button" class="btn btn-secondary btn-block">Pendientes</button>
             </div>
-            
+
             <div class="col">
                 <button type="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></button>
             </div>
@@ -39,13 +39,13 @@
                 <img src="images/timeline.png" alt="timeline">
             </div>
         </div>
-        
+
     </section>
 
     <section id="options" class="container">
         <div class="row my-5">
             <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Planificador de Auditorías</button>
+                <a href="/auditorias/create" type="button" class="py-4 btn btn-outline-secondary btn-block">Planificador de Auditorías</a>
             </div>
             <div class="col">
                 <button type="button" class="py-4 btn btn-outline-secondary btn-block">Auditorías Pendientes/Cerradas</button>

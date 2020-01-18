@@ -32,9 +32,10 @@ $(document).ready(function() {
 
     window.addAud = function addAud(elem, day, month, year) {
         // Gets the selected date and adds it to the input
+        $(".bg-info-selected").removeClass("bg-info-selected")
         elem.classList.add("bg-info-selected");
 
-        $("#date").innerText(day + "/" + month + "/" + year);
+        $('#fecha').val(day + "-" + month + "-" + year);
     }
 
     function showCalendar(month, year) {

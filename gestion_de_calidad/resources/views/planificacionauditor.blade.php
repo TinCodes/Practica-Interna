@@ -23,7 +23,7 @@
             <div class="col">
                 <button type="button" class="btn btn-secondary btn-block">Pendientes</button>
             </div>
-            
+
             <div class="col">
                 <button type="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></button>
             </div>
@@ -126,46 +126,62 @@
         </div>
     </div>
     <div class="container p-5">
-    <form method="post" action="/auditoria">
+    <form method="post" action="/auditorias">
         @csrf
         <div class="form-row">
             <div class="col">
-            <label for="validationDefault01">Nombre de la auditoría:</label>
-            <input type="text" class="form-control" id="validationDefault01" placeholder="Nombre de auditoria" required>
+            <label for="nombre">Nombre de la auditoría:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre de auditoria" value="{{old('nombre')}}" required>
+            @error('nombre') <p class="valError"> {{ $message }} </p> @enderror
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+            <label for="fecha">Fecha: </label>
+            <input type="text" class="form-control" id="fecha" name="fecha" placeholder="Fecha" value="{{old('fecha')}}" required>
+            @error('fecha') <p class="valError"> {{ $message }} </p> @enderror
+            </div>
+
+            <div class="col-md-6 mb-3">
+            <label for="pdc">Persona de contacto: </label>
+            <input type="text" class="form-control" id="pdc" name="pdc" placeholder="Persona de contacto" value="{{old('pdc')}}" required>
+            @error('pdc') <p class="valError"> {{ $message }} </p> @enderror
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-6 mb-3">
-            <label for="validationDefault01">Fecha:</label>
-            <input type="text" class="form-control" id="validationDefault01" placeholder="Fecha" required>
+            <label for="macroproceso">Macroproceso: </label>
+            <input type="text" class="form-control" id="macroproceso" name="macroproceso" placeholder="Macroproceso" value="{{old('macroproceso')}}" required>
+            @error('macroproceso') <p class="valError"> {{ $message }} </p> @enderror
             </div>
+
             <div class="col-md-6 mb-3">
-            <label for="validationDefault02">Persona de contacto: </label>
-            <input type="text" class="form-control" id="validationDefault02" placeholder="Persona de contacto" required>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
-            <label for="validationDefault01">Macroproceso: </label>
-            <input type="text" class="form-control" id="validationDefault01" placeholder="Macroproceso" required>
-            </div>
-            <div class="col-md-6 mb-3">
-            <label for="validationDefault02">Proceso: </label>
-            <input type="text" class="form-control" id="validationDefault02" placeholder="Proceso" required>
+            <label for="proceso">Proceso: </label>
+            <input type="text" class="form-control" id="proceso" name="proceso" placeholder="Proceso" value="{{old('proceso')}}" required>
+            @error('proceso') <p class="valError"> {{ $message }} </p> @enderror
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-6 mb-3">
-            <label for="validationDefault01">Auditor: </label>
-            <input type="text" class="form-control" id="validationDefault01" placeholder="Auditor" required>
+            <label for="auditor">Auditor: </label>
+            <input type="text" class="form-control" id="auditor" name="auditor" placeholder="Auditor" value="{{old('auditor')}}" required>
+            @error('auditor') <p class="valError"> {{ $message }} </p> @enderror
             </div>
+
             <div class="col-md-6 mb-3">
-            <label for="validationDefault02">Elemento de calidad: </label>
-            <input type="text" class="form-control" id="validationDefault02" placeholder="Elemento de calidad" required>
+            <label for="elem_calidad">Elemento de calidad: </label>
+            <select class="form-control" id="elem_calidad" name="elem_calidad" required>
+                <option value="">Elemento de Calidad</option>
+                @foreach($elems as $elem)
+                    <option value="{{ $elem->id_elem_calidad }}">{{ $elem->nombre }}</option>
+                @endforeach
+            </select>
+            @error('elem_calidad') <p class="valError"> {{ $message }} </p> @enderror
             </div>
         </div>
         <div class="text-center mt-4">
-            <button type="button" id="sendresponse" class="btn btn-secondary"> Terminado </button>
+            <input type="submit" id="sendresponse" value="Submit" class="btn btn-secondary"> Terminado </input>
         </div>
     </form>
 </div>

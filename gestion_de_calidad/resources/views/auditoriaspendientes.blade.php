@@ -21,7 +21,7 @@
     <section id="timeline_section" class="container">
         <div class="row my-5">
             <h1>Auditorias pendientes</h1>
-        </div>        
+        </div>
     </section>
     <div class="container-fluid">
 		<div class="container">
@@ -63,41 +63,26 @@
     <section id="timeline_section" class="container">
         <div class="row my-5">
             <h1>Auditorias realizadas</h1>
-        </div>        
+        </div>
     </section>
     <div class="container-fluid">
 		<div class="container">
 			<div class="formBox">
                 <form>
+                    @forelse($auditorias as $auditoria)
                     <div class="row">
                         <div class="col-sm-6">
-                            <strong><p> Ejemplo 1 </p></strong>
+                            <strong><p> {{ $auditoria->nombre }} </p></strong> {{ $auditoria->fecha }}
                         </div>
 
                         <div class="col-sm-6">
                             <a class="btn btn-login" href="#" role="button">Revisar Auditoria</a>
                         </div>
                     </div>
+                    @empty
+                        <p>Sin auditorias que mostrar</p>
+                    @endforelse
 
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <strong><p> Ejemplo 2 </p></strong>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <a class="btn btn-login" href="#" role="button">Revisar Auditoria</a>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <strong><p> Ejemplo 3 </p></strong>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <a class="btn btn-login" href="#" role="button">Revisar Auditoria</a>
-                        </div>
-                    </div>
                     <div class="text-center mt-4">
                         <button type="button" id="sendresponse" class="btn btn-secondary"> Volver </button>
                     </div>
@@ -105,7 +90,7 @@
             </div>
 		</div>
     </div>
-    
+
 
     <footer>
 

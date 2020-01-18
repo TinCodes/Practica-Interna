@@ -15,6 +15,7 @@ class CreatesAuditoriasTable extends Migration
     {
         Schema::create('auditorias', function (Blueprint $table) {
             $table->bigIncrements('id_auditoria');
+            $table->string('nombre');
             $table->string("estado");
             $table->date("fecha");
             $table->unsignedBigInteger('id_auditor');
