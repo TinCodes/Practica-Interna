@@ -20,7 +20,7 @@
 
     <section id="timeline_section" class="container">
         <div class="row my-5">
-            <h1>Gestión</h1>
+            <h1>Evaluar plan de acción</h1>
         </div>
 
         

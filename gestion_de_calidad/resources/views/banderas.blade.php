@@ -23,7 +23,7 @@
             <div class="col">
                 <button type="button" class="btn btn-secondary btn-block">Pendientes</button>
             </div>
-            
+
             <div class="col">
                 <button type="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></button>
             </div>
@@ -33,7 +33,7 @@
     <section id="timeline_section" class="container">
         <div class="row my-5">
             <h1>Banderas</h1>
-        </div>        
+        </div>
     </section>
 
     <div class="container">
@@ -69,7 +69,7 @@
                 <td>a_r@test.com</td>
             </tr>
             </tbody>
-        </table> 
+        </table>
     </div>
 
     <footer>

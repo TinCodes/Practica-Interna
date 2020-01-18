@@ -21,14 +21,14 @@
     <section id="right_buttons" class="mx-5 my-3 d-flex justify-content-end">
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></button>
+                <a href="/banderas" role="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></a>
             </div>
         </div>
     </section>
 
     <section id="timeline_section" class="container">
         <div class="row my-5">
-            <h1>Gestión</h1>
+            <h1>Gestión de control de calidad</h1>
         </div>
         <div class="list-group">
             <a href="#" class="list-group-item active"> BDD 1 </a>
@@ -43,10 +43,10 @@
     <section id="options" class="container">
         <div class="row my-5">
             <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Responder</button>
+                <a href="/auditoriaresp" role="button" class="py-4 btn btn-outline-secondary btn-block">Responder</a>
             </div>
             <div class="col">
-                <button type="button" class="py-4 btn btn-outline-secondary btn-block">Estado de respuestas</button>
+                <a href="/estadoresp" role="button" class="py-4 btn btn-outline-secondary btn-block">Estado de respuestas</a>
             </div>
         </div>
     </section>

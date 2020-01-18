@@ -27,10 +27,10 @@
                             <img src="/img/user.jpg" id="icon" alt="User Icon" />
                             <h1> Sisgesca </h1>
                         </div>
-                       
+
                         <form action="" autocomplete="off">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="username" placeholder="Usuario"> 
+                                <input type="text" class="form-control" name="username" placeholder="Usuario">
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" name="password" placeholder="Contraseña">

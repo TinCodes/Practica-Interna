@@ -24,7 +24,7 @@
         </div>
 
         
-        <form>
+        <form action="" method="post">
             <select class="mdb-select md-form mb-5">
                 <option value="" disabled selected>Seleccionar auditoria</option>
                 <option value="1">Option 1</option>
@@ -38,7 +38,7 @@
             </fieldset>
             <div class="text-center mt-md-5">
             
-                <button type="button" id="sendresponse" class="btn btn-login mb-md-5"> Enviar </button>
+                <button type="submit" id="sendFormulario" name="sendFormulario" class="btn btn-login mb-md-5"> Enviar </button>
             </div>
         </form>
     </section>

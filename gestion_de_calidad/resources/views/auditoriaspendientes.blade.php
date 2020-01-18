@@ -84,7 +84,7 @@
                     @endforelse
 
                     <div class="text-center mt-4">
-                        <button type="button" id="sendresponse" class="btn btn-secondary"> Volver </button>
+                        <a href="/dashboardauditor" role="button"  id="sendresponse" class="btn btn-secondary"> Volver </a>
                     </div>
                 </form>
             </div>
