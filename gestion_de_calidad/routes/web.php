@@ -88,3 +88,11 @@ Route::get('/planvisor', function () {
     return view('planificacionvisor');
 });
 
+Route::get('/planvisor', function () {
+    return view('planificacionvisor');
+});
+
+Route::get('/visorauditoria', function () {
+    return view('visorauditoria');
+});
+
