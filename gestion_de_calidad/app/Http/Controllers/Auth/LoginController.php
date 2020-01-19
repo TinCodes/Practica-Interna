@@ -13,7 +13,11 @@ class LoginController extends Controller
            'mail' => 'required|email',
            'password' => 'required'
        ]);
-    
+
+       $email = $credentials['mail'];
+       $password = $credentials['password'];
+
+       dd(Auth::attempt(['mail' => $email, 'password' => $password]));
        //$realpsw = \App\::first()->psw;
 
        if(Auth::attempt($credentials)){
