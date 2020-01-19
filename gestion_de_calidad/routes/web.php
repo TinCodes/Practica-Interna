@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('admin.cronograma');
-});
 
 Route::get('/cronograma', function () {
     return view('admin.cronograma');
@@ -21,22 +18,17 @@ Route::get('/cronograma', function () {
 
 Route::post('/auditoria', 'CronogramaController@store');
 
-Route::get('/login', function () {
-    return view('login');
+Route::get('/', function () {
+    return view('auth.login');
 });
 
-Route::get('/dashboardauditor', function () {
-    return view('dashboardauditor');
-});
+Route::post('login', 'Auth\LoginController@login')->name('login');
 
-Route::get('/dashboardvisor', function () {
-    return view('dashboardvisor');
-});
+Route::get('/dashboardauditor', 'DashboardController@auditor')->name('/dashboardauditor');
 
-Route::get('/dashboardjc', function () {
-    return view('dashboardjc');
-});
+Route::get('/dashboardvisor', 'DashboardController@visor')->name('/dashboardvisor');
 
+Route::get('/dashboardjc', 'DashboardController@jc')->name('/dashboardjc');
 
 Route::get('/auditoriaresp', function () {
     return view('respuestauditoria');
@@ -96,3 +88,7 @@ Route::get('/visorauditoria', function () {
     return view('visorauditoria');
 });
 
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');

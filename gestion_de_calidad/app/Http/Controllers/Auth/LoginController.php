@@ -1,40 +1,35 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+use Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Routing\Redirector;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
+   public function login() {
+       $credentials = $this->validate(request(), [
+           'email' => 'required|email',
+           'password' => 'required'
+       ]);
+    
+       $realpsw = \App\UserSG::first()->psw;
 
-    use AuthenticatesUsers;
+       if($realpsw == $credentials['password']){
+            $rol = \App\UserSG::first()->rol;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
+            /* Auditor Supervisor JC */
+            if($rol == 1){
+                return redirect()->route('/dashboardauditor');
+            } elseif ($rol == 2) {
+                return redirect()->route('/dashboardvisor');
+            } 
+            return redirect()->route('/dashboardjc');
+       }
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
+       return back()
+        ->withErrors(['email' => 'Estas credenciales no coinciden con los registros. Intente de nuevo'])
+        ->withInput(request(['email']));
+   }
 }
