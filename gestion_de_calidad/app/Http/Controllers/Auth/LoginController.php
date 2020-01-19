@@ -1,40 +1,28 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+use Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Routing\Redirector;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
+   public function login() {
+       $credentials = $this->validate(request(), [
+           'mail' => 'required|email',
+           'password' => 'required'
+       ]);
+    
+       //$realpsw = \App\::first()->psw;
 
-    use AuthenticatesUsers;
+       if(Auth::attempt($credentials)){
+            return 'YES';
+       }
+       return 'NO';
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
+      /* return back()
+        ->withErrors(['mail' => 'Estas credenciales no coinciden con los registros. Intente de nuevo'])
+        ->withInput(request(['mail']));*/
+   }
 }

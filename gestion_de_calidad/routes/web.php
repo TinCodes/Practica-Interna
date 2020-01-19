@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('admin.cronograma');
+    return view('auth.login');
 });
 
 // RESTful controllers for auditorias
@@ -26,9 +26,14 @@ Route::delete('/auditorias/{auditoria}', 'CronogramaController@destroy');
 
 // End of RESTful controllers
 
-Route::get('/login', function () {
-    return view('login');
-});
+
+Route::post('login', 'Auth\LoginController@login')->name('login');
+
+Route::get('/dashboardauditor', 'DashboardController@auditor')->name('/dashboardauditor');
+
+Route::get('/dashboardvisor', 'DashboardController@visor')->name('/dashboardvisor');
+
+Route::get('/dashboardjc', 'DashboardController@jc')->name('/dashboardjc');
 
 Route::get('/dashboardauditor', function () {
     return view('dashboardauditor');
