@@ -11,16 +11,16 @@ class LoginController extends Controller
    public function login() {
        $credentials = $this->validate(request(), [
            'mail' => 'required|email',
-           'password' => 'required'
+           'psw' => 'required'
        ]);
-    
-       $realpsw = \App\Persona::first()->psw;
 
        $email = $credentials['mail'];
-       $password = $credentials['password'];
+       $password = $credentials['psw'];
+
+       dd(Auth::attempt(['mail' => $email, 'psw' => $password]));
 
     
-       if($realpsw == $password){
+       if(Auth::attempt(['mail' => $email, 'psw' => $password])){
            return 'Sesion exitosa';
             /* Auditor Supervisor JC 
             if($rol == 1){

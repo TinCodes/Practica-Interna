@@ -30,13 +30,13 @@
                        
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-                            <div class="form-group {{ $errors->has('email') ? 'alert alert-danger' : ''}}">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="E-mail">
-                                {!! $errors -> first('email','<span class="help-block">:message</span>') !!}
+                            <div class="form-group {{ $errors->has('mail') ? 'alert alert-danger' : ''}}">
+                                <input type="email" class="form-control" name="mail" value="{{ old('mail') }}" placeholder="E-mail">
+                                {!! $errors -> first('mail','<span class="help-block">:message</span>') !!}
                             </div>
-                            <div class="form-group {{ $errors->has('password') ? 'alert alert-danger' : ''}}">
-                                <input type="password" class="form-control" name="password" placeholder="Contraseña">
-                                {!! $errors -> first('password','<span class="help-block">:message</span>') !!} 
+                            <div class="form-group {{ $errors->has('psw') ? 'alert alert-danger' : ''}}">
+                                <input type="password" class="form-control" name="psw" placeholder="Contraseña">
+                                {!! $errors -> first('psw','<span class="help-block">:message</span>') !!} 
                             </div>
                             <button class="btn btn-login">Login</button>
                         </form>
