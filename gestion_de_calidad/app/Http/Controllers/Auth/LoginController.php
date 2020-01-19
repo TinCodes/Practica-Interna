@@ -10,26 +10,32 @@ class LoginController extends Controller
 {
    public function login() {
        $credentials = $this->validate(request(), [
-           'email' => 'required|email',
+           'mail' => 'required|email',
            'password' => 'required'
        ]);
     
-       $realpsw = \App\UserSG::first()->psw;
+       $realpsw = \App\Persona::first()->psw;
 
-       if($realpsw == $credentials['password']){
-            $rol = \App\UserSG::first()->rol;
+       $email = $credentials['mail'];
+       $password = $credentials['password'];
 
-            /* Auditor Supervisor JC */
+    
+       if($realpsw == $password){
+           return 'Sesion exitosa';
+            /* Auditor Supervisor JC 
             if($rol == 1){
                 return redirect()->route('/dashboardauditor');
             } elseif ($rol == 2) {
                 return redirect()->route('/dashboardvisor');
             } 
-            return redirect()->route('/dashboardjc');
+
+            return redirect()->route('/dashboardjc');*/
        }
 
-       return back()
-        ->withErrors(['email' => 'Estas credenciales no coinciden con los registros. Intente de nuevo'])
-        ->withInput(request(['email']));
+       return 'Sesion looser';
+
+       /*return back()
+        ->withErrors(['mail' => 'Estas credenciales no coinciden con los registros. Intente de nuevo'])
+        ->withInput(request(['mail']));*/
    }
 }

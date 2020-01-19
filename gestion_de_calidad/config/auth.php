@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'userssg',
+        'passwords' => 'personas',
     ],
 
     /*
@@ -38,12 +38,12 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'userssg',
+            'provider' => 'personas',
         ],
 
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'user',
             'hash' => false,
         ],
 
@@ -73,14 +73,14 @@ return [
             'model' => App\User::class,
         ],*/
 
-        'userssg' => [
+        'users' => [
             'driver' => 'eloquent',
-            'model' => App\UserSG::class,
+            'model' => App\Persona::class,
         ],
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'users' => [
+            'driver' => 'database',
+            'table' => 'personas',
+        ],
     ],
 
     /*
@@ -106,8 +106,8 @@ return [
             'throttle' => 60,
         ],*/
 
-        'userssg' => [
-            'provider' => 'userssg',
+        'users' => [
+            'provider' => 'personas',
             'table' => 'password_resets',
             'expire' => 60,
         ],
