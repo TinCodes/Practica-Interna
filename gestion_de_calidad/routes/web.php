@@ -15,21 +15,16 @@ Route::get('/', function () {
     return view('admin.cronograma');
 });
 
-<<<<<<< HEAD
 // RESTful controllers for auditorias
 Route::get('/auditorias', 'CronogramaController@index');
 Route::get('/auditorias/create', 'CronogramaController@create');
 Route::post('/auditorias', 'CronogramaController@store');
-Route::get('/auditorias/{auditoriaID}', 'CronogramaController@show');
+Route::get('/auditorias/{auditoria}', 'CronogramaController@show');
+Route::get('/auditorias/{auditoria}/edit', 'CronogramaController@edit');
+Route::patch('/auditorias/{auditoria}', 'CronogramaController@update');
+Route::delete('/auditorias/{auditoria}', 'CronogramaController@destroy');
 
 // End of RESTful controllers
-=======
-Route::get('/cronograma', function () {
-    return view('admin.cronograma');
-});
-
-Route::post('/auditoria', 'CronogramaController@store');
->>>>>>> a5cf86298f9a8ab68232c71ac8e7d2980c3269c0
 
 Route::get('/login', function () {
     return view('login');

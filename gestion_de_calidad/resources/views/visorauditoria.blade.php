@@ -19,48 +19,51 @@
     </header>
 
     <div class="container p-5">
-    <form method="post" action="/auditoria">
-        @csrf
         <div class="form-row">
             <div class="col">
             <p><strong> Nombre de la auditoría:</strong></p>
-            <p> BDD </p>
+            <p> {{ $auditoria->nombre }} </p>
         </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
             <p><strong> Fecha:</strong></p>
-            <p> BDD </p>
-            </div>
-            <div class="col-md-6 mb-3">
+            <p> {{ $auditoria->fecha }} </p>
+        </div>
+        <div class="col-md-6 mb-3">
             <p><strong>Persona de contacto: </strong></p>
-            <p> BDD </p>
-            </div>
+            <p> {{ $auditoria->pdc }} </p>
         </div>
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
             <p><strong> Macroproceso: </strong></p>
-            <p> BDD </p>
-            </div>
-            <div class="col-md-6 mb-3">
+            <p> {{ $auditoria->macroproceso }} </p>
+        </div>
+        <div class="col-md-6 mb-3">
             <p><strong>Proceso: </strong></p>
-            <p> BDD </p>
-            </div>
+            <p> {{ $auditoria->proceso }} </p>
         </div>
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
             <p><strong>Auditor: </strong></p>
-            <p> BDD </p>
-            </div>
-            <div class="col-md-6 mb-3">
+            <p> {{ $auditoria->id_auditor }} </p>
+        </div>
+        <div class="col-md-6 mb-3">
             <p><strong>Elemento de calidad: </strong></p>
-            <p> BDD </p>
-            </div>
+            <p> {{ $auditoria->elem_calidad }} </p>
         </div>
-        <div class="text-center mt-4">
-            <button type="button" id="sendresponse" class="btn btn-secondary"> Listo </button>
-        </div>
-    </form>
+    </div>
+    <div class="text-center mt-4">
+        <form action="/auditorias/{{ $auditoria->id }}" method="post">
+            @method('DELETE')
+            @csrf
+            <button>BORRAR</button>
+        </form>
+        <a href="/auditorias/{{ $auditoria->id }}/edit" type="button" id="edit" class="btn btn-secondary"> Editar </a>
+        <a href="/auditorias" type="button" id="sendresponse" class="btn btn-secondary"> Listo </a>
+    </div>
 </div>
     <footer>
 

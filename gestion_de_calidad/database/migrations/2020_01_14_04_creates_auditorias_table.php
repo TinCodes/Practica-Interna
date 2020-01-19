@@ -14,7 +14,7 @@ class CreatesAuditoriasTable extends Migration
     public function up()
     {
         Schema::create('auditorias', function (Blueprint $table) {
-            $table->bigIncrements('id_auditoria');
+            $table->bigIncrements('id');
             $table->string('nombre');
             $table->string("estado");
             $table->date("fecha");
@@ -23,7 +23,7 @@ class CreatesAuditoriasTable extends Migration
             $table->string("proceso");
             $table->text("contexto");
             $table->unsignedBigInteger('id_persona');
-            $table->text("pdc");
+            $table->string("pdc");
             $table->unsignedBigInteger('elem_calidad');
             $table->timestamps();
         });

@@ -35,7 +35,16 @@ $(document).ready(function() {
         $(".bg-info-selected").removeClass("bg-info-selected")
         elem.classList.add("bg-info-selected");
 
-        $('#fecha').val(day + "-" + month + "-" + year);
+        if (month < 9){
+            if (day < 10) {
+                $('#fecha').val("0" + day + "-0" + month + "-" + year);
+            } else {
+                $('#fecha').val(day + "-0" + month + "-" + year);
+            }
+        } else {
+            $('#fecha').val(day + "-" + month + "-" + year);
+        }
+
     }
 
     function showCalendar(month, year) {

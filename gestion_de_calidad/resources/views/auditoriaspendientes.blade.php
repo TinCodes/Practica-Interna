@@ -76,7 +76,7 @@
                         </div>
 
                         <div class="col-sm-6">
-                            <a class="btn btn-login" href="#" role="button">Revisar Auditoria</a>
+                            <a class="btn btn-login" href="/auditorias/{{ $auditoria->id }}" role="button">Revisar Auditoria</a>
                         </div>
                     </div>
                     @empty

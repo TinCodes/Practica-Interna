@@ -45,14 +45,10 @@
     <section id="options" class="container">
         <div class="row my-5">
             <div class="col">
-<<<<<<< HEAD
                 <a href="/auditorias/create" type="button" class="py-4 btn btn-outline-secondary btn-block">Planificador de Auditorías</a>
-=======
-                <a href="/planauditor" role="button" class="py-4 btn btn-outline-secondary btn-block">Planificador de Auditorías</a>
->>>>>>> a5cf86298f9a8ab68232c71ac8e7d2980c3269c0
             </div>
             <div class="col">
-                <a href="/pendienteauditoria" role="button" class="py-4 btn btn-outline-secondary btn-block">Auditorías Pendientes/Cerradas</a>
+                <a href="/auditorias" role="button" class="py-4 btn btn-outline-secondary btn-block">Auditorías Pendientes/Cerradas</a>
             </div>
             <div class="col">
                 <a href="/respjustificaciones" role="button" class="py-4 btn btn-outline-secondary btn-block">Revisar Respuestas</a>

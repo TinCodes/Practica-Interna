@@ -24,7 +24,7 @@ class CreatesCriteriosTable extends Migration
 
         Schema::table('criterios', function ($table){
             $table->foreign('elem_calidad')->references('id_elem_calidad')->on('elemCalidads');
-            $table->foreign('id_auditoria')->references('id_auditoria')->on('auditorias');
+            $table->foreign('id_auditoria')->references('id')->on('auditorias');
         });
     }
 
