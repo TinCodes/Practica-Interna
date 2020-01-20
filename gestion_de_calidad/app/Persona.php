@@ -18,7 +18,7 @@ class Persona extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombre','rol','psw', 'mail'
+        'nombre','rol','password', 'mail'
     ];
 
     /**
@@ -33,6 +33,6 @@ class Persona extends Authenticatable
 
     public function getAuthPassword()
     {
-      return $this->psw;
+      return $this->password;
     }
 }

@@ -34,8 +34,8 @@
                                 <input type="email" class="form-control" name="mail" value="{{ old('mail') }}" placeholder="E-mail">
                                 {!! $errors -> first('mail','<span class="help-block">:message</span>') !!}
                             </div>
-                            <div class="form-group {{ $errors->has('psw') ? 'alert alert-danger' : ''}}">
-                                <input type="password" class="form-control" name="psw" placeholder="Contraseña">
+                            <div class="form-group {{ $errors->has('password') ? 'alert alert-danger' : ''}}">
+                                <input type="password" class="form-control" name="password" placeholder="Contraseña">
                                 {!! $errors -> first('psw','<span class="help-block">:message</span>') !!} 
                             </div>
                             <button class="btn btn-login">Login</button>
