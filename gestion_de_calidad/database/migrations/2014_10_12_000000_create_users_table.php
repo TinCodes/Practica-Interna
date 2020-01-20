@@ -29,8 +29,8 @@ class CreateUsersTable extends Migration
 
         // TODO These are dummy records so as to use them while were still at development phase, we need to delete them when development phase ends
         \Illuminate\Support\Facades\DB::table('users')->insert([
-           ['nombre' => 'Tincho', 'rol' => '1', 'email' => 'martin@loslaguna.com', 'password' => 'abc',  'created_at' => now(), 'updated_at' => now()],
-           ['nombre' => 'Camila', 'rol' => '3', 'email' => 'camila.loayzab@gmail.com', 'password' => 'abc','created_at' => now(), 'updated_at' => now()]
+           ['nombre' => 'Tincho', 'rol' => '1', 'email' => 'martin@loslaguna.com', 'password' => '$2b$10$Jwaos.KCEOx67vMBsPjsA.4xf9i/LOb6O0K2H9ZVkriz4Ea7T3F86',  'created_at' => now(), 'updated_at' => now()],
+           ['nombre' => 'Camila', 'rol' => '3', 'email' => 'camila.loayzab@gmail.com', 'password' => '$2b$10$h9DTX5DLbvScNHkyPCI3aeQKOC7aTZnK.5SNWgPO1/z8Wi73uND1e','created_at' => now(), 'updated_at' => now()]
         ]);
     }
     /**
