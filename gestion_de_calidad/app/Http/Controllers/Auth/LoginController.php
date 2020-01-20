@@ -43,7 +43,9 @@ class LoginController extends Controller
             return redirect()->route('/dashboard');
             
         }
-        return 'Sesion looser';
+        return back()
+        ->withErrors(['email' => 'Estas credenciales no coinciden con los registros. Intente de nuevo'])
+        ->withInput(request(['email']));
     }
 
     public function logout() {
