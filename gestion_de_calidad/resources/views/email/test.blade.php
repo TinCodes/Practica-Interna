@@ -1,10 +1,10 @@
 @component('mail::message')
-# Introduction
+# Prueba
 
-The body of your message.
+Prueba del mail para los jefes de departamento.
 
 @component('mail::button', ['url' => ''])
-Button Text
+Boton Prueba
 @endcomponent
 
 Gracias,<br>

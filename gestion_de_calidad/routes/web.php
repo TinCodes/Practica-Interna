@@ -18,6 +18,10 @@ Route::get('/', function () {
 
 Route::post('mylogin', 'Auth\LoginController@login')->name('mylogin');
 
+Route::get('/register', function () {
+    return view('auth.register');
+});
+
 /* ======================================= Logout ======================================== */
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('/logout');

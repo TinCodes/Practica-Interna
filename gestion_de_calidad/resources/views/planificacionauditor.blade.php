@@ -191,7 +191,7 @@
 </body>
 
 <script type="text/javascript" src= "{{ URL::asset('js/app.js') }}"></script>
-<script src="/js/calendar.js"></script>
+@include('layouts.calendar')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
         integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
         crossorigin="anonymous"></script>
