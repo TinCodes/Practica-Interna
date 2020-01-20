@@ -18,6 +18,10 @@ Route::get('/', function () {
 
 Route::post('mylogin', 'Auth\LoginController@login')->name('mylogin');
 
+/* ======================================= Logout ======================================== */
+
+Route::get('/logout', 'Auth\LoginController@logout')->name('/logout');
+
 /* ======================================== Auditorias ======================================== */
 Route::get('/auditorias', 'AuditoriaController@index');
 Route::get('/auditorias/create', 'AuditoriaController@create');

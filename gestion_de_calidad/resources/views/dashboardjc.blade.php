@@ -23,6 +23,9 @@
             <div class="col">
                 <a href="/banderas" role="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></a>
             </div>
+            <div class="col">
+                <a href="/logout" role="button" class="btn btn-secondary btn-block">Logout</a>
+            </div>
         </div>
     </section>
 
