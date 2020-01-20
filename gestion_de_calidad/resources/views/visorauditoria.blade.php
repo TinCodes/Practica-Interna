@@ -59,7 +59,7 @@
         <form action="/auditorias/{{ $auditoria->id }}" method="post">
             @method('DELETE')
             @csrf
-            <button>BORRAR</button>
+            <button class="btn btn-login mb-3">Borrar</button>
         </form>
         <a href="/auditorias/{{ $auditoria->id }}/edit" type="button" id="edit" class="btn btn-secondary"> Editar </a>
         <a href="/auditorias" type="button" id="sendresponse" class="btn btn-secondary"> Listo </a>

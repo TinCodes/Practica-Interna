@@ -164,7 +164,7 @@
             </div>
         </div>
         <div class="text-center mt-4">
-            <input type="submit" id="sendresponse" value="Submit" class="btn btn-secondary"> Terminado </input>
+            <input type="submit" id="sendresponse" value="Terminado" class="btn btn-secondary">  </input>
         </div>
     </form>
 </div>

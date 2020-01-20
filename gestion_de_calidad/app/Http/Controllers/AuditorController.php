@@ -27,6 +27,6 @@ class AuditorController extends Controller
             }
         }
 
-        return view('dashboardjc');
+        return view('dashboardauditor');
     }
 }

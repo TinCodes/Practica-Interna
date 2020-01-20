@@ -17,13 +17,13 @@
             </div>
         </div>
     </header>
-    <section id="timeline_section" class="container">
+    <section id="timeline_section" class="container pb-3">
         <div class="row my-5">
             <h1>Auditorias</h1>
         </div>
-        <a href="/auditorias?estado=Pendiente" class="btn btn-primary" role="button">Pendientes</a>
-        <a href="/auditorias?estado=Bandera" class="btn btn-primary" role="button">Banderas</a>
-        <a href="/auditorias?estado=Cerrada" class="btn btn-primary" role="button">Cerradas</a>
+        <a href="/auditorias?estado=Pendiente" class="btn btn-login" role="button">Pendientes</a>
+        <a href="/auditorias?estado=Bandera" class="btn btn-login" role="button">Banderas</a>
+        <a href="/auditorias?estado=Cerrada" class="btn btn-login" role="button">Cerradas</a>
     </section>
     <div class="container-fluid">
 		<div class="container">
