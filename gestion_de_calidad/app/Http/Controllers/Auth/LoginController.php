@@ -45,6 +45,11 @@ class LoginController extends Controller
         }
         return 'Sesion looser';
     }
+
+    public function logout() {
+        Auth::logout();
+        return view('auth.login');
+      }
     /**
      * Create a new controller instance.
      *
