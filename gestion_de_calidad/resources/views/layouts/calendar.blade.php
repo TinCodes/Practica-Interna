@@ -68,11 +68,13 @@
             for (let i = 0; i < 6; i++) {
                 // creates a table row
                 let row = document.createElement("tr");
-                let fechas = [
-                    @foreach($fechas as $fecha)
-                        "{{ $fecha }}",
-                    @endforeach
-                ];
+                @if(!empty($fechas))
+                    let fechas = [
+                        @foreach($fechas as $fecha)
+                            "{{ $fecha }}",
+                        @endforeach
+                    ];
+                @endif
 
                 //creating individual cells, filing them up with data.
                 for (let j = 0; j < 7; j++) {
@@ -91,6 +93,7 @@
                             cell.classList.add("bg-info");
                         } // color today's date
                         cell.appendChild(cellText);
+                        @if(!empty($fechas))
                         let mark;
                         for (let k = 0; k < fechas.length; k++) {
                             let dia = fechas[k].substr(0,2);
@@ -112,6 +115,7 @@
                                 }
                             }
                         }
+                        @endif
                         row.appendChild(cell);
                         date++;
                     }

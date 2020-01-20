@@ -11,11 +11,15 @@ class DashboardController extends Controller
         $rol = Auth::user()->rol;
         if($rol == 1){
             $auditorias = Auditoria::all();
-
-            foreach ($auditorias as $auditoria){
-                $fechas[$auditoria->nombre] = date('j n Y', strtotime($auditoria->fecha));
+            if (count($auditorias) > 0) {
+                foreach ($auditorias as $auditoria){
+                    $fechas[$auditoria->nombre] = date('j n Y', strtotime($auditoria->fecha));
+                }
+                return view('/dashboardauditor', compact('fechas'));
+            } else {
+                return view('/dashboardauditor');
             }
-            return view('/dashboardauditor', compact('fechas'));
+
         } elseif ($rol == 2) {
             return view('/dashboardvisor');
         }
