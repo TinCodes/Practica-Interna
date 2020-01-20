@@ -8,13 +8,17 @@ class DashboardController extends Controller
 {
     public function index() {
         $rol = Auth::user()->rol;
-        if($rol == 1){
-            return view('/dashboardauditor');
-        } elseif ($rol == 2) {
-            return view('/dashboardvisor');
-        } 
+        
+        if (Auth::check()) {
+            if($rol == 1){
+                return view('/dashboardauditor');
+            } elseif ($rol == 2) {
+                return view('/dashboardvisor');
+            } 
 
-        return view('/dashboardjc');
+            return view('/dashboardjc');
+        }
+        return 'Acceso denegado, porfavor entre al sistema';
     }
 
    
