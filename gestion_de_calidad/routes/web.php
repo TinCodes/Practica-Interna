@@ -101,3 +101,7 @@ Route::get('/visorauditoria', function () {
     return view('visorauditoria');
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
