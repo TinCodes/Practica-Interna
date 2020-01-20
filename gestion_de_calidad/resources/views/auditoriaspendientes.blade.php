@@ -17,53 +17,13 @@
             </div>
         </div>
     </header>
-
     <section id="timeline_section" class="container">
         <div class="row my-5">
-            <h1>Auditorias pendientes</h1>
+            <h1>Auditorias</h1>
         </div>
-    </section>
-    <div class="container-fluid">
-		<div class="container">
-			<div class="formBox">
-                <form>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <strong><p> Ejemplo 1 </p></strong>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <a class="btn btn-login" href="#" role="button">Revisar Auditoria</a>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <strong><p> Ejemplo 2 </p></strong>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <a class="btn btn-login" href="#" role="button">Revisar Auditoria</a>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <strong><p> Ejemplo 3 </p></strong>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <a class="btn btn-login" href="#" role="button">Revisar Auditoria</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-		</div>
-	</div>
-    <section id="timeline_section" class="container">
-        <div class="row my-5">
-            <h1>Auditorias realizadas</h1>
-        </div>
+        <a href="/auditorias?estado=Pendiente" class="btn btn-primary" role="button">Pendientes</a>
+        <a href="/auditorias?estado=Bandera" class="btn btn-primary" role="button">Banderas</a>
+        <a href="/auditorias?estado=Cerrada" class="btn btn-primary" role="button">Cerradas</a>
     </section>
     <div class="container-fluid">
 		<div class="container">
