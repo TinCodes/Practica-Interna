@@ -28,11 +28,7 @@ Route::delete('/auditorias/{auditoria}', 'CronogramaController@destroy');
 
 Route::post('mylogin', 'Auth\LoginController@login')->name('mylogin');
 
-Route::get('/dashboardauditor', 'DashboardController@auditor')->name('/dashboardauditor');
-
-Route::get('/dashboardvisor', 'DashboardController@visor')->name('/dashboardvisor');
-
-Route::get('/dashboardjc', 'DashboardController@jc')->name('/dashboardjc');
+Route::get('/dashboard','DashboardController@index')->name('/dashboard');
 
 Route::get('/auditoriaresp', function () {
     return view('respuestauditoria');

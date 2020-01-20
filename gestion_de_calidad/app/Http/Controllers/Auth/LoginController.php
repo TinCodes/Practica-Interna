@@ -39,13 +39,8 @@ class LoginController extends Controller
 
         if(Auth::attempt(['email' => $email, 'password' => $password])){
             $rol = Auth::user()->rol;
-            if($rol == 1){
-                return redirect()->route('/dashboardauditor');
-            } elseif ($rol == 2) {
-                return redirect()->route('/dashboardvisor');
-            } 
 
-            return redirect()->route('/dashboardjc');
+            return redirect()->route('/dashboard');
             
         }
         return 'Sesion looser';

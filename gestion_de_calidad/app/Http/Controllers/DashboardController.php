@@ -1,21 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function auditor() {
-        return view('dashboardauditor');
-    }
+    public function index() {
+        $rol = Auth::user()->rol;
+        if($rol == 1){
+            return view('/dashboardauditor');
+        } elseif ($rol == 2) {
+            return view('/dashboardvisor');
+        } 
 
-    public function visor() {
-        return view('dashboardvisor');
-    }
-
-    public function jc() {
-        return view('dashboardjc');
+        return view('/dashboardjc');
     }
 
    
