@@ -44,7 +44,7 @@
                     @endforelse
 
                     <div class="text-center mt-4">
-                        <a href="/dashboardauditor" role="button"  id="sendresponse" class="btn btn-secondary"> Volver </a>
+                        <a href="/dashboard" role="button"  id="sendresponse" class="btn btn-secondary"> Volver </a>
                     </div>
                 </form>
             </div>

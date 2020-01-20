@@ -38,7 +38,7 @@ class AuditoriaController extends Controller
     public function update(Auditoria $auditoria) {
         $auditoria->update($this->getData());
 
-        return redirect('/dashboardauditor');
+        return redirect('/dashboard');
     }
 
     public function destroy(Auditoria $auditoria) {

@@ -11518,3 +11518,11 @@ fieldset {
   background-color: #e6f79a !important;
 }
 
+.dot {
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  margin-left: 1px;
+  display: inline-block;
+}
+
