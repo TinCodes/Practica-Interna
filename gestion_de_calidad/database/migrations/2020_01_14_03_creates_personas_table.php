@@ -28,7 +28,7 @@ class CreatesPersonasTable extends Migration
 
         // TODO These are dummy records so as to use them while were still at development phase, we need to delete them when development phase ends
         \Illuminate\Support\Facades\DB::table('personas')->insert([
-           ['nombre' => 'Tincho', 'rol' => '1', 'password' => 'abc', 'mail' => 'martin@loslaguna.com', 'created_at' => now(), 'updated_at' => now()],
+           ['nombre' => 'Tincho', 'rol' => '1', 'password' => '$2b$10$Jwaos.KCEOx67vMBsPjsA.4xf9i/LOb6O0K2H9ZVkriz4Ea7T3F86', 'mail' => 'martin@loslaguna.com', 'created_at' => now(), 'updated_at' => now()],
            ['nombre' => 'Camila', 'rol' => '3', 'password' => '123', 'mail' => 'camila.loayzab@gmail.com', 'created_at' => now(), 'updated_at' => now()]
         ]);
     }

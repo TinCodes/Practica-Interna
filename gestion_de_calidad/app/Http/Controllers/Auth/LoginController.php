@@ -17,6 +17,9 @@ class LoginController extends Controller
        $email = $credentials['mail'];
        $password = $credentials['password'];
 
+       
+       dd(Auth::attempt(['mail' => $email, 'password' => $password]));
+
        $user = \App\Persona::where([
         'mail' => $email, 
         'password' => $password
