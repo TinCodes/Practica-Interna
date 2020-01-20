@@ -9,6 +9,22 @@
 
     <title>Gestión de Control de Calidad</title>
 </head>
+@guest
+    <header>
+        <div id="banner" class="row">
+            <div id="banner_img" class="mx-auto">
+                <img src="/img/logo.jpg" alt="Logo UPB">
+            </div>
+        </div>
+    </header>
+    <body>
+        <div class="text-center">
+            <h1 class="text-center p-5"> <strong> Acceso denegado </strong> </h1>
+            <h2 class="text-center p-3"> Porfavor ingrese al sistema</h2>
+            <a role="button" href="/" class="btn btn-login"> Login </a>
+        </div>
+    </body>
+@else
 <body>
     <header>
         <div id="banner" class="row">
@@ -75,4 +91,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
         integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
         crossorigin="anonymous"></script>
+@endauth
 </html>

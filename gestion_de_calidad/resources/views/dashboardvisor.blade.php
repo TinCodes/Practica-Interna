@@ -88,8 +88,8 @@
 
     </footer>
 </body>
-@endauth
 
 <script type="text/javascript" src= "{{ URL::asset('js/app.js') }}"></script>
 
+@endauth
 </html>
