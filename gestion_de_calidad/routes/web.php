@@ -59,9 +59,7 @@ Route::get('/revauditorias', function () {
 Route::get('/clasificarbanderas', 'AuditorController@clasificar');
 Route::post('/clasificarbanderas', 'AuditorController@updateTipo');
 
-Route::get('/banderas', function () {
-    return view('banderas');
-});
+Route::get('/banderas', 'BanderaController@index');
 
 Route::get('/realizarauditorias', function () {
     return view('realizarauditorias');

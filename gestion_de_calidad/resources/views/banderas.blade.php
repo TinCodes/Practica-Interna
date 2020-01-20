@@ -39,35 +39,43 @@
     <div class="container">
         <input class="form-control" id="myInput" type="text" placeholder="Buscar..">
         <br>
+        <a href="/banderas?by=Todas" class="btn btn-login">Todas</a>
+        <a href="/banderas?by=Observaciones" class="btn btn-login">Observaciones</a>
+        <a href="/banderas?by=No Conformidades" class="btn btn-login">No Conformidades</a>
+        <a href="/banderas?by=Pendientes" class="btn btn-login">Pendientes</a>
+        <a href="/banderas?by=Cerradas" class="btn btn-login">Cerradas</a>
         <table class="table table-bordered table-striped">
             <thead>
             <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Fecha</th>
+                <th>Auditor</th>
+                <th>Macroproceso</th>
+                <th>Proceso</th>
+                <th>Contexto</th>
+                <th>Persona de Contacto</th>
+                <th>Elem de Calidad</th>
+                <th>Estado</th>
             </tr>
             </thead>
             <tbody id="myTable">
-            <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-            </tr>
-            <tr>
-                <td>Mary</td>
-                <td>Moe</td>
-                <td>mary@mail.com</td>
-            </tr>
-            <tr>
-                <td>July</td>
-                <td>Dooley</td>
-                <td>july@greatstuff.com</td>
-            </tr>
-            <tr>
-                <td>Anja</td>
-                <td>Ravendale</td>
-                <td>a_r@test.com</td>
-            </tr>
+                @forelse($auditorias as $auditoria)
+                    <tr>
+                        <th>{{ $auditoria->nombre }}</th>
+                        <th>{{ $auditoria->tipo }}</th>
+                        <th>{{ $auditoria->fecha }}</th>
+                        <th>{{ $auditoria->id_auditor }}</th>
+                        <th>{{ $auditoria->macroproceso }}</th>
+                        <th>{{ $auditoria->proceso }}</th>
+                        <th>{{ $auditoria->contexto }}</th>
+                        <th>{{ $auditoria->pdc }}</th>
+                        <th>{{ $auditoria->elem_calidad }}</th>
+                        <th>{{ $auditoria->estado }}</th>
+                    </tr>
+                @empty
+                    <tr>Sin auditorias que mostrar</tr>
+                @endforelse
             </tbody>
         </table>
     </div>
