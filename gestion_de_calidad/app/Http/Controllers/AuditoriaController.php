@@ -7,10 +7,10 @@ use App\Elemcalidad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CronogramaController extends Controller
+class AuditoriaController extends Controller
 {
-    public function index() {
-        $auditorias = Auditoria::all();
+    public function index(Request $request) {
+        $auditorias = Auditoria::where('estado', $request->query('estado', "Pendiente"))->get();
 
         return view('auditoriaspendientes', compact('auditorias'));
     }
@@ -50,6 +50,7 @@ class CronogramaController extends Controller
     public function getData() {
         $data['nombre'] = \request()->input('nombre');
         $data['estado'] = "Pendiente";
+        $data['tipo'] = "none";
         $data['fecha'] = date('Y-m-d',strtotime(\request()->input('fecha')));
         // TODO  hardcoded id auditor
         $data['id_auditor'] = 1;

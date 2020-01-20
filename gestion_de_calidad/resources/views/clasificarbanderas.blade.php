@@ -38,16 +38,23 @@
     </section>
 
     <section id="options" class="d-flex justify-content-center">
-    <form action="" method="post">
-        <select id='banderas' multiple='multiple'>
-            <option value='elem_1' selected>elem 1</option>
-            <option value='elem_2'>elem 2</option>
-            <option value='elem_3'>elem 3</option>
-            <option value='elem_4' selected>elem 4</option>
-            <option value='elem_100'>elem 100</option>
+    <form action="/clasificarbanderas" method="post">
+        @csrf
+        @if(!empty($auditorias))
+        <select id='banderas' multiple='multiple' name="selected[]">
+            @foreach($auditorias as $auditoria)
+                @if( strcmp($auditoria->tipo, "Observacion") )
+                    <option value='{{$auditoria->id}}'>{{$auditoria->nombre}}</option>
+                @else
+                    <option value='{{$auditoria->id}}' selected>{{$auditoria->nombre}}</option>
+                @endif
+            @endforeach
         </select>
+        @else
+            <p>Sin auditorias que mostrar</p>
+        @endif
         <div class="text-center mt-4">
-            <button type="submit" id="sendClas" name="sendClas" class="btn btn-secondary"> Terminado </button>
+            <button type="submit" id="sendClas" name="sendClas" class="btn btn-secondary">Terminado</button>
         </div>
     </form>
     </section>

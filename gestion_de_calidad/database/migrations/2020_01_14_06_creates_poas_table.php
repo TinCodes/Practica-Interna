@@ -14,7 +14,7 @@ class CreatesPoasTable extends Migration
     public function up()
     {
         Schema::create('poas', function (Blueprint $table) {
-            $table->bigIncrements('id_poas');
+            $table->bigIncrements('id');
             $table->string('estado');
             $table->text('descripcion');
             $table->unsignedBigInteger('auditor');

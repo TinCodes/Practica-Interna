@@ -11,27 +11,29 @@
 |
 */
 
+/* ======================================== Login ======================================== */
 Route::get('/', function () {
     return view('auth.login');
 });
 
-// RESTful controllers for auditorias
-Route::get('/auditorias', 'CronogramaController@index');
-Route::get('/auditorias/create', 'CronogramaController@create');
-Route::post('/auditorias', 'CronogramaController@store');
-Route::get('/auditorias/{auditoria}', 'CronogramaController@show');
-Route::get('/auditorias/{auditoria}/edit', 'CronogramaController@edit');
-Route::patch('/auditorias/{auditoria}', 'CronogramaController@update');
-Route::delete('/auditorias/{auditoria}', 'CronogramaController@destroy');
-
-// End of RESTful controllers
-
 Route::post('mylogin', 'Auth\LoginController@login')->name('mylogin');
+
+/* ======================================== Auditorias ======================================== */
+Route::get('/auditorias', 'AuditoriaController@index');
+Route::get('/auditorias/create', 'AuditoriaController@create');
+Route::post('/auditorias', 'AuditoriaController@store');
+Route::get('/auditorias/{auditoria}', 'AuditoriaController@show');
+Route::get('/auditorias/{auditoria}/edit', 'AuditoriaController@edit');
+Route::patch('/auditorias/{auditoria}', 'AuditoriaController@update');
+Route::delete('/auditorias/{auditoria}', 'AuditoriaController@destroy');
+
+/* ======================================= Dashboards ======================================== */
 
 Route::get('/dashboard','DashboardController@index')->name('/dashboard');
 
-Route::get('/auditoriaresp', function () {
-    return view('respuestauditoria');
+/* ======================================== Auditor ======================================== */
+Route::get('/dashboardauditor', function () {
+    return view('dashboardauditor');
 });
 
 Route::get('/pendienteauditoria', function () {
@@ -46,12 +48,6 @@ Route::get('/estadoresp', function () {
     return view('estadorespuestas');
 });
 
-// MEJORAR EL SELECT
-
-Route::get('/formjusti', function () {
-    return view('formulariojustificacion');
-});
-
 Route::get('/respjustificaciones', function () {
     return view('responderjustificaciones');
 });
@@ -60,9 +56,8 @@ Route::get('/revauditorias', function () {
     return view('revisionauditorias');
 });
 
-Route::get('/clasificarbanderas', function () {
-    return view('clasificarbanderas');
-});
+Route::get('/clasificarbanderas', 'AuditorController@clasificar');
+Route::post('/clasificarbanderas', 'AuditorController@updateTipo');
 
 Route::get('/banderas', function () {
     return view('banderas');
@@ -76,8 +71,10 @@ Route::get('/planauditor', function () {
     return view('planificacionauditor');
 });
 
-Route::get('/planvisor', function () {
-    return view('planificacionvisor');
+
+/* ======================================== Supervisor ======================================== */
+Route::get('/dashboardvisor', function () {
+    return view('dashboardvisor');
 });
 
 Route::get('/planvisor', function () {
@@ -88,3 +85,14 @@ Route::get('/visorauditoria', function () {
     return view('visorauditoria');
 });
 
+
+/* ======================================== Jefe de Departamento ======================================== */
+Route::get('/dashboardjc', 'JCController@index');
+
+Route::get('/auditoriaresp', function () {
+    return view('respuestauditoria');
+});
+
+Route::get('/formjusti', function () {
+    return view('formulariojustificacion');
+});

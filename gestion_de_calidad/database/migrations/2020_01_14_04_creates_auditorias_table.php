@@ -16,7 +16,8 @@ class CreatesAuditoriasTable extends Migration
         Schema::create('auditorias', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-            $table->string("estado");
+            $table->string("estado")->default('Pendiente');
+            $table->string('tipo')->default('none');
             $table->date("fecha");
             $table->unsignedBigInteger('id_auditor');
             $table->string("macroproceso");
