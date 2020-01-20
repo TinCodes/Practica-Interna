@@ -11,17 +11,12 @@
 |
 */
 
-/* ======================================== Main ======================================== */
-Route::get('/', function () {
-    return view('admin.cronograma');
-});
-
-
 /* ======================================== Login ======================================== */
-Route::get('/login', function () {
-    return view('login');
+Route::get('/', function () {
+    return view('auth.login');
 });
 
+Route::post('mylogin', 'Auth\LoginController@login')->name('mylogin');
 
 /* ======================================== Auditorias ======================================== */
 Route::get('/auditorias', 'AuditoriaController@index');
@@ -32,6 +27,9 @@ Route::get('/auditorias/{auditoria}/edit', 'AuditoriaController@edit');
 Route::patch('/auditorias/{auditoria}', 'AuditoriaController@update');
 Route::delete('/auditorias/{auditoria}', 'AuditoriaController@destroy');
 
+/* ======================================= Dashboards ======================================== */
+
+Route::get('/dashboard','DashboardController@index')->name('/dashboard');
 
 /* ======================================== Auditor ======================================== */
 Route::get('/dashboardauditor', function () {

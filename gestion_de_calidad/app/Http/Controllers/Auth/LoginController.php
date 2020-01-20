@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -26,15 +26,32 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    
+    public function login() {
 
+        $credentials = $this->validate(request(), [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+ 
+        $email = $credentials['email'];
+        $password = $credentials['password'];
+
+        if(Auth::attempt(['email' => $email, 'password' => $password])){
+            $rol = Auth::user()->rol;
+
+            return redirect()->route('/dashboard');
+            
+        }
+        return 'Sesion looser';
+    }
     /**
      * Create a new controller instance.
      *
      * @return void
-     */
+     
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-    }
+    }*/
 }
