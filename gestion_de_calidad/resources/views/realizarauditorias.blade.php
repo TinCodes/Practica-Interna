@@ -60,41 +60,57 @@
             <div class="w-100"></div>
             <div class="col">Ejemplo 1</div>
             <div class="col">
-                <select class="form-control">
-                    <option>Cumple</option>
-                    <option>Bandera</option>
-                    <option>Recomendación</option>
-                </select>
+                <label class="radio-inline ml-2">
+                <input type="radio" name="optradio" checked>Cumple
+                </label>
+                <label class="radio-inline ml-2">
+                <input type="radio" name="optradio">Bandera
+                </label>
+                <label class="radio-inline ml-2">
+                <input type="radio" name="optradio">Recomendación
+                </label>
             </div>
             <div class="col"><input type="text" class="form-control" id="anotaciones" placeholder="Anotaciones"></div>
             <div class="w-100"></div>
             <div class="col">Ejemplo 2</div>
             <div class="col">
-                <select class="form-control">
-                    <option>Cumple</option>
-                    <option>Bandera</option>
-                    <option>Recomendación</option>
-                </select>
+                <label class="radio-inline ml-2">
+                <input type="radio" name="optradio2" checked>Cumple
+                </label>
+                <label class="radio-inline ml-2">
+                <input type="radio" name="optradio2">Bandera
+                </label>
+                <label class="radio-inline ml-2">
+                <input type="radio" name="optradio2">Recomendación
+                </label>
             </div>
             <div class="col"><input type="text" class="form-control" id="anotaciones" placeholder="Anotaciones"></div>
             <div class="w-100"></div>
             <div class="col">Ejemplo 3</div>
             <div class="col">
-                <select class="form-control">
-                    <option>Cumple</option>
-                    <option>Bandera</option>
-                    <option>Recomendación</option>
-                </select>
+                <label class="radio-inline ml-2">
+                <input type="radio" name="optradio3" checked>Cumple
+                </label>
+                <label class="radio-inline ml-2">
+                <input type="radio" name="optradio3">Bandera
+                </label>
+                <label class="radio-inline ml-2">
+                <input type="radio" name="optradio3">Recomendación
+                </label>
             </div>
             <div class="col"><input type="text" class="form-control" id="anotaciones" placeholder="Anotaciones"></div>
             <div class="w-100"></div>
             <div class="col">Ejemplo 4</div>
             <div class="col">
-                <select class="form-control">
-                    <option>Cumple</option>
-                    <option>Bandera</option>
-                    <option>Recomendación</option>
-                </select>
+                <label class="radio-inline ml-2">
+                <input type="radio" name="optradio4" checked>Cumple
+                </label>
+                <label class="radio-inline ml-2">
+                <input type="radio" name="optradio4">Bandera
+                </label>
+                <label class="radio-inline ml-2">
+                <input type="radio" name="optradio4">Recomendación
+                </label>
             </div>
             <div class="col"><input type="text" class="form-control" id="anotaciones" placeholder="Anotaciones"></div>
         </div>

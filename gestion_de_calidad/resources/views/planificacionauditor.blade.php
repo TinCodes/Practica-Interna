@@ -48,7 +48,7 @@
 
     <section id="timeline_section" class="container">
         <div class="row my-5">
-            <h1>Gestión</h1>
+            <h1>Planificación de actividades</h1>
         </div>
     </section>
 
@@ -145,7 +145,7 @@
     <form method="post" action="/auditorias">
         @csrf
         <div class="form-row">
-            <div class="col">
+            <div class="col mb-3">
             <label for="nombre">Nombre de la auditoría:</label>
             <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre de auditoria" value="{{old('nombre')}}" required>
             @error('nombre') <p class="valError"> {{ $message }} </p> @enderror
@@ -173,21 +173,15 @@
             </div>
 
             <div class="col-md-6 mb-3">
-            <label for="proceso">Proceso: </label>
-            <input type="text" class="form-control" id="proceso" name="proceso" placeholder="Proceso" value="{{old('proceso')}}" required>
-            @error('proceso') <p class="valError"> {{ $message }} </p> @enderror
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
             <label for="auditor">Auditor: </label>
             <input type="text" class="form-control" id="auditor" name="auditor" placeholder="Auditor" value="{{old('auditor')}}" required>
             @error('auditor') <p class="valError"> {{ $message }} </p> @enderror
             </div>
-
-            <div class="col-md-6 mb-3">
+        </div>
+        <div class="form-row">
+            <div class="col mb-3">
             <label for="elem_calidad">Elemento de calidad: </label>
-            <select class="form-control" id="elem_calidad" name="elem_calidad" required>
+            <select multiple class="form-control" id="elem_calidad" name="elem_calidad" required>
                 <option value="">Elemento de Calidad</option>
                 @foreach($elems as $elem)
                     <option value="{{ $elem->id_elem_calidad }}">{{ $elem->nombre }}</option>
@@ -195,6 +189,11 @@
             </select>
             @error('elem_calidad') <p class="valError"> {{ $message }} </p> @enderror
             </div>
+        </div>
+
+        <div class="form-group">
+            <label for="descripcion">Descripcion: </label>
+            <textarea class="form-control" id="descripcion" rows="3"></textarea>
         </div>
         <div class="text-center mt-4">
             <input type="submit" id="sendresponse" value="Terminado" class="btn btn-secondary">
