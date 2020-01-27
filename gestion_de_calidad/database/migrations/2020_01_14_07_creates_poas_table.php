@@ -16,18 +16,19 @@ class CreatesPoasTable extends Migration
         Schema::create('poas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('estado');
+            $table->text('razonRechazo')->nullable();
             $table->text('descripcion');
             $table->unsignedBigInteger('auditor');
             $table->unsignedBigInteger('jefe_carrera');
-            $table->date('fecha');
-            $table->unsignedBigInteger('id_auditoria');
+            $table->date('fechaVencimiento');
+            $table->unsignedBigInteger('id_actividad');
             $table->timestamps();
         });
 
         Schema::table('poas', function ($table) {
             $table->foreign('auditor')->references('id_persona')->on('personas');
             $table->foreign('jefe_carrera')->references('id_persona')->on('personas');
-            $table->foreign('id_auditoria')->references('id')->on('auditorias');
+            $table->foreign('id_actividad')->references('id')->on('actividads');
         });
     }
 

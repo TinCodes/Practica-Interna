@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Auditoria;
+use App\Actividad;
 use Illuminate\Http\Request;
 
 class AuditorController extends Controller
 {
     public function clasificar(Request $request) {
-        $auditorias = Auditoria::all();
+        $auditorias = Actividad::all();
 
         return view('clasificarbanderas', compact('auditorias'));
     }
 
     public function updateTipo() {
         $observaciones = \request('selected');
-        $noConformidades = Auditoria::all();
+        $noConformidades = Actividad::all();
 
         foreach ($noConformidades as $noConformidad) {
             $noConformidad->update(['tipo' => 'No Conformidad']);
@@ -23,7 +23,7 @@ class AuditorController extends Controller
 
         if (!empty($observaciones)){
             foreach ($observaciones as $observacion) {
-                Auditoria::where('id', $observacion)->update(['tipo' => 'Observacion']);
+                Actividad::where('id', $observacion)->update(['tipo' => 'Observacion']);
             }
         }
 

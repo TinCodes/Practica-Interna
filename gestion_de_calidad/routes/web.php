@@ -71,17 +71,16 @@ Route::group(['middleware' => ['auth', '1']], function() {
         return view('planificacionauditor');
     });
 
-    /* ======================================== Auditorias ======================================== */
-    Route::get('/auditorias', 'AuditoriaController@index');
-    Route::get('/auditorias/create', 'AuditoriaController@create');
-    Route::post('/auditorias', 'AuditoriaController@store');
-    Route::get('/auditorias/{auditoria}', 'AuditoriaController@show');
-    Route::get('/auditorias/{auditoria}/edit', 'AuditoriaController@edit');
-    Route::patch('/auditorias/{auditoria}', 'AuditoriaController@update');
-    Route::delete('/auditorias/{auditoria}', 'AuditoriaController@destroy');
+    /* ======================================== Actividades ======================================== */
+    Route::get('/actividades', 'ActividadController@index');
+    Route::get('/actividades/create', 'ActividadController@create');
+    Route::post('/actividades', 'ActividadController@store');
+    Route::get('/actividades/{actividad}', 'ActividadController@show');
+    Route::get('/actividades/{actividad}/edit', 'ActividadController@edit');
+    Route::patch('/actividades/{actividad}', 'ActividadController@update');
+    Route::delete('/actividades/{actividad}', 'ActividadController@destroy');
 
 });
-
 
 
 /* ======================================== Supervisor ======================================== */

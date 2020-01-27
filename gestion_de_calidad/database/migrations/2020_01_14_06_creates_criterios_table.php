@@ -16,15 +16,15 @@ class CreatesCriteriosTable extends Migration
         Schema::create('criterios', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('elem_calidad');
-            $table->unsignedBigInteger('id_auditoria');
+            $table->unsignedBigInteger('id_actividad');
             $table->text('descripcion');
-            $table->string('estado');
+            $table->string('estado')->default('none');
             $table->timestamps();
         });
 
         Schema::table('criterios', function ($table){
             $table->foreign('elem_calidad')->references('id_elem_calidad')->on('elemCalidads');
-            $table->foreign('id_auditoria')->references('id')->on('auditorias');
+            $table->foreign('id_actividad')->references('id')->on('actividads');
         });
     }
 

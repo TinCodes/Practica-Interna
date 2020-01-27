@@ -35,28 +35,28 @@
     </header>
     <section id="timeline_section" class="container pb-3">
         <div class="row my-5">
-            <h1>Auditorias</h1>
+            <h1>Actividades</h1>
         </div>
-        <a href="/auditorias?estado=Pendiente" class="btn btn-login" role="button">Pendientes</a>
-        <a href="/auditorias?estado=Bandera" class="btn btn-login" role="button">Banderas</a>
-        <a href="/auditorias?estado=Cerrada" class="btn btn-login" role="button">Cerradas</a>
+        <a href="/actividades?estado=Pendiente" class="btn btn-login" role="button">Pendientes</a>
+        <a href="/actividades?estado=Bandera" class="btn btn-login" role="button">Banderas</a>
+        <a href="/actividades?estado=Cerrada" class="btn btn-login" role="button">Cerradas</a>
     </section>
     <div class="container-fluid">
 		<div class="container">
 			<div class="formBox">
                 <form>
-                    @forelse($auditorias as $auditoria)
+                    @forelse($actividades as $actividad)
                     <div class="row">
                         <div class="col-sm-6">
-                            <strong><p> {{ $auditoria->nombre }} </p></strong> {{ $auditoria->fecha }}
+                            <strong><p> {{ $actividad->nombre }} </p></strong> {{ $actividad->fecha }}
                         </div>
 
                         <div class="col-sm-6">
-                            <a class="btn btn-login" href="/auditorias/{{ $auditoria->id }}" role="button">Revisar Auditoria</a>
+                            <a class="btn btn-login" href="/actividades/{{ $actividad->id }}" role="button">Revisar Actividad</a>
                         </div>
                     </div>
                     @empty
-                        <p>Sin auditorias que mostrar</p>
+                        <p>Sin actividades que mostrar</p>
                     @endforelse
 
                     <div class="text-center mt-4">

@@ -37,48 +37,48 @@
     <div class="container p-5">
         <div class="form-row">
             <div class="col">
-            <p><strong> Nombre de la auditoría:</strong></p>
-            <p> {{ $auditoria->nombre }} </p>
+            <p><strong>Nombre de la actividad:</strong></p>
+            <p> {{ $actividad->nombre }} </p>
         </div>
     </div>
     <div class="form-row">
         <div class="col-md-6 mb-3">
-            <p><strong> Fecha:</strong></p>
-            <p> {{ $auditoria->fecha }} </p>
+            <p><strong>Fecha:</strong></p>
+            <p> {{ $actividad->fecha }} </p>
         </div>
         <div class="col-md-6 mb-3">
             <p><strong>Persona de contacto: </strong></p>
-            <p> {{ $auditoria->pdc }} </p>
+            <p> {{ $actividad->pdc }} </p>
         </div>
     </div>
     <div class="form-row">
         <div class="col-md-6 mb-3">
-            <p><strong> Macroproceso: </strong></p>
-            <p> {{ $auditoria->macroproceso }} </p>
+            <p><strong>Macroproceso: </strong></p>
+            <p> {{ $actividad->macroproceso }} </p>
         </div>
         <div class="col-md-6 mb-3">
             <p><strong>Proceso: </strong></p>
-            <p> {{ $auditoria->proceso }} </p>
+            <p> {{ $actividad->proceso }} </p>
         </div>
     </div>
     <div class="form-row">
         <div class="col-md-6 mb-3">
             <p><strong>Auditor: </strong></p>
-            <p> {{ $auditoria->id_auditor }} </p>
+            <p> {{ $actividad->id_auditor }} </p>
         </div>
         <div class="col-md-6 mb-3">
             <p><strong>Elemento de calidad: </strong></p>
-            <p> {{ $auditoria->elem_calidad }} </p>
+            <p> {{ $actividad->elem_calidad }} </p>
         </div>
     </div>
     <div class="text-center mt-4">
-        <form action="/auditorias/{{ $auditoria->id }}" method="post">
+        <form action="/actividades/{{ $actividad->id }}" method="post">
             @method('DELETE')
             @csrf
             <button class="btn btn-login mb-3">Borrar</button>
         </form>
-        <a href="/auditorias/{{ $auditoria->id }}/edit" type="button" id="edit" class="btn btn-secondary"> Editar </a>
-        <a href="/auditorias" type="button" id="sendresponse" class="btn btn-secondary"> Listo </a>
+        <a href="/actividades/{{ $actividad->id }}/edit" type="button" id="edit" class="btn btn-secondary"> Editar </a>
+        <a href="/actividades" type="button" id="sendresponse" class="btn btn-secondary"> Listo </a>
     </div>
 </div>
     <footer>

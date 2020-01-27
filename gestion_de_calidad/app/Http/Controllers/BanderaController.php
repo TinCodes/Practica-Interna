@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Auditoria;
+use App\Actividad;
 use App\Elemcalidad;
 use App\Persona;
 use Illuminate\Http\Request;
@@ -12,27 +12,27 @@ class BanderaController extends Controller
     public function index(Request $request) {
         switch ($request->query('by')){
             case "Todas":
-                $auditorias = Auditoria::where('tipo', 'No Conformidad')->orWhere('tipo', 'Observacion')->get();
+                $auditorias = Actividad::where('tipo', 'No Conformidad')->orWhere('tipo', 'Observacion')->get();
                 break;
 
             case "Observaciones":
-                $auditorias = Auditoria::where('tipo', 'Observacion')->get();
+                $auditorias = Actividad::where('tipo', 'Observacion')->get();
                 break;
 
             case "No Conformidades":
-                $auditorias = Auditoria::where('tipo', 'No Conformidades')->get();
+                $auditorias = Actividad::where('tipo', 'No Conformidades')->get();
                 break;
 
             case "Pendientes":
-                $auditorias = Auditoria::where('estado', 'Pendiente')->get();
+                $auditorias = Actividad::where('estado', 'Pendiente')->get();
                 break;
 
             case "Cerradas":
-                $auditorias = Auditoria::where('estado', 'Cerrada')->get();
+                $auditorias = Actividad::where('estado', 'Cerrada')->get();
                 break;
 
             default:
-                $auditorias = Auditoria::where('tipo', 'No Conformidad')->orWhere('tipo', 'Observacion')->get();
+                $auditorias = Actividad::where('tipo', 'No Conformidad')->orWhere('tipo', 'Observacion')->get();
                 break;
         }
 

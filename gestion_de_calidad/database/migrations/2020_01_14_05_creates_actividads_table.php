@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatesAuditoriasTable extends Migration
+class CreatesActividadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,26 +13,23 @@ class CreatesAuditoriasTable extends Migration
      */
     public function up()
     {
-        Schema::create('auditorias', function (Blueprint $table) {
+        Schema::create('actividads', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string("estado")->default('Pendiente');
             $table->string('tipo')->default('none');
-            $table->date("fecha");
+            $table->dateTime("fechaHora");
             $table->unsignedBigInteger('id_auditor');
             $table->string("macroproceso");
-            $table->string("proceso");
-            $table->text("contexto");
+            $table->text("descripcion");
             $table->unsignedBigInteger('id_persona');
             $table->string("pdc");
-            $table->unsignedBigInteger('elem_calidad');
             $table->timestamps();
         });
 
-        Schema::table('auditorias', function ($table){
+        Schema::table('actividads', function ($table){
             $table->foreign("id_auditor")->references('id_persona')->on('personas');
             $table->foreign("id_persona")->references('id_persona')->on('personas');
-            $table->foreign("elem_calidad")->references('id_elem_calidad')->on('elemCalidads');
         });
     }
 
@@ -43,6 +40,6 @@ class CreatesAuditoriasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('auditorias');
+        Schema::dropIfExists('actividads');
     }
 }

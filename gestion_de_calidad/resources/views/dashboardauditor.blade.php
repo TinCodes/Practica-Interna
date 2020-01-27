@@ -149,10 +149,10 @@
     <section id="options" class="container">
         <div class="row my-5">
             <div class="col">
-                <a href="/auditorias/create" type="button" class="py-4 btn btn-outline-secondary btn-block">Planificador de Auditorías</a>
+                <a href="/actividades/create" type="button" class="py-4 btn btn-outline-secondary btn-block">Planificador de Auditorías</a>
             </div>
             <div class="col">
-                <a href="/auditorias" role="button" class="py-4 btn btn-outline-secondary btn-block">Auditorías Pendientes/Cerradas</a>
+                <a href="/actividades" role="button" class="py-4 btn btn-outline-secondary btn-block">Auditorías Pendientes/Cerradas</a>
             </div>
             <div class="col">
                 <a href="/respjustificaciones" role="button" class="py-4 btn btn-outline-secondary btn-block">Revisar Respuestas</a>

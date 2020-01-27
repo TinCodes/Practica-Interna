@@ -19,6 +19,8 @@ class CreatesPersonasTable extends Migration
             $table->unsignedBigInteger('rol');
             $table->string('psw');
             $table->string('mail');
+            $table->string('cargo')->nullable();
+            $table->string('campus')->nullable();
             $table->timestamps();
         });
 
