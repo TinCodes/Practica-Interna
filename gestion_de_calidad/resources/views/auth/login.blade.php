@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <div id="logintitle">
                             <img src="/img/user.jpg" id="icon" alt="User Icon" />
-                            <h1> Sisgesca </h1>
+                            <h1> SGC </h1>
                         </div>
                        
                         <form method="POST" action="{{ route('mylogin') }}">
