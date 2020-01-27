@@ -71,6 +71,10 @@ Route::group(['middleware' => ['auth', '1']], function() {
         return view('planificacionauditor');
     });
 
+    Route::get('/formjusti', function () {
+        return view('formulariojustificacion');
+    });
+
     /* ======================================== Actividades ======================================== */
     Route::get('/actividades', 'ActividadController@index');
     Route::get('/actividades/create', 'ActividadController@create');
@@ -107,7 +111,8 @@ Route::group(['middleware' => ['auth', '3']], function() {
         return view('respuestauditoria');
     });
 
-    Route::get('/formjusti', function () {
-        return view('formulariojustificacion');
+
+    Route::get('/banderasjc', function () {
+        return view('banderasjc');
     });
 });

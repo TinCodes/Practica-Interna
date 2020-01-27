@@ -55,6 +55,7 @@ class Kernel extends HttpKernel
         '2' => 'App\Http\Middleware\VisorMiddleware',
         '3' => 'App\Http\Middleware\JefeCarreraMiddleware',
         'auth' => \App\Http\Middleware\Authenticate::class,
+        'revalidate' => \App\Http\Middleware\RevalidateBackHistoryMiddleware::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
