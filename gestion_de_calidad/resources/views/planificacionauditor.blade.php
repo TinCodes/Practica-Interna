@@ -289,7 +289,7 @@
         <div class="form-row">
             <div class="col mb-3">
             <label for="elem_calidad">Elemento de calidad: </label>
-            <select multiple class="form-control" id="elem_calidad" name="elem_calidad[]" required>
+            <select multiple='multiple' class="form-control" id="elem_calidad" name="elem_calidad[]" required>
                 @foreach($elems as $elem)
                     <option value="{{ $elem->id_elem_calidad }}">{{ $elem->nombre }}</option>
                 @endforeach
@@ -318,4 +318,10 @@
         integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
         crossorigin="anonymous"></script>
 @endauth
+<script>
+$('#elem_calidad').multiSelect({
+  selectableHeader: "<div class='custom-header'> <strong> Elementos </strong></div>",
+  selectionHeader: "<div class='custom-header'> <strong> Opciones escogidas </strong></div>"
+});
+</script>
 </html>
