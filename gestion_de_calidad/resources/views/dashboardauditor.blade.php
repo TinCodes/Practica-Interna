@@ -161,7 +161,7 @@
 
         <div class="row my-5">
             <div class="col">
-                <a href="/cronograma" role="button" class="py-4 btn btn-outline-secondary btn-block">Cronograma</a>
+                <a href="/register" role="button" class="py-4 btn btn-outline-secondary btn-block">Registrar nuevo usuario</a>
             </div>
             <div class="col">
                 <a href="/formjusti" role="button" class="py-4 btn btn-outline-secondary btn-block">Mandar Formulario de Justificaciones</a>

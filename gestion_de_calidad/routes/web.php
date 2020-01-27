@@ -18,8 +18,6 @@ Route::get('/', function () {
 
 Route::post('mylogin', 'Auth\LoginController@login')->name('mylogin');
 
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
 
 /* ======================================= Logout ======================================== */
 
@@ -46,10 +44,6 @@ Route::group(['middleware' => ['auth', '1']], function() {
         return view('evalrespuestauditoria');
     });
 
-    Route::get('/estadoresp', function () {
-        return view('estadorespuestas');
-    });
-
     Route::get('/respjustificaciones', function () {
         return view('responderjustificaciones');
     });
@@ -74,6 +68,10 @@ Route::group(['middleware' => ['auth', '1']], function() {
     Route::get('/formjusti', function () {
         return view('formulariojustificacion');
     });
+
+    
+    Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'Auth\RegisterController@register');
 
     /* ======================================== Actividades ======================================== */
     Route::get('/actividades', 'ActividadController@index');
@@ -102,6 +100,13 @@ Route::group(['middleware' => ['auth', '2']], function() {
         return view('visorauditoria');
     });
 
+    Route::get('/banderas', function () {
+        return view('banderas');
+    });
+    
+    Route::get('/pendienteauditoria', function () {
+        return view('auditoriaspendientes');
+    });
 });
 /* ======================================== Jefe de Departamento ======================================== */
 Route::group(['middleware' => ['auth', '3']], function() {
@@ -111,8 +116,11 @@ Route::group(['middleware' => ['auth', '3']], function() {
         return view('respuestauditoria');
     });
 
+    Route::get('/estadoresp', function () {
+        return view('estadorespuestas');
+    });
 
-    Route::get('/banderasjc', function () {
-        return view('banderasjc');
+    Route::get('/banderas', function () {
+        return view('banderas');
     });
 });

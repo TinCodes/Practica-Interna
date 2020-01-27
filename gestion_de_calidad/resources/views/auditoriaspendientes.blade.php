@@ -33,6 +33,23 @@
             </div>
         </div>
     </header>
+
+    <section id="right_buttons" class="mx-5 my-3 d-flex justify-content-end">
+        <div class="row">
+            <div class="col">
+                <a href="/clasificarbanderas" role="button" class="btn btn-secondary btn-block">Clasificación</a>
+            </div>
+
+            <div class="col">
+                <a href="/banderas" role="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></a>
+            </div>
+
+            <div class="col">
+                <a href="/dashboard" role="button" class="btn btn-secondary btn-block">Dashboard</a>
+            </div>
+        </div>
+    </section>
+
     <section id="timeline_section" class="container pb-3">
         <div class="row my-5">
             <h1>Actividades</h1>
@@ -59,9 +76,7 @@
                         <p>Sin actividades que mostrar</p>
                     @endforelse
 
-                    <div class="text-center mt-4">
-                        <a href="/dashboard" role="button"  id="sendresponse" class="btn btn-secondary"> Volver </a>
-                    </div>
+                   
                 </form>
             </div>
 		</div>

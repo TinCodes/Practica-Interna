@@ -34,6 +34,22 @@
         </div>
     </header>
 
+    <section id="right_buttons" class="mx-5 my-3 d-flex justify-content-end">
+        <div class="row">
+            <div class="col">
+                <a href="/clasificarbanderas" role="button" class="btn btn-secondary btn-block">Clasificación</a>
+            </div>
+
+            <div class="col">
+                <a href="/banderas" role="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></a>
+            </div>
+
+            <div class="col">
+                <a href="/dashboard" role="button" class="btn btn-secondary btn-block">Dashboard</a>
+            </div>
+        </div>
+    </section>
+
     <section id="timeline_section" class="container">
         <div class="row my-5">
             <h1>Respuestas Pendientes</h1>
@@ -71,9 +87,6 @@
                         <div class="col-sm-6">
                             <a class="btn btn-login" href="#" role="button">Responder</a>
                         </div>
-                    </div>
-                    <div class="text-center mt-4">
-                        <a href="/dashboardauditor" role="button" class="btn btn-secondary"> Volver </a>
                     </div>
                 </form>
             </div>

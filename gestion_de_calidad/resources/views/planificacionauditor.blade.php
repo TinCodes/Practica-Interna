@@ -37,11 +37,15 @@
     <section id="right_buttons" class="mx-5 my-3 d-flex justify-content-end">
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-secondary btn-block">Pendientes</button>
+                <a href="/clasificarbanderas" role="button" class="btn btn-secondary btn-block">Clasificación</a>
             </div>
 
             <div class="col">
-                <button type="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></button>
+                <a href="/banderas" role="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></a>
+            </div>
+
+            <div class="col">
+                <a href="/dashboard" role="button" class="btn btn-secondary btn-block">Dashboard</a>
             </div>
         </div>
     </section>
@@ -317,11 +321,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
         integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
         crossorigin="anonymous"></script>
-@endauth
+
 <script>
 $('#elem_calidad').multiSelect({
   selectableHeader: "<div class='custom-header'> <strong> Elementos </strong></div>",
   selectionHeader: "<div class='custom-header'> <strong> Opciones escogidas </strong></div>"
 });
+
 </script>
+@endauth
 </html>
