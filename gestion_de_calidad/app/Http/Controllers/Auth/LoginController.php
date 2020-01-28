@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 use Auth;
+use Illuminate\Http\Request;
+use App\Http\Requests;
+use Session;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -48,8 +51,9 @@ class LoginController extends Controller
         ->withInput(request(['email']));
     }
 
-    public function logout() {
+    public function logout(Request $request) {
         Auth::logout();
+        //Session::flush();
         return view('auth.login');
       }
     /**

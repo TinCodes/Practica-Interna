@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
     <title>Gestión de Control de Calidad - Dashboard</title>
+    <script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
 </head>
 @guest
     <header>
@@ -175,6 +180,7 @@
 </body>
 
 <script type="text/javascript" src= "{{ URL::asset('js/app.js') }}"></script>
+
 @include('layouts.calendar')
 @endauth
 </html>
