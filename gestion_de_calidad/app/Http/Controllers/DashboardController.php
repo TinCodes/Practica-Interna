@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index() {
+        if(Auth::check()){
         $rol = Auth::user()->rol;
         if($rol == 1){
             $auditorias = Actividad::all();
@@ -23,10 +24,12 @@ class DashboardController extends Controller
         } elseif ($rol == 2) {
             return view('/dashboardvisor');
         }
-
             return view('/dashboardjc');
+        } else {
+            return "Porfavor ingresa al sistema";
         }
     }
+}
 
 
 

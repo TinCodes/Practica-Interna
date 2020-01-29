@@ -96,6 +96,15 @@ class WordTestController extends Controller
         
         $section->addTextBreak(1);
 
+        $section->addText('9. INFORME DE HALLAZGOS',  $TfontStyle);
+        $section->addText('El presente informe presenta los hallazgos de la auditoría, más no se hace referencia a la conformidad, dado que el fin último es la atención de las oportunidades de mejora.');
+        $section->addText('A continuación se presentan los hallazgos de la auditoría, catalogados en dos grupos:');
+        $section->addListItem(htmlspecialchars('Observaciones: Incumplimientos menores o fallas aisladas.'));
+        $section->addListItem(htmlspecialchars('No conformidades: Incumplimientos a la norma que pueden afectar la eficacia del SGC de la UPB.'));
+        $section->addText('Adicionalmente, se incluyen recomendaciones, las cuales se pronuncian con el fin de sugerir la emisión de acciones de mejora para evitar que los hallazgos se conviertan en no conformidades que pongan el riesgo el SGC.');
+        $section->addTextBreak(1);
+        $section->addText('Aclaración: Debido a que el presente informe hace referencia al enfoque en procesos, a continuación se despliega un índice de reporte de hallazgos por macro proceso.');
+        $section->addTextBreak(1);
         $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord,'Word2007');
         try {
             $objectWriter->save(storage_path($filename));
