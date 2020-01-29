@@ -37,7 +37,7 @@
     <section id="right_buttons" class="mx-5 my-3 d-flex justify-content-end">
         <div class="row">
             <div class="col">
-                <a href="/clasificarbanderas" role="button" class="btn btn-secondary btn-block">Clasificación</a>
+                <a href="/modbanderas" role="button" class="btn btn-secondary btn-block">Elegir Banderas</a>
             </div>
 
             <div class="col">
@@ -60,6 +60,7 @@
         <input class="form-control" id="myInput" type="text" placeholder="Buscar..">
         <br>
         <a href="/banderas?by=Todas" class="btn btn-login">Todas</a>
+        <a href="/banderas?by=Banderas" class="btn btn-login">Banderas</a>
         <a href="/banderas?by=Observaciones" class="btn btn-login">Observaciones</a>
         <a href="/banderas?by=No Conformidades" class="btn btn-login">No Conformidades</a>
         <a href="/banderas?by=Pendientes" class="btn btn-login">Pendientes</a>
@@ -67,34 +68,34 @@
         <table class="table table-bordered table-striped">
             <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Tipo</th>
+                <th>Nombre Actividad</th>
                 <th>Fecha</th>
+                <th>Hora</th>
+                <th>Estado</th>
                 <th>Auditor</th>
                 <th>Macroproceso</th>
-                <th>Proceso</th>
-                <th>Contexto</th>
+                <th>Descripción</th>
                 <th>Persona de Contacto</th>
                 <th>Elem de Calidad</th>
-                <th>Estado</th>
             </tr>
             </thead>
             <tbody id="myTable">
-                @forelse($auditorias as $auditoria)
-                    <tr>
-                        <th>{{ $auditoria->nombre }}</th>
-                        <th>{{ $auditoria->tipo }}</th>
-                        <th>{{ $auditoria->fecha }}</th>
-                        <th>{{ $auditoria->id_auditor }}</th>
-                        <th>{{ $auditoria->macroproceso }}</th>
-                        <th>{{ $auditoria->proceso }}</th>
-                        <th>{{ $auditoria->contexto }}</th>
-                        <th>{{ $auditoria->pdc }}</th>
-                        <th>{{ $auditoria->elem_calidad }}</th>
-                        <th>{{ $auditoria->estado }}</th>
-                    </tr>
+                @forelse($actividades as $actividad)
+                    @foreach($elems as $elem)
+                        <tr>
+                            <th>{{ $actividad->nombre }}</th>
+                            <th>{{ $actividad->fecha }}</th>
+                            <th>{{ $actividad->hora }}:{{ $actividad->minuto }}</th>
+                            <th>{{ $elem->estado }}</th>
+                            <th>{{ $actividad->auditor }}</th>
+                            <th>{{ $actividad->macroproceso }}</th>
+                            <th>{{ $actividad->descripcion }}</th>
+                            <th>{{ $actividad->pdc }}</th>
+                            <th>{{ $elem->nombre }}</th>
+                        </tr>
+                    @endforeach
                 @empty
-                    <tr>Sin auditorias que mostrar</tr>
+                    <tr><p>Sin banderas que mostrar</p></tr>
                 @endforelse
             </tbody>
         </table>

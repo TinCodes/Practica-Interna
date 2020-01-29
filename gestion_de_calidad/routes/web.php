@@ -29,6 +29,10 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('/logout');
 
 Route::get('/dashboard','DashboardController@index')->name('/dashboard');
 
+Route::get('/modbanderas', 'BanderaController@mostrar');
+Route::post('/modbanderas', 'BanderaController@store');
+Route::get('/modbanderas/{actividad}', 'BanderaController@show');
+
 Route::get('/banderas', 'BanderaController@index');
 
 /* ======================================== Auditor ======================================== */
@@ -54,12 +58,9 @@ Route::group(['middleware' => ['auth', '1']], function() {
         return view('revisionauditorias');
     });
 
-    Route::get('/clasificarbanderas', 'AuditorController@clasificar');
     Route::post('/clasificarbanderas', 'AuditorController@updateTipo');
 
-    Route::get('/realizarauditorias', function () {
-        return view('realizarauditorias');
-    });
+    Route::get('/realizarauditoria/{actividad}', 'BanderaController@clasificar');
 
     Route::get('/planauditor', function () {
         return view('planificacionauditor');

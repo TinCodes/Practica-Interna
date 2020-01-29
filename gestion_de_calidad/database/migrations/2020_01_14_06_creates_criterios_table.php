@@ -17,7 +17,7 @@ class CreatesCriteriosTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('elem_calidad');
             $table->unsignedBigInteger('id_actividad');
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
             $table->string('estado')->default('Pendiente');
             $table->timestamps();
         });

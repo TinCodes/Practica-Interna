@@ -22,6 +22,7 @@ class CreatesPoasTable extends Migration
             $table->unsignedBigInteger('jefe_carrera');
             $table->date('fechaVencimiento');
             $table->unsignedBigInteger('id_actividad');
+            $table->unsignedBigInteger('elem_calidad');
             $table->timestamps();
         });
 
@@ -29,6 +30,7 @@ class CreatesPoasTable extends Migration
             $table->foreign('auditor')->references('id_persona')->on('personas');
             $table->foreign('jefe_carrera')->references('id_persona')->on('personas');
             $table->foreign('id_actividad')->references('id')->on('actividads')->onDelete('cascade');
+            $table->foreign('elem_calidad')->references('id_elem_calidad')->on('elem_calidad');
         });
     }
 

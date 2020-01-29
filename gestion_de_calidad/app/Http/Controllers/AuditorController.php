@@ -7,12 +7,6 @@ use Illuminate\Http\Request;
 
 class AuditorController extends Controller
 {
-    public function clasificar(Request $request) {
-        $auditorias = Actividad::all();
-
-        return view('clasificarbanderas', compact('auditorias'));
-    }
-
     public function updateTipo() {
         $observaciones = \request('selected');
         $noConformidades = Actividad::all();
