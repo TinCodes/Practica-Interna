@@ -10,10 +10,11 @@ class DashboardController extends Controller
     public function index() {
         $rol = Auth::user()->rol;
         if($rol == 1){
-            $auditorias = Actividad::all();
-            if (count($auditorias) > 0) {
-                foreach ($auditorias as $auditoria){
-                    $fechas[$auditoria->nombre] = date('j n Y', strtotime($auditoria->fecha));
+            $actividades = Actividad::all();
+            if (count($actividades) > 0) {
+                foreach ($actividades as $actividad){
+                    $fechaHora = date('j-n-Y H:i:s', strtotime($actividad->fechaHora));
+                    $fechas[$actividad->nombre] = str_replace('-',' ', explode(" ", $fechaHora)[0]);
                 }
                 return view('/dashboardauditor', compact('fechas'));
             } else {
@@ -21,7 +22,16 @@ class DashboardController extends Controller
             }
 
         } elseif ($rol == 2) {
-            return view('/dashboardvisor');
+            $actividades = Actividad::all();
+            if (count($actividades) > 0) {
+                foreach ($actividades as $actividad){
+                    $fechaHora = date('j-n-Y H:i:s', strtotime($actividad->fechaHora));
+                    $fechas[$actividad->nombre] = str_replace('-',' ', explode(" ", $fechaHora)[0]);
+                }
+                return view('/dashboardvisor', compact('fechas'));
+            } else {
+                return view('/dashboardvisor');
+            }
         }
 
             return view('/dashboardjc');

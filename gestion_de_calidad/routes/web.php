@@ -29,6 +29,8 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('/logout');
 
 Route::get('/dashboard','DashboardController@index')->name('/dashboard');
 
+Route::get('/banderas', 'BanderaController@index');
+
 /* ======================================== Auditor ======================================== */
 
 Route::group(['middleware' => ['auth', '1']], function() {
@@ -55,8 +57,6 @@ Route::group(['middleware' => ['auth', '1']], function() {
     Route::get('/clasificarbanderas', 'AuditorController@clasificar');
     Route::post('/clasificarbanderas', 'AuditorController@updateTipo');
 
-    Route::get('/banderas', 'BanderaController@index');
-
     Route::get('/realizarauditorias', function () {
         return view('realizarauditorias');
     });
@@ -69,7 +69,7 @@ Route::group(['middleware' => ['auth', '1']], function() {
         return view('formulariojustificacion');
     });
 
-    
+
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('register', 'Auth\RegisterController@register');
 
@@ -100,13 +100,6 @@ Route::group(['middleware' => ['auth', '2']], function() {
         return view('visorauditoria');
     });
 
-    Route::get('/banderas', function () {
-        return view('banderas');
-    });
-    
-    Route::get('/pendienteauditoria', function () {
-        return view('auditoriaspendientes');
-    });
 });
 /* ======================================== Jefe de Departamento ======================================== */
 Route::group(['middleware' => ['auth', '3']], function() {
@@ -120,7 +113,4 @@ Route::group(['middleware' => ['auth', '3']], function() {
         return view('estadorespuestas');
     });
 
-    Route::get('/banderas', function () {
-        return view('banderas');
-    });
 });
