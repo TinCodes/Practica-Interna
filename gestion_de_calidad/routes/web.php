@@ -23,8 +23,6 @@ Route::post('mylogin', 'Auth\LoginController@login')->name('mylogin');
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('/logout');
 
-
-
 /* ======================================= Dashboards ======================================== */
 
 Route::get('/dashboard','DashboardController@index')->name('/dashboard');
@@ -36,6 +34,15 @@ Route::get('/banderas', 'BanderaController@index');
 Route::get('/pendienteauditoria', function () {
     return view('auditoriaspendientes');
 });
+
+/* ======================================== Actividades ======================================== */
+Route::get('/actividades', 'ActividadController@index');
+Route::get('/actividades/create', 'ActividadController@create');
+Route::post('/actividades', 'ActividadController@store');
+Route::get('/actividades/{actividad}', 'ActividadController@show');
+Route::get('/actividades/{actividad}/edit', 'ActividadController@edit');
+Route::patch('/actividades/{actividad}', 'ActividadController@update');
+Route::delete('/actividades/{actividad}', 'ActividadController@destroy');
 
 /* ======================================== Auditor ======================================== */
 
@@ -77,14 +84,7 @@ Route::group(['middleware' => ['auth', '1']], function() {
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('register', 'Auth\RegisterController@register');
 
-    /* ======================================== Actividades ======================================== */
-    Route::get('/actividades', 'ActividadController@index');
-    Route::get('/actividades/create', 'ActividadController@create');
-    Route::post('/actividades', 'ActividadController@store');
-    Route::get('/actividades/{actividad}', 'ActividadController@show');
-    Route::get('/actividades/{actividad}/edit', 'ActividadController@edit');
-    Route::patch('/actividades/{actividad}', 'ActividadController@update');
-    Route::delete('/actividades/{actividad}', 'ActividadController@destroy');
+    
 
 });
 
