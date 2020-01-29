@@ -54,6 +54,7 @@ class Kernel extends HttpKernel
         '1' => 'App\Http\Middleware\AuditorMiddleware',
         '2' => 'App\Http\Middleware\VisorMiddleware',
         '3' => 'App\Http\Middleware\JefeCarreraMiddleware',
+        '4' => 'App\Http\Middleware\PermisoMultiple',
         'auth' => \App\Http\Middleware\Authenticate::class,
         'revalidate' => \App\Http\Middleware\RevalidateBackHistoryMiddleware::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
