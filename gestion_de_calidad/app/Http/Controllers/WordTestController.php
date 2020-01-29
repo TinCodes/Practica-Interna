@@ -19,9 +19,16 @@ class WordTestController extends Controller
         $tableStyle = array('borderSize' => 1, 'borderColor' => '999999', 'afterSpacing' => 0, 'Spacing'=> 0, 'cellMargin'=>0  );
         $styleCell = array('borderTopSize'=>1 ,'borderTopColor' =>'black','borderLeftSize'=>1,'borderLeftColor' =>'black','borderRightSize'=>1,'borderRightColor'=>'black','borderBottomSize' =>1,'borderBottomColor'=>'black' );
         $fontStyle = array('italic'=> true, 'size'=>10, 'name'=>'Arial','afterSpacing' => 0, 'Spacing'=> 0, 'cellMargin'=>0 );
-        $TfontStyle = array('bold'=>true, 'italic'=> true, 'size'=>10, 'name' => 'Arial', 'afterSpacing' => 0, 'Spacing'=> 0, 'cellMargin'=>0);
+        $TfontStyle = array('bold'=>true, 'size'=>11, 'name' => 'Arial', 'afterSpacing' => 0, 'Spacing'=> 0, 'cellMargin'=>0);
         $cfontStyle = array('allCaps'=>true,'italic'=> true, 'size'=>10, 'name' => 'Arial','afterSpacing' => 0, 'Spacing'=> 0, 'cellMargin'=>0);
         $noSpace = array('textBottomSpacing' => -1);
+        $phpWord->setDefaultParagraphStyle(
+            array(
+                'alignment'  => \PhpOffice\PhpWord\SimpleType\Jc::BOTH,
+                'spaceAfter' => \PhpOffice\PhpWord\Shared\Converter::pointToTwip(1),
+                'spacing'    => 50,
+            )
+        );
         $table = $section->addTable('myOwnTableStyle',array('borderSize' => 1, 'borderColor' => '999999', 'afterSpacing' => 0, 'Spacing'=> 0, 'cellMargin'=>0  ));
        
         $table->addRow(-0.5, array('exactHeight' => -5));
@@ -43,12 +50,51 @@ class WordTestController extends Controller
         $table2->addRow();
         $table2->addCell(1500,$styleCell)->addText(' FECHA: ', $TfontStyle);
         $table2->addCell(5500,$styleCell)->addText(' de diciembre de 2016');
+        $section->addText(' ',  $center);
+        $section->addText('1. ANTECEDENTES',  $TfontStyle);
+        $section->addText('Con la finalidad de determinar la conformidad del SGC de la UPB, verificar su eficacia y determinar el grado de atención a las observaciones de la auditoría externa, se llevó a cabo la 27va Auditoría Interna al Sistema de Gestión de Calidad de la UPB, los días 12 y 13 de agosto de 2016 en la ciudad de La Paz y los días 13, 14, 15 y 16 de agosto de 2016 en la ciudad de Cochabamba.');
+        $section->addText(' ',  $center);
 
-        $section->addText(' ',$center);
-        $section->addText('1. Antecedentes',  $TfontStyle);
-        $section->addText('Con la finalidad de determinar la conformidad del SGC de la UPB, verificar su eficacia y determinar el grado de atención a las observaciones de la auditoría externa, se llevó a cabo la 27va Auditoría Interna al Sistema de Gestión de Calidad de la UPB, los días 12 y 13 de agosto de 2016 en la ciudad de La Paz y los días 13, 14, 15 y 16 de agosto de 2016 en la ciudad de Cochabamba.', [ 'align' => \PhpOffice\PhpWord\Style\Alignment::ALIGN_BOTH]);
+        $section->addText('2. OBJETIVOS DE LA AUDITORÍA',  $TfontStyle);
+        $section->addText('Los objetivos establecidos para la Auditoría interna fueron:');
+        $section->addListItem(htmlspecialchars('Revisar el grado de atención de los planes de acción derivados de la Auditoría externa TUV 2016.'));
+        $section->addListItem(htmlspecialchars('Determinar la conformidad del Sistema de Gestión de Calidad de la UPB, de acuerdo a los requisitos establecidos en la Norma ISO 9001:2008.'));
+        $section->addListItem(htmlspecialchars('Verificar la eficacia del Sistema de Gestión de Calidad y su implementación.'));
+        $section->addListItem(htmlspecialchars('Detectar oportunidades de mejora.'));
+        $section->addTextBreak(1);
 
+        $section->addText('3. ALCANCE',  $TfontStyle);
+        $section->addText('Durante la auditoría se revisaron los procesos del Sistema de Gestión de Calidad de UPB, aplicables al cumplimiento de los requisitos de la norma ISO 9001:2008:');
+        $section->addText(' ',  $center);
+        $section->addTitle(htmlspecialchars('4. Sistema de Gestión de Calidad'));
+        $section->addTitle(htmlspecialchars('5. Responsabilidad de la dirección'));
+        $section->addTitle(htmlspecialchars('6. Gestión de los recursos'));
+        $section->addTitle(htmlspecialchars('7. Prestación de servicio'));
+        $section->addTitle(htmlspecialchars('6. Medición, Análisis y Mejora'));
+        $section->addText('El periodo que fue revisado es del XX de enero del 20XX a la fecha de la auditoría.');
+        
+        $section->addTextBreak(1);
 
+        $section->addText('4. CRITERIOS DE AUDITORÍA',  $TfontStyle);
+        $section->addText('Los requisitos de la Norma ISO 9001: 2008 se utilizaron como criterios de la auditoría, adicionalmente durante la auditoría se revisaron los siguientes documentos del Sistema de Gestión de Calidad: Visión, Misión, Organigrama de UPB, Política de Calidad, Objetivos de Calidad, Procedimientos, Planes, Programas, Registros/Formatos, Manual de Calidad, Manual de Procedimientos y otros documentos del SGC.');
+        $section->addText(' ',  $center);
+        
+        $section->addText('5. PLAN DE AUDITORÍA',  $TfontStyle);
+        $section->addTextBreak(2);
+
+        $section->addText('6. PERSONAL AUDITADO',  $TfontStyle);
+        $section->addText('Durante la auditoría se efectuaron entrevistas al personal de las diferentes áreas de la Universidad en las ciudades de La Paz y Cochabamba:');
+        $section->addTextBreak(1);
+
+        $section->addText('7. EQUIPO AUDITOR',  $TfontStyle);
+        $section->addText('El equipo auditor estuvo conformado por las auditoras: Ing. Andrea Fernández e Ing. Jesica Rivera');
+        $section->addTextBreak(1);
+
+        $section->addText('8. RESUMEN DE LA AUDITORÍA',  $TfontStyle);
+        $section->addText('La auditoría se llevó a cabo tomando como base el Plan de Auditoría I - 2016, efectuándose ajustes a los horarios de acuerdo a la disponibilidad del personal auditado y del equipo auditor.');
+        $section->addText('La auditoría cumplió con su objetivo, ya que se evaluó el nivel de cumplimiento con la norma ISO 9001:2008 y se detectaron las áreas de oportunidad de mejora para que el Sistema de Gestión de Calidad de la UPB cumpla con los requisitos establecidos en la Norma ISO 9001:2008.');
+        
+        $section->addTextBreak(1);
 
         $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord,'Word2007');
         try {
