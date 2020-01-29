@@ -146,9 +146,10 @@
         </div>
 
         <div class="form-row">
-            <div class="col-md-6 mb-3">
+            <div class="col-md-1 mb-3">
                 <label for="hora">Hora: </label>
                 <select class="form-control" id="hora" name="hora" required>
+                    <option value="{{ $actividad->hora }}">{{ $actividad->hora }}</option>
                     <option value="00">00</option>
                     <option value="01">01</option>
                     <option value="02">02</option>
@@ -177,9 +178,10 @@
                 @error('hora') <p class="valError"> {{ $message }} </p> @enderror
             </div>
 
-            <div class="col-md-6 mb-3">
-                <label for="minuto"></label>
+            <div class="col-md-1 mb-3">
+                <label for="minuto">Minuto</label>
                 <select class="form-control" id="minuto" name="minuto" required>
+                    <option value="{{ $actividad->minuto }}" selected>{{ $actividad->minuto }}</option>
                     <option value="00">00</option>
                     <option value="01">01</option>
                     <option value="02">02</option>
@@ -247,7 +249,7 @@
 
         <div class="form-row">
             <div class="col-md-6 mb-3">
-                <label for="fecha">Fecha: </label>
+                <label for="fecha">Fecha: (dd-mm-aaaa)</label>
                 <input type="text" class="form-control" id="fecha" name="fecha" placeholder="Fecha" value="{{ $actividad->fecha }}" required>
                 @error('fecha') <p class="valError"> {{ $message }} </p> @enderror
             </div>
@@ -267,15 +269,17 @@
 
             <div class="col-md-6 mb-3">
                 <label for="auditor">Auditor: </label>
-                <input type="text" class="form-control" id="auditor" name="auditor" placeholder="Auditor" value="{{ $actividad->id_auditor }}" required>
+                <input type="text" class="form-control" id="auditor" name="auditor" placeholder="Auditor" value="{{ $actividad->auditor }}" required>
                 @error('auditor') <p class="valError"> {{ $message }} </p> @enderror
             </div>
         </div>
         <div class="form-row">
             <div class="col mb-3">
                 <label for="elem_calidad">Elemento de calidad: </label>
-                <select class="form-control" id="elem_calidad" name="elem_calidad[]" required>
-                    <option value="{{ $actividad->elem_calidad }}"> {{ $actividad->elem_calidad }} </option>
+                <select multiple='multiple' class="form-control" id="elem_calidad" name="elem_calidad[]" required>
+                    @foreach($elemsAct as $elemAct)
+                        <option value="{{ $elemAct->id_elem_calidad }}" selected>{{ $elemAct->nombre }}</option>
+                    @endforeach
                     @foreach($elems as $elem)
                         <option value="{{ $elem->id_elem_calidad }}">{{ $elem->nombre }}</option>
                     @endforeach
@@ -283,8 +287,12 @@
                 @error('elem_calidad') <p class="valError"> {{ $message }} </p> @enderror
             </div>
         </div>
+        <div class="form-group">
+            <label for="descripcion">Descripcion: </label>
+            <textarea name="descripcion" class="form-control" id="descripcion" rows="3">{{ $actividad->descripcion }}</textarea>
+        </div>
         <div class="text-center mt-4">
-            <input type="submit" id="sendresponse" value="Terminado" class="btn btn-secondary">  </input>
+            <input type="submit" id="sendresponse" value="Terminado" class="btn btn-secondary">
         </div>
     </form>
 </div>
@@ -296,5 +304,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
         integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
         crossorigin="anonymous"></script>
+<script>
+    $('#elem_calidad').multiSelect({
+        selectableHeader: "<div class='custom-header'> <strong> Elementos </strong></div>",
+        selectionHeader: "<div class='custom-header'> <strong> Opciones escogidas </strong></div>"
+    });
+</script>
 @endauth
 </html>

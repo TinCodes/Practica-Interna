@@ -18,13 +18,13 @@ class CreatesCriteriosTable extends Migration
             $table->unsignedBigInteger('elem_calidad');
             $table->unsignedBigInteger('id_actividad');
             $table->text('descripcion');
-            $table->string('estado')->default('none');
+            $table->string('estado')->default('Pendiente');
             $table->timestamps();
         });
 
         Schema::table('criterios', function ($table){
             $table->foreign('elem_calidad')->references('id_elem_calidad')->on('elemCalidads');
-            $table->foreign('id_actividad')->references('id')->on('actividads');
+            $table->foreign('id_actividad')->references('id')->on('actividads')->onDelete('cascade');
         });
     }
 

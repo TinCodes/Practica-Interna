@@ -63,12 +63,17 @@
 			<div class="formBox">
                 <form>
                     @forelse($actividades as $actividad)
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <strong><p> {{ $actividad->nombre }} </p></strong> {{ $actividad->fecha }}
+                    <div class="row border border-dark">
+                        <div class="col-sm-4">
+                            <strong><p> {{ $actividad->nombre }} </p></strong>
+                            {{ $actividad->fecha }} - {{ $actividad->hora }}
                         </div>
 
                         <div class="col-sm-6">
+                            <p>{{$actividad->descripcion}}</p>
+                        </div>
+
+                        <div class="col-sm-2">
                             <a class="btn btn-login" href="/actividades/{{ $actividad->id }}" role="button">Revisar Actividad</a>
                         </div>
                     </div>
@@ -76,7 +81,7 @@
                         <p>Sin actividades que mostrar</p>
                     @endforelse
 
-                   
+
                 </form>
             </div>
 		</div>

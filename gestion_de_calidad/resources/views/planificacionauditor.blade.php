@@ -266,7 +266,7 @@
         </div>
         <div class="form-row">
             <div class="col-md-6 mb-3">
-            <label for="fecha">Fecha: </label>
+            <label for="fecha">Fecha: (dd-mm-aaaa)</label>
             <input type="text" class="form-control" id="fecha" name="fecha" placeholder="Fecha" value="{{old('fecha')}}" required>
             @error('fecha') <p class="valError"> {{ $message }} </p> @enderror
             </div>

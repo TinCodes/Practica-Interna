@@ -28,7 +28,7 @@ class CreatesPoasTable extends Migration
         Schema::table('poas', function ($table) {
             $table->foreign('auditor')->references('id_persona')->on('personas');
             $table->foreign('jefe_carrera')->references('id_persona')->on('personas');
-            $table->foreign('id_actividad')->references('id')->on('actividads');
+            $table->foreign('id_actividad')->references('id')->on('actividads')->onDelete('cascade');
         });
     }
 
