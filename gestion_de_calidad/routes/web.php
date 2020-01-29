@@ -23,6 +23,11 @@ Route::post('mylogin', 'Auth\LoginController@login')->name('mylogin');
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('/logout');
 
+/* ======================================= Users ========================================= */
+
+Route::get('users/export/', 'UsersController@export');
+
+Route::get('/createWord',['as'=>'createWord','uses'=>'WordTestController@createWordDocx']);
 
 
 /* ======================================= Dashboards ======================================== */
@@ -33,7 +38,25 @@ Route::get('/modbanderas', 'BanderaController@mostrar');
 Route::post('/modbanderas', 'BanderaController@store');
 Route::get('/modbanderas/{actividad}', 'BanderaController@show');
 
+/* ======================================= Rutas Compartidas ================================= */
 Route::get('/banderas', 'BanderaController@index');
+
+Route::group(['middleware' => ['auth', '4']], function() {
+
+    Route::get('/pendienteauditoria', function () {
+        return view('auditoriaspendientes');
+    });
+
+    /* ======================================== Actividades ======================================== */
+    Route::get('/actividades', 'ActividadController@index');
+    Route::get('/actividades/create', 'ActividadController@create');
+    Route::post('/actividades', 'ActividadController@store');
+    Route::get('/actividades/{actividad}', 'ActividadController@show');
+    Route::get('/actividades/{actividad}/edit', 'ActividadController@edit');
+    Route::patch('/actividades/{actividad}', 'ActividadController@update');
+    Route::delete('/actividades/{actividad}', 'ActividadController@destroy');
+
+});
 
 /* ======================================== Auditor ======================================== */
 
@@ -42,9 +65,7 @@ Route::group(['middleware' => ['auth', '1']], function() {
         return view('dashboardauditor');
     });
 
-    Route::get('/pendienteauditoria', function () {
-        return view('auditoriaspendientes');
-    });
+
 
     Route::get('/evalauditoria', function () {
         return view('evalrespuestauditoria');
@@ -74,14 +95,7 @@ Route::group(['middleware' => ['auth', '1']], function() {
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('register', 'Auth\RegisterController@register');
 
-    /* ======================================== Actividades ======================================== */
-    Route::get('/actividades', 'ActividadController@index');
-    Route::get('/actividades/create', 'ActividadController@create');
-    Route::post('/actividades', 'ActividadController@store');
-    Route::get('/actividades/{actividad}', 'ActividadController@show');
-    Route::get('/actividades/{actividad}/edit', 'ActividadController@edit');
-    Route::patch('/actividades/{actividad}', 'ActividadController@update');
-    Route::delete('/actividades/{actividad}', 'ActividadController@destroy');
+
 
 });
 

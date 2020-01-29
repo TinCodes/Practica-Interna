@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
     <title>Gestión de Control de Calidad - Dashboard</title>
-    <script type="text/javascript">
-        function preventBack() { window.history.forward(); }
-        setTimeout("preventBack()", 0);
-        window.onunload = function () { null };
-    </script>
+
 </head>
 @guest
     <header>
@@ -170,6 +169,10 @@
             </div>
             <div class="col">
                 <a href="/formjusti" role="button" class="py-4 btn btn-outline-secondary btn-block">Mandar Formulario de Justificaciones</a>
+            </div>
+
+            <div class="col">
+                <a href="" role="button" class="py-4 btn btn-outline-secondary btn-block">Generar informe final</a>
             </div>
         </div>
     </section>
