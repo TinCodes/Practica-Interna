@@ -23,6 +23,13 @@ Route::post('mylogin', 'Auth\LoginController@login')->name('mylogin');
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('/logout');
 
+/* ======================================= Users ========================================= */
+
+Route::get('users/export/', 'UsersController@export');
+
+Route::get('/createWord',['as'=>'createWord','uses'=>'WordTestController@createWordDocx']);
+
+
 /* ======================================= Dashboards ======================================== */
 
 Route::get('/dashboard','DashboardController@index')->name('/dashboard');
