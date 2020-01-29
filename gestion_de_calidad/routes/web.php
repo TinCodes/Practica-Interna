@@ -29,9 +29,27 @@ Route::get('users/export/', 'UsersController@export');
 
 Route::get('/createWord',['as'=>'createWord','uses'=>'WordTestController@createWordDocx']);
 
+
 /* ======================================= Dashboards ======================================== */
 
 Route::get('/dashboard','DashboardController@index')->name('/dashboard');
+
+/* ======================================= Rutas Compartidas ================================= */
+
+Route::get('/banderas', 'BanderaController@index');
+
+Route::get('/pendienteauditoria', function () {
+    return view('auditoriaspendientes');
+});
+
+/* ======================================== Actividades ======================================== */
+Route::get('/actividades', 'ActividadController@index');
+Route::get('/actividades/create', 'ActividadController@create');
+Route::post('/actividades', 'ActividadController@store');
+Route::get('/actividades/{actividad}', 'ActividadController@show');
+Route::get('/actividades/{actividad}/edit', 'ActividadController@edit');
+Route::patch('/actividades/{actividad}', 'ActividadController@update');
+Route::delete('/actividades/{actividad}', 'ActividadController@destroy');
 
 /* ======================================== Auditor ======================================== */
 
@@ -40,9 +58,7 @@ Route::group(['middleware' => ['auth', '1']], function() {
         return view('dashboardauditor');
     });
 
-    Route::get('/pendienteauditoria', function () {
-        return view('auditoriaspendientes');
-    });
+    
 
     Route::get('/evalauditoria', function () {
         return view('evalrespuestauditoria');
@@ -59,8 +75,6 @@ Route::group(['middleware' => ['auth', '1']], function() {
     Route::get('/clasificarbanderas', 'AuditorController@clasificar');
     Route::post('/clasificarbanderas', 'AuditorController@updateTipo');
 
-    Route::get('/banderas', 'BanderaController@index');
-
     Route::get('/realizarauditorias', function () {
         return view('realizarauditorias');
     });
@@ -73,18 +87,11 @@ Route::group(['middleware' => ['auth', '1']], function() {
         return view('formulariojustificacion');
     });
 
-    
+
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('register', 'Auth\RegisterController@register');
 
-    /* ======================================== Actividades ======================================== */
-    Route::get('/actividades', 'ActividadController@index');
-    Route::get('/actividades/create', 'ActividadController@create');
-    Route::post('/actividades', 'ActividadController@store');
-    Route::get('/actividades/{actividad}', 'ActividadController@show');
-    Route::get('/actividades/{actividad}/edit', 'ActividadController@edit');
-    Route::patch('/actividades/{actividad}', 'ActividadController@update');
-    Route::delete('/actividades/{actividad}', 'ActividadController@destroy');
+    
 
 });
 
@@ -104,13 +111,6 @@ Route::group(['middleware' => ['auth', '2']], function() {
         return view('visorauditoria');
     });
 
-    Route::get('/banderas', function () {
-        return view('banderas');
-    });
-    
-    Route::get('/pendienteauditoria', function () {
-        return view('auditoriaspendientes');
-    });
 });
 /* ======================================== Jefe de Departamento ======================================== */
 Route::group(['middleware' => ['auth', '3']], function() {
@@ -124,7 +124,4 @@ Route::group(['middleware' => ['auth', '3']], function() {
         return view('estadorespuestas');
     });
 
-    Route::get('/banderas', function () {
-        return view('banderas');
-    });
 });

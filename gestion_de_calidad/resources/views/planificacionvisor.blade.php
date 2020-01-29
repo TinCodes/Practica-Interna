@@ -37,11 +37,10 @@
     <section id="right_buttons" class="mx-5 my-3 d-flex justify-content-end">
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-secondary btn-block">Pendientes</button>
+                <a href="/banderas" role="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></a>
             </div>
-            
             <div class="col">
-                <button type="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></button>
+                <a href="/dashboard" role="button" class="btn btn-secondary btn-block">Dashboard</a>
             </div>
         </div>
     </section>

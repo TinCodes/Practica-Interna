@@ -13,6 +13,11 @@ class ActividadController extends Controller
 {
     public function index(Request $request) {
         $actividades = Actividad::where('estado', $request->query('estado', "Pendiente"))->get();
+        foreach ($actividades as $actividad){
+            $fechaHora = date('d/m/Y H:i:s', strtotime($actividad->fechaHora));
+            $actividad['fecha'] = explode(" ", $fechaHora)[0];
+            $actividad['hora'] = explode(" ", $fechaHora)[1];
+        }
 
         return view('auditoriaspendientes', compact('actividades'));
     }
@@ -35,31 +40,63 @@ class ActividadController extends Controller
             $crit->id_actividad = $actividad->id;
             $crit->elem_calidad = $elem;
             $crit->descripcion = $actividad->descripcion;
+            $crit->saveOrFail();
         }
 
         return redirect('/actividades');
     }
 
     public function show(Actividad $actividad) {
-        $fechaHora = date('d/m/Y H:i:s', strtotime($actividad->fechaHora));
-        $actividad['fecha'] = $fechaHora;
-        dd($actividad);
+        $fechaHora = date('d-m-Y H:i:s', strtotime($actividad->fechaHora));
+        $actividad['fecha'] = explode(" ", $fechaHora)[0];
+        $actividad['hora'] = explode(":", explode(" ", $fechaHora)[1])[0];
+        $actividad['minuto'] = explode(":", explode(" ", $fechaHora)[1])[1];
+        $actividad['auditor'] = Persona::where('id_persona', $actividad->id_auditor)->first()->nombre;
 
-        $elems = Elemcalidad::where()->get();
+        $crits = Criterio::where('id_actividad', $actividad->id)->get();
+        foreach ($crits as $crit) {
+            $elems[] = Elemcalidad::where('id_elem_calidad', $crit->elem_calidad)->first();
+        }
 
         return view('visorauditoria', compact(['actividad', 'elems']));
     }
 
     public function edit(Actividad $actividad) {
-        $elems = $this->showElems();
         $jdc = $this->showJDC();
-        $fechaHora = date('d/m/Y H:i:s', strtotime($actividad->fechaHora));
-        $actividad['fecha'] = $fechaHora;
-        return view('editarauditoria', compact(['actividad', 'elems', 'jdc']));
+        $fechaHora = date('d-m-Y H:i:s', strtotime($actividad->fechaHora));
+        $actividad['fecha'] = explode(" ", $fechaHora)[0];
+        $actividad['hora'] = explode(":", explode(" ", $fechaHora)[1])[0];
+        $actividad['minuto'] = explode(":", explode(" ", $fechaHora)[1])[1];
+        $actividad['auditor'] = Persona::where('id_persona', $actividad->id_auditor)->first()->nombre;
+
+        $crits = Criterio::where('id_actividad', $actividad->id)->get();
+        foreach ($crits as $crit) {
+            $elemsAct[] = Elemcalidad::where('id_elem_calidad', $crit->elem_calidad)->first();
+        }
+
+        foreach ($elemsAct as $elem) {
+            $ids[] = $elem->id_elem_calidad;
+        }
+
+        $elems = Elemcalidad::whereNotIn('id_elem_calidad', $ids)->get();
+
+        return view('editarauditoria', compact(['actividad', 'elems', 'jdc', 'elemsAct']));
     }
 
     public function update(Actividad $actividad) {
-        $actividad->update($this->getData());
+        $data = $this->getData();
+        $elems = array_pop($data);
+        $actividad->update($data);
+
+        Criterio::where('id_actividad', $actividad->id)->delete();
+
+        foreach ($elems as $elem) {
+            $crit = new Criterio;
+            $crit->id_actividad = $actividad->id;
+            $crit->elem_calidad = $elem;
+            $crit->descripcion = $actividad->descripcion;
+            $crit->saveOrFail();
+        }
 
         return redirect('/dashboard');
     }
@@ -77,14 +114,11 @@ class ActividadController extends Controller
         $date = new \DateTime(date('Y-m-d', strtotime(\request()->input('fecha'))));
         $date->setTime(\request()->input('hora'), \request()->input('minuto'));
         $data['fechaHora'] = $date->format('Y-m-d H:i:s');
-        // TODO  hardcoded id auditor
         $data['id_auditor'] = Auth::user()->id;
         $data['macroproceso'] = \request()->input('macroproceso');
-        // TODO  hardcoded contexto
         $data['descripcion'] = \request()->input('descripcion');
-        // TODO  hardcoded id persona
         $data['pdc'] = \request()->input('pdc');
-        $data['id_persona'] = 2;
+        $data['id_persona'] = \request()->input('persona');
         $data['elem_calidad'] = \request()->input('elem_calidad');
 
         return $data;

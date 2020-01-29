@@ -34,6 +34,18 @@
         </div>
     </header>
 
+    <section id="right_buttons" class="mx-5 my-3 d-flex justify-content-end">
+        <div class="row">
+            <div class="col">
+                <a href="/banderas" role="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></a>
+            </div>
+
+            <div class="col">
+                <a href="/dashboard" role="button" class="btn btn-secondary btn-block">Dashboard</a>
+            </div>
+        </div>
+    </section>
+
     <div class="container p-5">
         <div class="form-row">
             <div class="col">
@@ -42,9 +54,13 @@
         </div>
     </div>
     <div class="form-row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-3 mb-3">
             <p><strong>Fecha:</strong></p>
             <p> {{ $actividad->fecha }} </p>
+        </div>
+        <div class="col-md-3 mb-3">
+            <p><strong>Hora:</strong></p>
+            <p> {{ $actividad->hora }}:{{ $actividad->minuto }} </p>
         </div>
         <div class="col-md-6 mb-3">
             <p><strong>Persona de contacto: </strong></p>
@@ -57,18 +73,26 @@
             <p> {{ $actividad->macroproceso }} </p>
         </div>
         <div class="col-md-6 mb-3">
-            <p><strong>Proceso: </strong></p>
-            <p> {{ $actividad->proceso }} </p>
+            <p><strong>Estado: </strong></p>
+            <p> {{ $actividad->estado }} </p>
         </div>
     </div>
     <div class="form-row">
         <div class="col-md-6 mb-3">
             <p><strong>Auditor: </strong></p>
-            <p> {{ $actividad->id_auditor }} </p>
+            <p> {{ $actividad->auditor }} </p>
         </div>
         <div class="col-md-6 mb-3">
             <p><strong>Elemento de calidad: </strong></p>
-            <p> {{ $actividad->elem_calidad }} </p>
+            @foreach($elems as $elem)
+                <div>{{ $elem->nombre }}</div>
+            @endforeach
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-12">
+            <p><strong>Descripción: </strong></p>
+            <p>{{ $actividad->descripcion }}</p>
         </div>
     </div>
     <div class="text-center mt-4">
