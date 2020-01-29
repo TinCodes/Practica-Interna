@@ -33,6 +33,19 @@
         </div>
     </div>
 </header>
+
+<section id="right_buttons" class="mx-5 my-3 d-flex justify-content-end">
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-secondary btn-block">Pendientes</button>
+            </div>
+            
+            <div class="col">
+                <button type="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></button>
+            </div>
+        </div>
+</section>
+
 <div class="container col-sm-4 col-md-7 col-lg-4 mt-5">
     <div class="card">
         <h3 class="card-header" id="monthAndYear"></h3>

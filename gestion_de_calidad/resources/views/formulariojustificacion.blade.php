@@ -52,7 +52,7 @@
     
     <section id="timeline_section" class="container">
         <div class="row my-5">
-            <h1>Justificación de auditoria</h1>
+            <h1>Justificación de actividad</h1>
         </div>
 
         

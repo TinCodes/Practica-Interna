@@ -29,7 +29,13 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('/logout');
 
 Route::get('/dashboard','DashboardController@index')->name('/dashboard');
 
+/* ======================================= Rutas Compartidas ================================= */
+
 Route::get('/banderas', 'BanderaController@index');
+
+Route::get('/pendienteauditoria', function () {
+    return view('auditoriaspendientes');
+});
 
 /* ======================================== Auditor ======================================== */
 
@@ -38,9 +44,7 @@ Route::group(['middleware' => ['auth', '1']], function() {
         return view('dashboardauditor');
     });
 
-    Route::get('/pendienteauditoria', function () {
-        return view('auditoriaspendientes');
-    });
+    
 
     Route::get('/evalauditoria', function () {
         return view('evalrespuestauditoria');
