@@ -53,11 +53,11 @@
             <h1>Gestión de control de calidad</h1>
         </div>
         <div class="list-group">
-            <a href="#" class="list-group-item active"> BDD 1 </a>
-            <a href="#" class="list-group-item"> BDD 2 </a>
-            <a href="#" class="list-group-item"> BDD 3 </a>
-            <a href="#" class="list-group-item"> BDD 4 </a>
-            <a href="#" class="list-group-item"> BDD 5 </a>
+            @forelse($jcactividades as $actividad)
+            <a href="#" class="list-group-item"> {{$actividad->nombre}} </a>
+            @empty
+                <p> Sin actividades para mostrar </p>
+            @endforelse
         </div>
 
     </section>

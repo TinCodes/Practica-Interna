@@ -34,17 +34,15 @@ class DashboardController extends Controller
                 } else {
                     return view('/dashboardvisor');
                 }
-            } elseif ($rol == 3) {
-                $actividades = Actividad::where('id_persona', Auth::user()->id)->get();
-
-                foreach ($actividades as $actividad) {
-                    $crits[] = Criterio::where('id_actividad', $actividad->id)->get();
+            } else {
+                $actividades = Actividad::all();
+                if (count($actividades) > 0) {
+                    $jcactividades = Actividad::where('id_persona',Auth::User()->id)->get();
+                    return view('/dashboardjc', compact('jcactividades'));
+                } else {
+                    return view('/dashboardjc');
                 }
-                dd($crits);
-
-                return view('/dashboardjc');
             }
-
         } else {
             return "Porfavor ingresa al sistema";
         }
