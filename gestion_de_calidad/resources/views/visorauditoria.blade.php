@@ -13,14 +13,14 @@
     <header>
         <div id="banner" class="row">
             <div id="banner_img" class="mx-auto">
-                <img src="/img/logo.jpg" alt="Logo UPB">
+                <img src="{{ asset('/img/logo.jpg') }}" alt="Logo UPB">
             </div>
         </div>
     </header>
     <body>
         <div class="text-center">
             <h1 class="text-center p-5"> <strong> Acceso denegado </strong> </h1>
-            <h2 class="text-center p-3"> Porfavor ingrese al sistema</h2>
+            <h2 class="text-center p-3"> Por favor ingrese al sistema</h2>
             <a role="button" href="/" class="btn btn-login"> Login </a>
         </div>
     </body>
@@ -29,7 +29,7 @@
     <header>
         <div id="banner" class="row">
             <div id="banner_img" class="mx-auto">
-                <img src="/img/logo.jpg" alt="Logo UPB">
+                <img src="{{ asset('/img/logo.jpg') }}" alt="Logo UPB">
             </div>
         </div>
     </header>
@@ -58,14 +58,11 @@
             </div>
     </div>
     <div class="form-row">
-        <div class="col-md-3 mb-3">
-            <p><strong>Fecha:</strong></p>
-            <p> {{ $actividad->fecha }} </p>
+        <div class="col-md-6 mb-3">
+            <p><strong>Fecha y hora:</strong></p>
+            <p> {{ $actividad->fecha }} / {{ $actividad->hora }}:{{ $actividad->minuto }} </p>
         </div>
-        <div class="col-md-3 mb-3">
-            <p><strong>Hora:</strong></p>
-            <p> {{ $actividad->hora }}:{{ $actividad->minuto }} </p>
-        </div>
+        
         <div class="col-md-6 mb-3">
             <p><strong>Persona de contacto: </strong></p>
             <p> {{ $actividad->pdc }} </p>
@@ -101,7 +98,7 @@
     </div>
     <div class="text-center mt-4">
         <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Eliminar</button>
+        <button type="button" class="btn btn-login btn-lg" data-toggle="modal" data-target="#myModal">Eliminar</button>
         <a href="/actividades/{{ $actividad->id }}/cerrar" type="button" id="edit" class="btn btn-secondary">Cerrar Actividad</a>
         <a href="/actividades/{{ $actividad->id }}/edit" type="button" id="edit" class="btn btn-secondary"> Editar </a>
         <a href="/actividades" type="button" id="sendresponse" class="btn btn-secondary"> Listo </a>

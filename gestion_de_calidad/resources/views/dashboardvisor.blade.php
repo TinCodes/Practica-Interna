@@ -17,14 +17,14 @@
     <header>
         <div id="banner" class="row">
             <div id="banner_img" class="mx-auto">
-                <img src="/img/logo.jpg" alt="Logo UPB">
+                <img src="{{ asset('/img/logo.jpg') }}" alt="Logo UPB">
             </div>
         </div>
     </header>
     <body>
         <div class="text-center">
             <h1 class="text-center p-5"> <strong> Acceso denegado </strong> </h1>
-            <h2 class="text-center p-3"> Porfavor ingrese al sistema</h2>
+            <h2 class="text-center p-3"> Por favor ingrese al sistema</h2>
             <a role="button" href="/" class="btn btn-login"> Login </a>
         </div>
     </body>

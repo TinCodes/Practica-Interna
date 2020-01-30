@@ -23,7 +23,7 @@
     <body>
         <div class="text-center">
             <h1 class="text-center p-5"> <strong> Acceso denegado </strong> </h1>
-            <h2 class="text-center p-3"> Porfavor ingrese al sistema</h2>
+            <h2 class="text-center p-3"> Por favor ingrese al sistema</h2>
             <a role="button" href="/" class="btn btn-login"> Login </a>
         </div>
     </body>
