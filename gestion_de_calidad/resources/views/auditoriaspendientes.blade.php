@@ -13,14 +13,14 @@
     <header>
         <div id="banner" class="row">
             <div id="banner_img" class="mx-auto">
-                <img src="/img/logo.jpg" alt="Logo UPB">
+                <img src="{{ asset('/img/logo.jpg') }}" alt="Logo UPB">
             </div>
         </div>
     </header>
     <body>
         <div class="text-center">
             <h1 class="text-center p-5"> <strong> Acceso denegado </strong> </h1>
-            <h2 class="text-center p-3"> Porfavor ingrese al sistema</h2>
+            <h2 class="text-center p-3"> Por favor ingrese al sistema</h2>
             <a role="button" href="/" class="btn btn-login"> Login </a>
         </div>
     </body>
@@ -29,7 +29,7 @@
     <header>
         <div id="banner" class="row">
             <div id="banner_img" class="mx-auto">
-                <img src="/img/logo.jpg" alt="Logo UPB">
+                <img src="{{ asset('/img/logo.jpg') }}" alt="Logo UPB">
             </div>
         </div>
     </header>
@@ -55,17 +55,18 @@
         <a href="/actividades?estado=Cerrada" class="btn btn-login" role="button">Cerradas</a>
     </section>
     <div class="container-fluid">
-		<div class="container">
+		<div class="container border border-dark">
 			<div class="formBox">
                 <form>
                     @forelse($actividades as $actividad)
-                    <div class="row border border-dark">
+                    <div class="row mb-4 mt-2">
                         <div class="col-sm-4">
                             <strong><p> {{ $actividad->nombre }} </p></strong>
                             {{ $actividad->fecha }} - {{ $actividad->hora }}
                         </div>
 
                         <div class="col-sm-6">
+                            <strong><p> Descripción </p></strong>
                             <p>{{$actividad->descripcion}}</p>
                         </div>
 

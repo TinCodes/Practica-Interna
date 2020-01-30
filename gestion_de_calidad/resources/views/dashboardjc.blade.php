@@ -23,7 +23,7 @@
     <body>
         <div class="text-center">
             <h1 class="text-center p-5"> <strong> Acceso denegado </strong> </h1>
-            <h2 class="text-center p-3"> Porfavor ingrese al sistema</h2>
+            <h2 class="text-center p-3"> Por favor ingrese al sistema</h2>
             <a role="button" href="/" class="btn btn-login"> Login </a>
         </div>
     </body>
@@ -54,7 +54,9 @@
         </div>
         <div class="list-group">
             @forelse($jcactividades as $actividad)
-            <a href="#" class="list-group-item"> {{$actividad->nombre}} </a>
+                @foreach($elems[$actividad->id] as $elem)
+                <a href="/respuestas/{{ $actividad->id }}/{{$elem->id}}" class="list-group-item"> {{$actividad->nombre}} - {{$elem->nombre}}</a>
+                @endforeach
             @empty
                 <p> Sin actividades para mostrar </p>
             @endforelse
@@ -64,9 +66,6 @@
 
     <section id="options" class="container">
         <div class="row my-5">
-            <div class="col">
-                <a href="/auditoriaresp" role="button" class="py-4 btn btn-outline-secondary btn-block">Responder</a>
-            </div>
             <div class="col">
                 <a href="/estadoresp" role="button" class="py-4 btn btn-outline-secondary btn-block">Estado de respuestas</a>
             </div>

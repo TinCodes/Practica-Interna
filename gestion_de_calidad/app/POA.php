@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class POA extends Model
+class Poa extends Model
 {
-    //
+    protected $guarded = [];
 }

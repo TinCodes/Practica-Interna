@@ -132,4 +132,7 @@ Route::group(['middleware' => ['auth', '3']], function() {
         return view('estadorespuestas');
     });
 
+    Route::get('/respuestas/{actividad}/{elem}', 'EstadoRespuestasController@show');
+    Route::post('/respuestas', 'EstadoRespuestasController@store');
+
 });

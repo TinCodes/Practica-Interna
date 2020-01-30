@@ -29,17 +29,14 @@
     <header>
         <div id="banner" class="row">
             <div id="banner_img" class="mx-auto">
-                <img src="/img/logo.jpg" alt="Logo UPB">
+                <img src="{{ asset('/img/logo.jpg') }}" alt="Logo UPB">
             </div>
         </div>
     </header>
 
     <section id="right_buttons" class="mx-5 my-3 d-flex justify-content-end">
         <div class="row">
-            <div class="col">
-                <a href="/clasificarbanderas" role="button" class="btn btn-secondary btn-block">Clasificación</a>
-            </div>
-
+        
             <div class="col">
                 <a href="/banderas" role="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></a>
             </div>
