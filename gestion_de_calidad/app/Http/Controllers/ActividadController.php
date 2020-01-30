@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Actividad;
+use App\Campus;
+use App\Cargo;
 use App\Criterio;
 use App\Elemcalidad;
-use App\Persona;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,6 +27,7 @@ class ActividadController extends Controller
     public function create() {
         $elems = $this->showElems();
         $jdc = $this->showJDC();
+
         $currentAud = Auth::user()->nombre;
 
         return view('planificacionauditor', compact(['elems', 'jdc', 'currentAud']));
@@ -51,8 +54,8 @@ class ActividadController extends Controller
         $actividad['fecha'] = explode(" ", $fechaHora)[0];
         $actividad['hora'] = explode(":", explode(" ", $fechaHora)[1])[0];
         $actividad['minuto'] = explode(":", explode(" ", $fechaHora)[1])[1];
-        $actividad['auditor'] = Persona::where('id_persona', $actividad->id_auditor)->first()->nombre;
-        $actividad['persona'] = Persona::where('id_persona', $actividad->id_persona)->first()->nombre;
+        $actividad['auditor'] = User::where('id', $actividad->id_auditor)->first()->nombre;
+        $actividad['persona'] = User::where('id', $actividad->id_persona)->first()->nombre;
 
         $crits = Criterio::where('id_actividad', $actividad->id)->get();
         foreach ($crits as $crit) {
@@ -68,7 +71,7 @@ class ActividadController extends Controller
         $actividad['fecha'] = explode(" ", $fechaHora)[0];
         $actividad['hora'] = explode(":", explode(" ", $fechaHora)[1])[0];
         $actividad['minuto'] = explode(":", explode(" ", $fechaHora)[1])[1];
-        $actividad['auditor'] = Persona::where('id_persona', $actividad->id_auditor)->first()->nombre;
+        $actividad['auditor'] = User::where('id', $actividad->id_auditor)->first()->nombre;
 
         $crits = Criterio::where('id_actividad', $actividad->id)->get();
         foreach ($crits as $crit) {
@@ -130,6 +133,13 @@ class ActividadController extends Controller
     }
 
     public function showJDC() {
-        return Persona::where('rol', '3')->get();
+        $jdc = User::where('rol', '3')->get();
+        foreach ($jdc as $jc) {
+            $jc['campus'] = Campus::where('id', $jc->campus)->first()->campus;
+            $jc['cargo'] = Cargo::where('id', $jc->cargo)->first()->cargo;
+        }
+//        dd($jdc);
+
+        return $jdc;
     }
 }

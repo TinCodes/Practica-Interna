@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Actividad;
 use App\Criterio;
 use App\Elemcalidad;
-use App\Persona;
+use App\User;
 use Illuminate\Http\Request;
 
 class BanderaController extends Controller
@@ -171,8 +171,8 @@ class BanderaController extends Controller
         $actividad['fecha'] = explode(" ", $fechaHora)[0];
         $actividad['hora'] = explode(":", explode(" ", $fechaHora)[1])[0];
         $actividad['minuto'] = explode(":", explode(" ", $fechaHora)[1])[1];
-        $actividad['auditor'] = Persona::where('id_persona', $actividad->id_auditor)->first()->nombre;
-        $actividad['persona'] = Persona::where('id_persona', $actividad->id_persona)->first()->nombre;
+        $actividad['auditor'] = User::where('id', $actividad->id_auditor)->first()->nombre;
+        $actividad['persona'] = User::where('id', $actividad->id_persona)->first()->nombre;
 
         return $actividad;
     }
