@@ -18,14 +18,14 @@
         </div>
     </header>
     <body>
-        <div class="text-center">
-            <h1 class="text-center p-5"> <strong> Acceso denegado </strong> </h1>
-            <h2 class="text-center p-3"> Porfavor ingrese al sistema</h2>
-            <a role="button" href="/" class="btn btn-login"> Login </a>
-        </div>
+    <div class="text-center">
+        <h1 class="text-center p-5"><strong> Acceso denegado </strong></h1>
+        <h2 class="text-center p-3"> Porfavor ingrese al sistema</h2>
+        <a role="button" href="/" class="btn btn-login"> Login </a>
+    </div>
     </body>
 @else
-<body>
+    <body>
     <header>
         <div id="banner" class="row">
             <div id="banner_img" class="mx-auto">
@@ -37,11 +37,11 @@
     <section id="right_buttons" class="mx-5 my-3 d-flex justify-content-end">
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-secondary btn-block">Pendientes</button>
+                <a href="/modbanderas" role="button" class="btn btn-secondary btn-block">Elegir Banderas</a>
             </div>
-            
+
             <div class="col">
-                <button type="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></button>
+                <a href="/banderas" role="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></a>
             </div>
         </div>
     </section>
@@ -52,74 +52,43 @@
         </div>
     </section>
     <div class="container">
-        <div class="row align-self-center">
-        <div class="w-100"></div>
-            <div class="col"><h2><strong>Nombre</strong></h2></div>
-            <div class="col"><h2><strong>Evaluación</strong></h2></div>
-            <div class="col"><h2><strong>Anotaciones</strong></h2></div>
-            <div class="w-100"></div>
-            <div class="col">Ejemplo 1</div>
-            <div class="col">
-                <label class="radio-inline ml-2">
-                <input type="radio" name="optradio" checked>Cumple
-                </label>
-                <label class="radio-inline ml-2">
-                <input type="radio" name="optradio">Bandera
-                </label>
-                <label class="radio-inline ml-2">
-                <input type="radio" name="optradio">Recomendación
-                </label>
+        <form action="/modbanderas" method="post">
+            <div class="row align-self-center">
+                <div class="w-100"></div>
+                <div class="col"><h2><strong>Nombre</strong></h2></div>
+                <div class="col"><h2><strong>Evaluación</strong></h2></div>
+                <div class="col"><h2><strong>Anotaciones</strong></h2></div>
+                <div class="w-100"></div>
+                @csrf
+                @foreach($elems as $elem)
+                    <div class="col">{{ $elem->nombre }}</div>
+                    <div class="col">
+                        <label class="radio-inline ml-2">
+                            <input type="radio" name="{{ $elem->id }}" value="Cumple" checked>Cumple
+                        </label>
+                        <label class="radio-inline ml-2">
+                            <input type="radio" name="{{ $elem->id }}" value="Bandera">Bandera
+                        </label>
+                        <label class="radio-inline ml-2">
+                            <input type="radio" name="{{ "$elem->id" }}" value="Recomendacion">Recomendación
+                        </label>
+                    </div>
+                    <div class="col"><input type="text" class="form-control" id="anotaciones"
+                                            name="desc{{$elem->id}}" placeholder="Anotaciones"></div>
+                    <div class="w-100"></div>
+                @endforeach
+                <input type="hidden" name="actID" value="{{ $actividad->id }}">
+                <div class="text-center mt-4">
+                    <button type="submit" id="sendClas" name="sendClas" class="btn btn-secondary">Terminado</button>
+                </div>
             </div>
-            <div class="col"><input type="text" class="form-control" id="anotaciones" placeholder="Anotaciones"></div>
-            <div class="w-100"></div>
-            <div class="col">Ejemplo 2</div>
-            <div class="col">
-                <label class="radio-inline ml-2">
-                <input type="radio" name="optradio2" checked>Cumple
-                </label>
-                <label class="radio-inline ml-2">
-                <input type="radio" name="optradio2">Bandera
-                </label>
-                <label class="radio-inline ml-2">
-                <input type="radio" name="optradio2">Recomendación
-                </label>
-            </div>
-            <div class="col"><input type="text" class="form-control" id="anotaciones" placeholder="Anotaciones"></div>
-            <div class="w-100"></div>
-            <div class="col">Ejemplo 3</div>
-            <div class="col">
-                <label class="radio-inline ml-2">
-                <input type="radio" name="optradio3" checked>Cumple
-                </label>
-                <label class="radio-inline ml-2">
-                <input type="radio" name="optradio3">Bandera
-                </label>
-                <label class="radio-inline ml-2">
-                <input type="radio" name="optradio3">Recomendación
-                </label>
-            </div>
-            <div class="col"><input type="text" class="form-control" id="anotaciones" placeholder="Anotaciones"></div>
-            <div class="w-100"></div>
-            <div class="col">Ejemplo 4</div>
-            <div class="col">
-                <label class="radio-inline ml-2">
-                <input type="radio" name="optradio4" checked>Cumple
-                </label>
-                <label class="radio-inline ml-2">
-                <input type="radio" name="optradio4">Bandera
-                </label>
-                <label class="radio-inline ml-2">
-                <input type="radio" name="optradio4">Recomendación
-                </label>
-            </div>
-            <div class="col"><input type="text" class="form-control" id="anotaciones" placeholder="Anotaciones"></div>
-        </div>
+        </form>
     </div>
     <footer>
 
     </footer>
-</body>
+    </body>
 
-<script type="text/javascript" src= "{{ URL::asset('js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
 @endauth
 </html>

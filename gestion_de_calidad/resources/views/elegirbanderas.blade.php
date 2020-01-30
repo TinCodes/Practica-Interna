@@ -18,14 +18,14 @@
         </div>
     </header>
     <body>
-        <div class="text-center">
-            <h1 class="text-center p-5"> <strong> Acceso denegado </strong> </h1>
-            <h2 class="text-center p-3"> Porfavor ingrese al sistema</h2>
-            <a role="button" href="/" class="btn btn-login"> Login </a>
-        </div>
+    <div class="text-center">
+        <h1 class="text-center p-5"> <strong> Acceso denegado </strong> </h1>
+        <h2 class="text-center p-3"> Porfavor ingrese al sistema</h2>
+        <a role="button" href="/" class="btn btn-login"> Login </a>
+    </div>
     </body>
 @else
-<body>
+    <body>
     <header>
         <div id="banner" class="row">
             <div id="banner_img" class="mx-auto">
@@ -46,47 +46,53 @@
         </div>
     </section>
 
-    <section id="timeline_section" class="container pb-3">
+    <section id="timeline_section" class="container">
         <div class="row my-5">
-            <h1>Actividades</h1>
+            <h1>Elegir Banderas</h1>
         </div>
-        <a href="/actividades?estado=Pendiente" class="btn btn-login" role="button">Pendientes</a>
-        <a href="/actividades?estado=Bandera" class="btn btn-login" role="button">Banderas</a>
-        <a href="/actividades?estado=Cerrada" class="btn btn-login" role="button">Cerradas</a>
     </section>
+
     <div class="container-fluid">
-		<div class="container">
-			<div class="formBox">
-                <form>
-                    @forelse($actividades as $actividad)
+        <div class="container">
+            <div class="formBox">
+                @forelse($actividades as $actividad)
                     <div class="row border border-dark">
-                        <div class="col-sm-4">
+                        <div class="col-sm-2">
                             <strong><p> {{ $actividad->nombre }} </p></strong>
-                            {{ $actividad->fecha }} - {{ $actividad->hora }}
+                            {{ $actividad->fecha }} / {{ $actividad->hora }}:{{ $actividad->minuto }}
                         </div>
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <p>{{$actividad->descripcion}}</p>
                         </div>
 
+                        <div class="col-sm-4">
+                            @foreach($elems[$actividad->nombre] as $elem)
+                                {{ $elem->nombre }}<br>
+                            @endforeach
+                        </div>
+
                         <div class="col-sm-2">
-                            <a class="btn btn-login" href="/actividades/{{ $actividad->id }}" role="button">Revisar Actividad</a>
+                            <a class="btn btn-login" href="/realizarauditoria/{{$actividad->id}}" role="button">Realizar Auditoría</a>
                         </div>
                     </div>
-                    @empty
-                        <p>Sin actividades que mostrar</p>
-                    @endforelse
-                </form>
+                @empty
+                    <p>Sin actividades que mostrar</p>
+                @endforelse
             </div>
-		</div>
+        </div>
     </div>
 
-
     <footer>
-
     </footer>
-</body>
-<script type="text/javascript" src= "{{ URL::asset('js/app.js') }}"></script>
-@endauth
+    </body>
 
+    <script type="text/javascript" src= "{{ URL::asset('js/app.js') }}"></script>
+    <script>
+        $('#banderas').multiSelect({
+            selectableHeader: "<div class='custom-header'> <strong> No conformidades </strong></div>",
+            selectionHeader: "<div class='custom-header'> <strong> Observaciones </strong></div>"
+        });
+    </script>
+@endauth
 </html>

@@ -15,18 +15,19 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre');
+            $table->string('nombre')->charset('utf8');
             $table->unsignedBigInteger('rol');
             $table->string('email')->unique();
-            $table->string('cargo')->nullable();
-            $table->string('campus')->nullable();
+            $table->unsignedBigInteger('cargo')->nullable();
+            $table->unsignedBigInteger('campus')->nullable();
             $table->string('password');
             $table->timestamps();
         });
 
-
         Schema::table('users', function ($table) {
             $table->foreign('rol')->references('id')->on('rols');
+            $table->foreign('cargo')->references('id')->on('cargos');
+            $table->foreign('campus')->references('id')->on('campuses');
         });
 
         // TODO These are dummy records so as to use them while were still at development phase, we need to delete them when development phase ends

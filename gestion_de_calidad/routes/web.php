@@ -34,10 +34,15 @@ Route::get('/createWord',['as'=>'createWord','uses'=>'WordTestController@createW
 
 Route::get('/dashboard','DashboardController@index')->name('/dashboard');
 
+Route::get('/modbanderas', 'BanderaController@mostrar');
+Route::post('/modbanderas', 'BanderaController@store');
+Route::get('/modbanderas/{actividad}', 'BanderaController@show');
+Route::get('/modbanderas/{actividad}/{elem}/edit', 'BanderaController@edit');
+Route::patch('/modbanderas/{actividad}/{elem}', 'BanderaController@update');
+
 /* ======================================= Rutas Compartidas ================================= */
-
 Route::get('/banderas', 'BanderaController@index');
-
+Route::post('/search', 'BanderaController@find');
 
 Route::group(['middleware' => ['auth', '4']], function() {
 
@@ -63,7 +68,7 @@ Route::group(['middleware' => ['auth', '1']], function() {
         return view('dashboardauditor');
     });
 
-    
+
 
     Route::get('/evalauditoria', function () {
         return view('evalrespuestauditoria');
@@ -77,12 +82,9 @@ Route::group(['middleware' => ['auth', '1']], function() {
         return view('revisionauditorias');
     });
 
-    Route::get('/clasificarbanderas', 'AuditorController@clasificar');
     Route::post('/clasificarbanderas', 'AuditorController@updateTipo');
 
-    Route::get('/realizarauditorias', function () {
-        return view('realizarauditorias');
-    });
+    Route::get('/realizarauditoria/{actividad}', 'BanderaController@clasificar');
 
     Route::get('/planauditor', function () {
         return view('planificacionauditor');
@@ -96,7 +98,7 @@ Route::group(['middleware' => ['auth', '1']], function() {
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('register', 'Auth\RegisterController@register');
 
-    
+
 
 });
 
