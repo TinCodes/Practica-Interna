@@ -24,7 +24,7 @@
     <body>
         <div class="text-center">
             <h1 class="text-center p-5"> <strong> Acceso denegado </strong> </h1>
-            <h2 class="text-center p-3"> Porfavor ingrese al sistema</h2>
+            <h2 class="text-center p-3"> Por favor ingrese al sistema</h2>
             <a role="button" href="/" class="btn btn-login"> Login </a>
         </div>
     </body>
@@ -159,7 +159,7 @@
                 <a href="/actividades" role="button" class="py-4 btn btn-outline-secondary btn-block">Auditorías Pendientes/Cerradas</a>
             </div>
             <div class="col">
-                <a href="/respjustificaciones" role="button" class="py-4 btn btn-outline-secondary btn-block">Revisar Respuestas</a>
+                <a href="/justificaciones" role="button" class="py-4 btn btn-outline-secondary btn-block">Revisar Respuestas</a>
             </div>
         </div>
 
@@ -172,7 +172,7 @@
             </div>
 
             <div class="col">
-                <a href="" role="button" class="py-4 btn btn-outline-secondary btn-block">Generar informe final</a>
+                <a href="/createWord" role="button" class="py-4 btn btn-outline-secondary btn-block">Generar informe final</a>
             </div>
         </div>
     </section>

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Campus;
+use App\Cargo;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Rol;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -29,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboardauditor';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -53,7 +56,9 @@ class RegisterController extends Controller
             'nombre' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'rol' => ['required'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'cargo' => ['string', 'max:255'],
+            'campus' => ['string', 'max:255'],
+            'password' => ['required', 'string', 'min:3', 'confirmed'],
         ]);
     }
 
@@ -63,12 +68,15 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
-    {
+    protected function create(array $data){
+        $cargo = Cargo::firstOrCreate(['cargo' => $data['cargo']]);
+        $campus = Campus::where('campus', $data['campus'])->first()->id;
         return User::create([
             'nombre' => $data['nombre'],
             'email' => $data['email'],
             'rol' => $data['rol'],
+            'cargo' => $cargo->id,
+            'campus' => $campus,
             'password' => Hash::make($data['password']),
         ]);
     }

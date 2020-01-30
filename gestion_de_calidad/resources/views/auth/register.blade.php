@@ -29,17 +29,14 @@
     <header>
         <div id="banner" class="row">
             <div id="banner_img" class="mx-auto">
-                <img src="/img/logo.jpg" alt="Logo UPB">
+                <img src="{{ asset('/img/logo.jpg') }}" alt="Logo UPB">
             </div>
         </div>
     </header>
 
     <section id="right_buttons" class="mx-5 my-3 d-flex justify-content-end">
         <div class="row">
-            <div class="col">
-                <a href="/clasificarbanderas" role="button" class="btn btn-secondary btn-block">Clasificación</a>
-            </div>
-
+        
             <div class="col">
                 <a href="/banderas" role="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></a>
             </div>
@@ -70,6 +67,34 @@
                                     <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ old('nombre') }}" required autocomplete="nombre" autofocus>
 
                                     @error('nombre')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="cargo" class="col-md-4 col-form-label text-md-right">{{ __('Cargo') }}</label>
+
+                                <div class="col-md-8">
+                                    <input id="cargo" type="text" class="form-control @error('cargo') is-invalid @enderror" name="cargo" value="{{ old('cargo') }}" required autocomplete="cargo" autofocus>
+
+                                    @error('cargo')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="campus" class="col-md-4 col-form-label text-md-right">{{ __('Campus') }}</label>
+
+                                <div class="col-md-8">
+                                    <input id="campus" type="text" class="form-control @error('campus') is-invalid @enderror" name="campus" value="{{ old('campus') }}" required autocomplete="campus" autofocus>
+
+                                    @error('campus')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

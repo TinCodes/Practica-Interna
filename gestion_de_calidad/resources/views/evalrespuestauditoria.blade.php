@@ -13,14 +13,14 @@
     <header>
         <div id="banner" class="row">
             <div id="banner_img" class="mx-auto">
-                <img src="/img/logo.jpg" alt="Logo UPB">
+                <img src="{{ asset('/img/logo.jpg') }}" alt="Logo UPB">
             </div>
         </div>
     </header>
     <body>
         <div class="text-center">
             <h1 class="text-center p-5"> <strong> Acceso denegado </strong> </h1>
-            <h2 class="text-center p-3"> Porfavor ingrese al sistema</h2>
+            <h2 class="text-center p-3"> Por favor ingrese al sistema</h2>
             <a role="button" href="/" class="btn btn-login"> Login </a>
         </div>
     </body>
@@ -29,7 +29,7 @@
     <header>
         <div id="banner" class="row">
             <div id="banner_img" class="mx-auto">
-                <img src="/img/logo.jpg" alt="Logo UPB">
+                <img src="{{ asset('/img/logo.jpg') }}" alt="Logo UPB">
             </div>
         </div>
     </header>
@@ -55,37 +55,39 @@
             <h1>Evaluar plan de acción</h1>
         </div>
 
-        
-        <form>
+
+        <form action="" method="post">
+            @csrf
+            @method('PATCH')
             <fieldset class="border p-4">
                 <legend  class="w-auto"> Descripción del problema </legend>
-                    <textarea class="form-control" id="descripProblema" rows="3"></textarea>
+                    <textarea class="form-control" id="descripProblema" rows="3">{{ $poa->desc }}</textarea>
             </fieldset>
             <fieldset class="border p-4">
                 <legend  class="w-auto"> Plan de acción </legend>
-                    <textarea class="form-control" id="planAccion" rows="3"></textarea>
+                    <textarea class="form-control" id="planAccion" rows="3">{{ $poa->descripcion }}</textarea>
             </fieldset>
             <div class="text-center">
             <div class="form-group row mt-md-5">
                 <label for="example-date-input" class="col-4 col-form-label"> <strong>Fecha determinada para cumplimiento: </strong></label>
                 <div class="col-8">
-                    <p> Fecha BDD </p>
+                    <p>{{ $poa->fechaVencimiento }}</p>
                 </div>
             </div>
 
             <section id="eval_buttons" class="center-block">
                 <div class="row">
                     <div class="col">
-                        <button type="button" class="btn btn-success btn-block">Aceptar</button>
+                        <a href="/justificaciones/{{$poa->id}}/aceptar" type="button" class="btn btn-success btn-block">Aceptar</a>
                     </div>
-            
+
                     <div class="col">
-                        <button type="button" class="btn btn-danger btn-block">Rechazar</button>
+                        <a href="/justificaciones/{{$poa->id}}/rechazar" type="button" class="btn btn-danger btn-block">Rechazar</a>
                     </div>
                 </div>
                 <button type="button" id="sendresponse" class="btn btn-login mt-4 mb-4"> Enviar </button>
             </section>
-           
+
             </div>
         </form>
     </section>

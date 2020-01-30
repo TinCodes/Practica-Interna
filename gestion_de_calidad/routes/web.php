@@ -58,6 +58,7 @@ Route::group(['middleware' => ['auth', '4']], function() {
     Route::get('/actividades/{actividad}/edit', 'ActividadController@edit');
     Route::patch('/actividades/{actividad}', 'ActividadController@update');
     Route::delete('/actividades/{actividad}', 'ActividadController@destroy');
+    Route::get('/actividades/{actividad}/cerrar', 'ActividadController@cerrar');
 
 });
 
@@ -74,9 +75,10 @@ Route::group(['middleware' => ['auth', '1']], function() {
         return view('evalrespuestauditoria');
     });
 
-    Route::get('/respjustificaciones', function () {
-        return view('responderjustificaciones');
-    });
+    Route::get('/justificaciones', 'PoaController@index');
+    Route::get('/justificaciones/{poa}', 'PoaController@show');
+    Route::patch('/justificaciones/{poa}/aceptar', 'PoaController@aceptar');
+    Route::patch('/justificaciones/{poa}/rechazar', 'PoaController@rechazar');
 
     Route::get('/revauditorias', function () {
         return view('revisionauditorias');
@@ -130,5 +132,8 @@ Route::group(['middleware' => ['auth', '3']], function() {
     Route::get('/estadoresp', function () {
         return view('estadorespuestas');
     });
+
+    Route::get('/respuestas/{actividad}/{elem}', 'EstadoRespuestasController@show');
+    Route::post('/respuestas', 'EstadoRespuestasController@store');
 
 });

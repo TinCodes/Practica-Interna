@@ -16,14 +16,14 @@
     <header>
         <div id="banner" class="row">
             <div id="banner_img" class="mx-auto">
-                <img src="/img/logo.jpg" alt="Logo UPB">
+                <img src="{{ asset('/img/logo.jpg') }}" alt="Logo UPB">
             </div>
         </div>
     </header>
     <body>
         <div class="text-center">
             <h1 class="text-center p-5"> <strong> Acceso denegado </strong> </h1>
-            <h2 class="text-center p-3"> Porfavor ingrese al sistema</h2>
+            <h2 class="text-center p-3"> Por favor ingrese al sistema</h2>
             <a role="button" href="/" class="btn btn-login"> Login </a>
         </div>
     </body>
@@ -36,7 +36,7 @@
             </div>
         </div>
     </header>
-    
+
     <section id="right_buttons" class="mx-5 my-3 d-flex justify-content-end">
         <div class="row">
             <div class="col">
@@ -53,20 +53,19 @@
             <h1>Gestión de control de calidad</h1>
         </div>
         <div class="list-group">
-            <a href="#" class="list-group-item active"> BDD 1 </a>
-            <a href="#" class="list-group-item"> BDD 2 </a>
-            <a href="#" class="list-group-item"> BDD 3 </a>
-            <a href="#" class="list-group-item"> BDD 4 </a>
-            <a href="#" class="list-group-item"> BDD 5 </a>
+            @forelse($jcactividades as $actividad)
+                @foreach($elems[$actividad->id] as $elem)
+                <a href="/respuestas/{{ $actividad->id }}/{{$elem->id}}" class="list-group-item"> {{$actividad->nombre}} - {{$elem->nombre}}</a>
+                @endforeach
+            @empty
+                <p> Sin actividades para mostrar </p>
+            @endforelse
         </div>
-        
+
     </section>
 
     <section id="options" class="container">
         <div class="row my-5">
-            <div class="col">
-                <a href="/auditoriaresp" role="button" class="py-4 btn btn-outline-secondary btn-block">Responder</a>
-            </div>
             <div class="col">
                 <a href="/estadoresp" role="button" class="py-4 btn btn-outline-secondary btn-block">Estado de respuestas</a>
             </div>

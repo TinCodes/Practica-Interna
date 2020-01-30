@@ -13,14 +13,14 @@
     <header>
         <div id="banner" class="row">
             <div id="banner_img" class="mx-auto">
-                <img src="/img/logo.jpg" alt="Logo UPB">
+                <img src="{{ asset('/img/logo.jpg') }}" alt="Logo UPB">
             </div>
         </div>
     </header>
     <body>
         <div class="text-center">
             <h1 class="text-center p-5"> <strong> Acceso denegado </strong> </h1>
-            <h2 class="text-center p-3"> Porfavor ingrese al sistema</h2>
+            <h2 class="text-center p-3"> Por favor ingrese al sistema</h2>
             <a role="button" href="/" class="btn btn-login"> Login </a>
         </div>
     </body>
@@ -29,17 +29,13 @@
     <header>
         <div id="banner" class="row">
             <div id="banner_img" class="mx-auto">
-                <img src="/img/logo.jpg" alt="Logo UPB">
+                <img src="{{ asset('/img/logo.jpg') }}" alt="Logo UPB">
             </div>
         </div>
     </header>
 
     <section id="right_buttons" class="mx-5 my-3 d-flex justify-content-end">
         <div class="row">
-            <div class="col">
-                <a href="/modbanderas" role="button" class="btn btn-secondary btn-block">Elegir Banderas</a>
-            </div>
-
             <div class="col">
                 <a href="/banderas" role="button" class="btn btn-secondary btn-block"><i class="fa fa-flag-o"></i></a>
             </div>
@@ -59,7 +55,9 @@
     <div class="container">
         <form action="/search" method="POST" class="form-inline mr-auto">
             @csrf
-            <input class="form-control" id="search" name="search" type="text" placeholder="Buscar..">
+            <div class="col-xs-4">
+                <input class="form-control" id="search" name="search" type="text" placeholder="Buscar..">
+            </div>
             <button type="submit" id="go" name="go" class="btn btn-primary btn-login">Buscar</button>
         </form>
         <br>
@@ -101,7 +99,7 @@
                         </tr>
                     @endforeach
                 @empty
-                    <tr><p>Sin banderas que mostrar</p></tr>
+                    <tr><p class="mt-3">Sin banderas que mostrar</p></tr>
                 @endforelse
             </tbody>
         </table>

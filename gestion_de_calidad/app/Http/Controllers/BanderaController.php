@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Actividad;
 use App\Criterio;
 use App\Elemcalidad;
-use App\Persona;
+use App\User;
 use Illuminate\Http\Request;
 
 class BanderaController extends Controller
@@ -82,23 +82,28 @@ class BanderaController extends Controller
     }
 
     public function mostrar(){
-        $crits = Criterio::where('estado', '!=', 'Bandera')->orWhere('estado', '!=', 'Cumple')->orWhere('estado', '!=', 'Recomendacion')->get();
+        $crits = Criterio::whereNotIn('estado', ['Bandera', 'Cumple', 'Recomendacion'])->get();
         foreach ($crits as $crit){
             $actividades = Actividad::where('estado', '!=', 'Cerrado')->where('id', $crit->id_actividad)->get();
         }
-        foreach ($actividades as $actividad) {
-            $this->getMoreData($actividad);
+        if (!empty($actividades)){
+            foreach ($actividades as $actividad) {
+                $this->getMoreData($actividad);
 
-            $crits = Criterio::where('id_actividad', $actividad->id)->get();
+                $crits = Criterio::where('id_actividad', $actividad->id)->get();
 
-            foreach ($crits as $crit) {
-                $elems[$actividad->nombre][] = Elemcalidad::where('id', $crit->elem_calidad)->first();
+                foreach ($crits as $crit) {
+                    $elems[$actividad->nombre][] = Elemcalidad::where('id', $crit->elem_calidad)->first();
+                }
             }
-        }
 
-        if (!empty($elems)){
-            return view('/elegirbanderas', compact(['actividades', 'elems']));
+            if (!empty($elems)){
+                return view('/elegirbanderas', compact(['actividades', 'elems']));
+            } else {
+                return view('/elegirbanderas', compact('actividades'));
+            }
         } else {
+            $actividades = [];
             return view('/elegirbanderas', compact('actividades'));
         }
     }
@@ -171,8 +176,8 @@ class BanderaController extends Controller
         $actividad['fecha'] = explode(" ", $fechaHora)[0];
         $actividad['hora'] = explode(":", explode(" ", $fechaHora)[1])[0];
         $actividad['minuto'] = explode(":", explode(" ", $fechaHora)[1])[1];
-        $actividad['auditor'] = Persona::where('id_persona', $actividad->id_auditor)->first()->nombre;
-        $actividad['persona'] = Persona::where('id_persona', $actividad->id_persona)->first()->nombre;
+        $actividad['auditor'] = User::where('id', $actividad->id_auditor)->first()->nombre;
+        $actividad['persona'] = User::where('id', $actividad->id_persona)->first()->nombre;
 
         return $actividad;
     }

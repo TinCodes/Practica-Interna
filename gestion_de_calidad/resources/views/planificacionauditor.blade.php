@@ -8,19 +8,20 @@
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
     <title>Gestión de Control de Calidad</title>
+
 </head>
 @guest
     <header>
         <div id="banner" class="row">
             <div id="banner_img" class="mx-auto">
-                <img src="/img/logo.jpg" alt="Logo UPB">
+                <img src="{{ asset('/img/logo.jpg') }}" alt="Logo UPB">
             </div>
         </div>
     </header>
     <body>
         <div class="text-center">
             <h1 class="text-center p-5"> <strong> Acceso denegado </strong> </h1>
-            <h2 class="text-center p-3"> Porfavor ingrese al sistema</h2>
+            <h2 class="text-center p-3"> Por favor ingrese al sistema</h2>
             <a role="button" href="/" class="btn btn-login"> Login </a>
         </div>
     </body>
@@ -29,7 +30,7 @@
     <header>
         <div id="banner" class="row">
             <div id="banner_img" class="mx-auto">
-                <img src="/img/logo.jpg" alt="Logo UPB">
+                <img src="{{ asset('/img/logo.jpg') }}" alt="Logo UPB">
             </div>
         </div>
     </header>
@@ -157,9 +158,9 @@
 
             <div class="col-md-6 mb-3">
                 <label for="persona">Dirigida a: </label>
-                <select class="form-control" id="persona" name="persona" required>
+                <select class="form-control" id="persona" name="persona" onchange="doIt(this.value)" required>
                     @foreach($jdc as $jc)
-                        <option value="{{ $jc->id_persona }}">{{ $jc->nombre }}</option>
+                        <option value="{{ $jc->nombre }}">{{ $jc->cargo }} {{ $jc->campus }}</option>
                     @endforeach
                 </select>
                 @error('persona') <p class="valError"> {{ $message }} </p> @enderror
@@ -273,7 +274,7 @@
 
             <div class="col-md-6 mb-3">
             <label for="pdc">Persona de contacto: </label>
-            <input type="text" class="form-control" id="pdc" name="pdc" placeholder="Persona de contacto" value="{{old('pdc')}}" required>
+            <input type="text" class="form-control" id="pdc" name="pdc" placeholder="Persona de contacto" value="{{ $jc->nombre }}" required>
             @error('pdc') <p class="valError"> {{ $message }} </p> @enderror
             </div>
         </div>
@@ -328,6 +329,14 @@ $('#elem_calidad').multiSelect({
   selectionHeader: "<div class='custom-header'> <strong> Opciones escogidas </strong></div>"
 });
 
+function doIt(val) {
+    $('#pdc').val(val);
+}
+
+$(document).ready(function (){
+
+
+});
 </script>
 @endauth
 </html>
