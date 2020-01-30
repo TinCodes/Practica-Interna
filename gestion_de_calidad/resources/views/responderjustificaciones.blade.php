@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
-    
+
     <title>Gestión de Control de Calidad</title>
 </head>
 @guest
@@ -53,41 +53,25 @@
     <section id="timeline_section" class="container">
         <div class="row my-5">
             <h1>Respuestas Pendientes</h1>
-        </div>        
+        </div>
     </section>
     <div class="container-fluid">
 		<div class="container">
 			<div class="formBox">
                 <form>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <strong><p> Ejemplo 1 </p></strong>
-                        </div>
+                    @forelse($poas as $poa)
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <strong><p>{{ $poa->jdc }} -> {{ $poa->elem }}</p></strong>
+                            </div>
 
-                        <div class="col-sm-6">
-                            <a class="btn btn-login" href="#" role="button">Responder</a>
+                            <div class="col-sm-6">
+                                <a class="btn btn-login" href="/justificaciones/{{ $poa->id }}" role="button">Responder</a>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <strong><p> Ejemplo 2 </p></strong>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <a class="btn btn-login" href="#" role="button">Responder</a>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <strong><p> Ejemplo 3 </p></strong>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <a class="btn btn-login" href="#" role="button">Responder</a>
-                        </div>
-                    </div>
+                    @empty
+                        <p>Sin justificaciones que mostrar</p>
+                    @endforelse
                 </form>
             </div>
 		</div>

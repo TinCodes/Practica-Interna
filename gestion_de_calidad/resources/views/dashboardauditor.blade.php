@@ -159,7 +159,7 @@
                 <a href="/actividades" role="button" class="py-4 btn btn-outline-secondary btn-block">Auditorías Pendientes/Cerradas</a>
             </div>
             <div class="col">
-                <a href="/respjustificaciones" role="button" class="py-4 btn btn-outline-secondary btn-block">Revisar Respuestas</a>
+                <a href="/justificaciones" role="button" class="py-4 btn btn-outline-secondary btn-block">Revisar Respuestas</a>
             </div>
         </div>
 

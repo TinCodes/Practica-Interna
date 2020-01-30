@@ -75,9 +75,8 @@ Route::group(['middleware' => ['auth', '1']], function() {
         return view('evalrespuestauditoria');
     });
 
-    Route::get('/respjustificaciones', function () {
-        return view('responderjustificaciones');
-    });
+    Route::get('/justificaciones', 'PoaController@index');
+    Route::get('/justificaciones/{poa}', 'PoaController@show');
 
     Route::get('/revauditorias', function () {
         return view('revisionauditorias');
