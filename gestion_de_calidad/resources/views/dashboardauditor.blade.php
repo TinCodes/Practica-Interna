@@ -172,7 +172,7 @@
             </div>
 
             <div class="col">
-                <a href="" role="button" class="py-4 btn btn-outline-secondary btn-block">Generar informe final</a>
+                <a href="/createWord" role="button" class="py-4 btn btn-outline-secondary btn-block">Generar informe final</a>
             </div>
         </div>
     </section>

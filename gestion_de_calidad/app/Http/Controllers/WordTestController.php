@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class WordTestController extends Controller
 {
     public function createWordDocx(){
-        $actividades = \App\Actividad::all();                
+        $actividades = \App\Actividad::all();
+        $cargos = \App\Cargo::all();                
         $cont = 1;
         foreach ($actividades as $actividad) {
             $users[] = \App\User::where('id', $actividad->id_persona)->first();
@@ -132,11 +133,14 @@ class WordTestController extends Controller
         $table3->addCell(4500,array('bgColor'=>"80eaff"))->addText(' COCHABAMBA', $TfontStyle);
         $table3->addCell(5500,array('bgColor'=>"80eaff"))->addText('');
         foreach($users as $user){
-            if($user->campus == "Cochabamba"){
+            if($user->campus == 2){
+
+                $cargo = \App\Cargo::where('id',$user->cargo)->first()->cargo;
+
                 $table3->addRow();
                 $table3->addCell(500,$styleCell)->addText($cont);
                 $table3->addCell(4500,$styleCell)->addText($user->nombre);
-                $table3->addCell(5500,$styleCell)->addText($user->cargo);   
+                $table3->addCell(5500,$styleCell)->addText($cargo);   
                 $cont++; 
             }
         }
@@ -147,7 +151,7 @@ class WordTestController extends Controller
         $table3->addCell(5500,array('bgColor'=>"80eaff"))->addText('');
         $cont=0;
         foreach($users as $user){
-            if($user->campus == "La Paz"){
+            if($user->campus == 1){
                 $table3->addRow();
                 $table3->addCell(500,$styleCell)->addText($cont);
                 $table3->addCell(4500,$styleCell)->addText($user->nombre);
