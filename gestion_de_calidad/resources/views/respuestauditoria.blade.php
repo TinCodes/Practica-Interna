@@ -51,10 +51,11 @@
         </div>
 
         
-        <form action="" method="post">
+        <form action="/respuestas" method="post">
+            @csrf
             <fieldset class="border p-4">
                 <legend  class="w-auto"> Descripción del problema </legend>
-                    <textarea class="form-control" name="descripProblema" id="descripProblema" rows="3"></textarea>
+                    <p> {{$elem->desc}}</p>
             </fieldset>
             <fieldset class="border p-4">
                 <legend  class="w-auto"> Plan de acción </legend>
@@ -64,10 +65,13 @@
             <div class="form-group row mt-md-5">
                 <label for="example-date-input" class="col-4 col-form-label"> <strong>Fecha determinada para cumplimiento: </strong></label>
                 <div class="col-8">
-                    <input class="form-control" type="date" value="YYYY-MM-DD" id="fechaPlan" name="fechaPlan">
+                    <input class="form-control" type="text" placeholder="dd-mm-aaaa" id="fechaPlan" name="fechaPlan" required>
                 </div>
             </div>
             <div class="text-center mb-4 mt-4">
+                <input type="hidden" name="auditor" value="{{ $actividad->id_auditor }}">
+                <input type="hidden" name="actividad" value="{{ $actividad->id }}">
+                <input type="hidden" name="elemId" value="{{ $elem->id }}">
                 <button type="submit" id="sendPlan" name="sendPlan" class="btn btn-login"> Enviar </button>
             </div>
             </div>

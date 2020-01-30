@@ -15,7 +15,7 @@ class CreatesPoasTable extends Migration
     {
         Schema::create('poas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('estado');
+            $table->string('estado')->default('Pendiente');
             $table->text('razonRechazo')->nullable();
             $table->text('descripcion');
             $table->unsignedBigInteger('auditor');

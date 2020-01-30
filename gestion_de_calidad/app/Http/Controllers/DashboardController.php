@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Actividad;
 use App\Criterio;
+use App\Elemcalidad;
+use App\Persona;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -37,8 +39,15 @@ class DashboardController extends Controller
             } else {
                 $actividades = Actividad::all();
                 if (count($actividades) > 0) {
-                    $jcactividades = Actividad::where('id_persona',Auth::User()->id)->get();
-                    return view('/dashboardjc', compact('jcactividades'));
+                    $jcactividades = Actividad::where('id_persona', Auth::User()->id)->get();
+                    foreach ($jcactividades as $actividad){
+                        $crits = Criterio::where('id_actividad',$actividad->id)->get();
+                        foreach($crits as $crit){
+                            $elems[$actividad->id][] = Elemcalidad::where('id', $crit->elem_calidad)->first();
+                        }
+                    }
+
+                    return view('/dashboardjc', compact(['jcactividades', 'elems']));
                 } else {
                     return view('/dashboardjc');
                 }
