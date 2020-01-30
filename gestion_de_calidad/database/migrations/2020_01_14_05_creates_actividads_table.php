@@ -28,8 +28,8 @@ class CreatesActividadsTable extends Migration
         });
 
         Schema::table('actividads', function ($table){
-            $table->foreign("id_auditor")->references('id_persona')->on('personas');
-            $table->foreign("id_persona")->references('id_persona')->on('personas');
+            $table->foreign("id_auditor")->references('id')->on('users');
+            $table->foreign("id_persona")->references('id')->on('users');
         });
     }
 

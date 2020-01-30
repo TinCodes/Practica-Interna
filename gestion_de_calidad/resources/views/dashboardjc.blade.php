@@ -16,7 +16,7 @@
     <header>
         <div id="banner" class="row">
             <div id="banner_img" class="mx-auto">
-                <img src="/img/logo.jpg" alt="Logo UPB">
+                <img src="{{ asset('/img/logo.jpg') }}" alt="Logo UPB">
             </div>
         </div>
     </header>
@@ -36,7 +36,7 @@
             </div>
         </div>
     </header>
-    
+
     <section id="right_buttons" class="mx-5 my-3 d-flex justify-content-end">
         <div class="row">
             <div class="col">
@@ -59,7 +59,7 @@
             <a href="#" class="list-group-item"> BDD 4 </a>
             <a href="#" class="list-group-item"> BDD 5 </a>
         </div>
-        
+
     </section>
 
     <section id="options" class="container">

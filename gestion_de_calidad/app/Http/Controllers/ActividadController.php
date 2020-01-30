@@ -7,6 +7,7 @@ use App\Campus;
 use App\Cargo;
 use App\Criterio;
 use App\Elemcalidad;
+use App\Persona;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -55,7 +56,13 @@ class ActividadController extends Controller
         $actividad['hora'] = explode(":", explode(" ", $fechaHora)[1])[0];
         $actividad['minuto'] = explode(":", explode(" ", $fechaHora)[1])[1];
         $actividad['auditor'] = User::where('id', $actividad->id_auditor)->first()->nombre;
+
+
         $actividad['persona'] = User::where('id', $actividad->id_persona)->first()->nombre;
+        $cargo = User::where('nombre', $actividad['persona'])->first()->cargo;
+        $campus = User::where('nombre', $actividad['persona'])->first()->campus;
+        $actividad['cargo'] = Cargo::where('id', $cargo)->first()->cargo;
+        $actividad['campus'] = Campus::where('id', $campus)->first()->campus;
 
         $crits = Criterio::where('id_actividad', $actividad->id)->get();
         foreach ($crits as $crit) {
@@ -111,6 +118,12 @@ class ActividadController extends Controller
         return redirect('/actividades');
     }
 
+    public function cerrar(Actividad $actividad){
+        $actividad->update(['estado' => 'Cerrada']);
+
+        return redirect('/actividades');
+    }
+
     public function getData() {
         $data['nombre'] = \request()->input('nombre');
 //        $data['estado'] = "Pendiente";
@@ -122,7 +135,8 @@ class ActividadController extends Controller
         $data['macroproceso'] = \request()->input('macroproceso');
         $data['descripcion'] = \request()->input('descripcion');
         $data['pdc'] = \request()->input('pdc');
-        $data['id_persona'] = \request()->input('persona');
+        $persona = \request()->input('persona');
+        $data['id_persona'] = User::where('nombre', $persona)->first()->id;
         $data['elem_calidad'] = \request()->input('elem_calidad');
 
         return $data;
@@ -138,7 +152,6 @@ class ActividadController extends Controller
             $jc['campus'] = Campus::where('id', $jc->campus)->first()->campus;
             $jc['cargo'] = Cargo::where('id', $jc->cargo)->first()->cargo;
         }
-//        dd($jdc);
 
         return $jdc;
     }

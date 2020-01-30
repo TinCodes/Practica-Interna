@@ -54,7 +54,7 @@
             </div>
             <div class="col-md-6">
                 <p><strong>Persona auditada:</strong></p>
-                <p> {{ $actividad->persona }} </p>
+                <p> {{ $actividad->cargo }} {{ $actividad->campus }} </p>
             </div>
     </div>
     <div class="form-row">
@@ -102,6 +102,7 @@
     <div class="text-center mt-4">
         <!-- Trigger the modal with a button -->
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Eliminar</button>
+        <a href="/actividades/{{ $actividad->id }}/cerrar" type="button" id="edit" class="btn btn-secondary">Cerrar Actividad</a>
         <a href="/actividades/{{ $actividad->id }}/edit" type="button" id="edit" class="btn btn-secondary"> Editar </a>
         <a href="/actividades" type="button" id="sendresponse" class="btn btn-secondary"> Listo </a>
     </div>

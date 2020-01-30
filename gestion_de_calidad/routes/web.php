@@ -58,6 +58,7 @@ Route::group(['middleware' => ['auth', '4']], function() {
     Route::get('/actividades/{actividad}/edit', 'ActividadController@edit');
     Route::patch('/actividades/{actividad}', 'ActividadController@update');
     Route::delete('/actividades/{actividad}', 'ActividadController@destroy');
+    Route::get('/actividades/{actividad}/cerrar', 'ActividadController@cerrar');
 
 });
 
