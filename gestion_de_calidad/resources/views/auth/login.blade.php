@@ -13,7 +13,7 @@
     <header>
         <div id="banner" class="row">
             <div id="banner_img" class="mx-auto">
-                <img src="/img/logo.jpg" alt="Logo UPB">
+                <img src="{{ asset('/img/logo.jpg') }}" alt="Logo UPB">
             </div>
         </div>
     </header>
@@ -24,7 +24,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div id="logintitle">
-                            <img src="/img/user.jpg" id="icon" alt="User Icon" />
+                            <img src="{{ asset('/img/user.jpg') }}" id="icon" alt="User Icon" />
                             <h1> SGC </h1>
                         </div>
                        
