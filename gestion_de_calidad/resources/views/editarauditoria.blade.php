@@ -291,10 +291,10 @@
                 <label for="elem_calidad">Elemento de calidad: </label>
                 <select multiple='multiple' class="form-control" id="elem_calidad" name="elem_calidad[]" required>
                     @foreach($elemsAct as $elemAct)
-                        <option value="{{ $elemAct->id_elem_calidad }}" selected>{{ $elemAct->nombre }}</option>
+                        <option value="{{ $elemAct->id }}" selected>{{ $elemAct->nombre }}</option>
                     @endforeach
                     @foreach($elems as $elem)
-                        <option value="{{ $elem->id_elem_calidad }}">{{ $elem->nombre }}</option>
+                        <option value="{{ $elem->id }}">{{ $elem->nombre }}</option>
                     @endforeach
                 </select>
                 @error('elem_calidad') <p class="valError"> {{ $message }} </p> @enderror

@@ -58,9 +58,13 @@
 
     <div class="container p-5">
         <div class="form-row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <p><strong>Nombre de la actividad:</strong></p>
                 <p> {{ $actividad->nombre }} </p>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Persona auditada:</strong></p>
+                <p> {{ $actividad->persona }} </p>
             </div>
         </div>
         <div class="form-row">
@@ -102,25 +106,59 @@
     </div>
 
     <section id="options" class="d-flex justify-content-center">
-        <form action="/banderas/{{ $actividad->id }}" method="post">
+        <form action="/modbanderas/{{ $actividad->id }}/{{ $elem->id }}" method="post">
             @csrf
+            @method('PATCH')
             <div class="col-md-6 mb-3">
                 <p><strong>Elemento de calidad: </strong></p>
-                @foreach($elems as $elem)
-                    <div class="form-row">
-                        <div class="col-md-6">
-                            <p><strong>{{ $elem->nombre }}</strong></p>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="recomendacion">Recomendación</label>
-                            <input type="checkbox" id="recomendacion" name="recomendacion[]" value="{{ $elem->id_elem_calidad }}">
-                            <label for="noconformidad">No Conformidad</label>
-                            <input type="checkbox" id="noconformidad" name="noconformidad[]" value="{{ $elem->id_elem_calidad }}">
-                            <label for="observacion">Observación</label>
-                            <input type="checkbox" id="observacion" name="observacion[]" value="{{ $elem->id_elem_calidad }}">
-                        </div>
+                    <div class="col">{{ $elem->nombre }}</div>
+                    <div class="col">
+                        <label class="radio-inline ml-2">
+                            @if(!strcmp($elem->estado, "Cumple"))
+                                <input type="radio" name="estado" value="Cumple"  checked>Cumple
+                            @else
+                                <input type="radio" name="estado" value="Cumple" >Cumple
+                            @endif
+                        </label>
+                        <label class="radio-inline ml-2">
+                            @if(!strcmp($elem->estado, "Pendiente"))
+                                <input type="radio" name="estado" value="Pendiente"  checked>Pendiente
+                            @else
+                                <input type="radio" name="estado" value="Pendiente" >Pendiente
+                            @endif
+                        </label>
+                        <label class="radio-inline ml-2">
+                            @if(!strcmp($elem->estado, "No Conformidad"))
+                                <input type="radio" name="estado" value="No Conformidad" >No checked Conformidad
+                            @else
+                                <input type="radio" name="estado" value="No Conformidad" >No Conformidad
+                            @endif
+                        </label>
+                        <label class="radio-inline ml-2">
+                            @if(!strcmp($elem->estado, "Observacion"))
+                                <input type="radio" name="estado" value="Observacion"  checked>Observación
+                            @else
+                                <input type="radio" name="estado" value="Observacion" >Observación
+                            @endif
+                        </label>
+                        <label class="radio-inline ml-2">
+                            @if(!strcmp($elem->estado, "Recomendacion"))
+                                <input type="radio" name="estado" value="Recomendacion" checked>Recomendación
+                            @else
+                                <input type="radio" name="estado" value="Recomendacion">Recomendación
+                            @endif
+                        </label>
+                        <label class="radio-inline ml-2">
+                            @if(!strcmp($elem->estado, "Cerrada"))
+                                <input type="radio" name="estado" value="Cerrada" checked>Cerrada
+                            @else
+                                <input type="radio" name="estado" value="Cerrada">Cerrada
+                            @endif
+                        </label>
                     </div>
-                @endforeach
+                    <div class="col"><input type="text" class="form-control" id="anotaciones"
+                                            name="desc" placeholder="Anotaciones"></div>
+                    <div class="w-100"></div>
             </div>
             <input type="hidden" name="actividadId" value="{{ $actividad->id }}">
             <div class="text-center mt-4">

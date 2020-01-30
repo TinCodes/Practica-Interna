@@ -14,7 +14,7 @@ class CreatesElemcalidadsTable extends Migration
     public function up()
     {
         Schema::create('elemCalidads', function (Blueprint $table) {
-            $table->bigIncrements('id_elem_calidad');
+            $table->bigIncrements('id');
             $table->text('nombre');
             $table->string('indice');
             $table->timestamps();

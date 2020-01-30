@@ -57,8 +57,6 @@ class BanderaController extends Controller
                 break;
         }
 
-        dd($crits);
-
         return view('/banderas', compact(['crits', 'elems', 'actividades']));
     }
 
@@ -69,18 +67,15 @@ class BanderaController extends Controller
             if (!array_key_exists($crit->id_actividad, $actividades)){
                 $actividades[$crit->id_actividad] = Actividad::where('id', $crit->id_actividad)->first();
                 foreach ($actividades as $actividad){
-                    $fechaHora = date('d-m-Y H:i:s', strtotime($actividad->fechaHora));
-                    $actividad['fecha'] = explode(" ", $fechaHora)[0];
-                    $actividad['hora'] = explode(":", explode(" ", $fechaHora)[1])[0];
-                    $actividad['minuto'] = explode(":", explode(" ", $fechaHora)[1])[1];
-                    $actividad['auditor'] = Persona::where('id_persona', $actividad->id_auditor)->first()->nombre;
+                    $this->getMoreData($actividad);
                 }
             }
-            $elems[] = Elemcalidad::where('id_elem_calidad', $crit->elem_calidad)->first();
+            $elems[] = Elemcalidad::where('id', $crit->elem_calidad)->first();
         }
 
         foreach ($elems as $elem) {
-            $elem['estado'] = Criterio::where('elem_calidad', $elem->id_elem_calidad)->first()->estado;
+            $elem['estado'] = Criterio::where('elem_calidad', $elem->id)->first()->estado;
+            $elem['descripcion'] = Criterio::where('elem_calidad', $elem->id)->first()->descripcion;
         }
 
         return [$actividades, $elems];
@@ -91,18 +86,13 @@ class BanderaController extends Controller
         foreach ($crits as $crit){
             $actividades = Actividad::where('estado', '!=', 'Cerrado')->where('id', $crit->id_actividad)->get();
         }
-
-
         foreach ($actividades as $actividad) {
-            $fechaHora = date('d-m-Y H:i:s', strtotime($actividad->fechaHora));
-            $actividad['fecha'] = explode(" ", $fechaHora)[0];
-            $actividad['hora'] = explode(":", explode(" ", $fechaHora)[1])[0];
-            $actividad['minuto'] = explode(":", explode(" ", $fechaHora)[1])[1];
+            $this->getMoreData($actividad);
 
             $crits = Criterio::where('id_actividad', $actividad->id)->get();
 
             foreach ($crits as $crit) {
-                $elems[$actividad->nombre][] = Elemcalidad::where('id_elem_calidad', $crit->elem_calidad)->first();
+                $elems[$actividad->nombre][] = Elemcalidad::where('id', $crit->elem_calidad)->first();
             }
         }
 
@@ -116,7 +106,7 @@ class BanderaController extends Controller
     public function clasificar(Actividad $actividad) {
         $crits = Criterio::where('id_actividad', $actividad->id)->where('estado', '!=', 'Bandera')->get();
         foreach ($crits as $crit) {
-            $elems[] = Elemcalidad::where('id_elem_calidad', $crit->elem_calidad)->first();
+            $elems[] = Elemcalidad::where('id', $crit->elem_calidad)->first();
         }
 
         return view('/realizarauditorias', compact(['actividad', 'elems']));
@@ -138,18 +128,53 @@ class BanderaController extends Controller
     }
 
     public function show(Actividad $actividad) {
+        $this->getMoreData($actividad);
+
+        $crits = Criterio::where('id_actividad', $actividad->id)->get();
+        foreach ($crits as $crit) {
+            $elems[] = Elemcalidad::where('id', $crit->elem_calidad)->first();
+        }
+
+        return view('clasificarbanderas', compact(['actividad', 'elems']));
+    }
+
+    public function edit(Actividad $actividad, Elemcalidad $elem){
+        $this->getMoreData($actividad);
+        $elem['estado'] = Criterio::where('id_actividad', $actividad->id)->where('elem_calidad', $elem->id)->first()->estado;
+
+        return view('/clasificarbanderas', compact(['actividad', 'elem']));
+    }
+
+    public function update(Actividad $actividad, Elemcalidad $elem){
+        Criterio::where('id_actividad', $actividad->id)->where('elem_calidad', $elem->id)->update(['estado' => \request()->input('estado')]);
+        Criterio::where('id_actividad', $actividad->id)->where('elem_calidad', $elem->id)->update(['descripcion' => \request()->input('desc')]);
+
+        return redirect('/banderas');
+    }
+
+    public function find() {
+        $query = \request()->input('search');
+        $actividades = Actividad::where('nombre', 'LIKE', '%' . $query . '%')->get();
+        foreach ($actividades as $actividad) {
+            $this->getMoreData($actividad);
+            $crits[] = Criterio::where('id_actividad', $actividad->id)->first();
+        }
+        foreach ($crits as $crit){
+            $elems[] = Elemcalidad::where('id', $crit->elem_calidad)->first();
+        }
+
+        return view('/banderas', compact(['crits', 'elems', 'actividades']));
+    }
+
+    public function getMoreData($actividad) {
         $fechaHora = date('d-m-Y H:i:s', strtotime($actividad->fechaHora));
         $actividad['fecha'] = explode(" ", $fechaHora)[0];
         $actividad['hora'] = explode(":", explode(" ", $fechaHora)[1])[0];
         $actividad['minuto'] = explode(":", explode(" ", $fechaHora)[1])[1];
         $actividad['auditor'] = Persona::where('id_persona', $actividad->id_auditor)->first()->nombre;
+        $actividad['persona'] = Persona::where('id_persona', $actividad->id_persona)->first()->nombre;
 
-        $crits = Criterio::where('id_actividad', $actividad->id)->get();
-        foreach ($crits as $crit) {
-            $elems[] = Elemcalidad::where('id_elem_calidad', $crit->elem_calidad)->first();
-        }
-
-        return view('clasificarbanderas', compact(['actividad', 'elems']));
+        return $actividad;
     }
 
     public function getData() {

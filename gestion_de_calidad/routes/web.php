@@ -37,9 +37,12 @@ Route::get('/dashboard','DashboardController@index')->name('/dashboard');
 Route::get('/modbanderas', 'BanderaController@mostrar');
 Route::post('/modbanderas', 'BanderaController@store');
 Route::get('/modbanderas/{actividad}', 'BanderaController@show');
+Route::get('/modbanderas/{actividad}/{elem}/edit', 'BanderaController@edit');
+Route::patch('/modbanderas/{actividad}/{elem}', 'BanderaController@update');
 
 /* ======================================= Rutas Compartidas ================================= */
 Route::get('/banderas', 'BanderaController@index');
+Route::post('/search', 'BanderaController@find');
 
 Route::group(['middleware' => ['auth', '4']], function() {
 

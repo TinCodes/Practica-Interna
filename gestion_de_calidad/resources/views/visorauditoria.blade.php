@@ -48,10 +48,14 @@
 
     <div class="container p-5">
         <div class="form-row">
-            <div class="col">
-            <p><strong>Nombre de la actividad:</strong></p>
-            <p> {{ $actividad->nombre }} </p>
-        </div>
+            <div class="col-md-6">
+                <p><strong>Nombre de la actividad:</strong></p>
+                <p> {{ $actividad->nombre }} </p>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Persona auditada:</strong></p>
+                <p> {{ $actividad->persona }} </p>
+            </div>
     </div>
     <div class="form-row">
         <div class="col-md-3 mb-3">
@@ -96,15 +100,34 @@
         </div>
     </div>
     <div class="text-center mt-4">
-        <form action="/actividades/{{ $actividad->id }}" method="post">
-            @method('DELETE')
-            @csrf
-            <button class="btn btn-login mb-3">Borrar</button>
-        </form>
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Eliminar</button>
         <a href="/actividades/{{ $actividad->id }}/edit" type="button" id="edit" class="btn btn-secondary"> Editar </a>
         <a href="/actividades" type="button" id="sendresponse" class="btn btn-secondary"> Listo </a>
     </div>
 </div>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar auditoria</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Desea eliminar permanentemente la auditoría?</p>
+                    <form action="/actividades/{{ $actividad->id }}" method="post">
+                        @method('DELETE')
+                        @csrf
+                        <button class="btn btn-login mb-3">Borrar</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <footer>
 
     </footer>

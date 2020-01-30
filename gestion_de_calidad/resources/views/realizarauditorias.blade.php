@@ -64,17 +64,17 @@
                     <div class="col">{{ $elem->nombre }}</div>
                     <div class="col">
                         <label class="radio-inline ml-2">
-                            <input type="radio" name="{{ $elem->id_elem_calidad }}" value="Cumple" checked>Cumple
+                            <input type="radio" name="{{ $elem->id }}" value="Cumple" checked>Cumple
                         </label>
                         <label class="radio-inline ml-2">
-                            <input type="radio" name="{{ $elem->id_elem_calidad }}" value="Bandera">Bandera
+                            <input type="radio" name="{{ $elem->id }}" value="Bandera">Bandera
                         </label>
                         <label class="radio-inline ml-2">
-                            <input type="radio" name="{{ "$elem->id_elem_calidad" }}" value="Recomendacion">Recomendación
+                            <input type="radio" name="{{ "$elem->id" }}" value="Recomendacion">Recomendación
                         </label>
                     </div>
                     <div class="col"><input type="text" class="form-control" id="anotaciones"
-                                            name="desc{{$elem->id_elem_calidad}}" placeholder="Anotaciones"></div>
+                                            name="desc{{$elem->id}}" placeholder="Anotaciones"></div>
                     <div class="w-100"></div>
                 @endforeach
                 <input type="hidden" name="actID" value="{{ $actividad->id }}">

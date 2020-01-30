@@ -52,10 +52,11 @@ class ActividadController extends Controller
         $actividad['hora'] = explode(":", explode(" ", $fechaHora)[1])[0];
         $actividad['minuto'] = explode(":", explode(" ", $fechaHora)[1])[1];
         $actividad['auditor'] = Persona::where('id_persona', $actividad->id_auditor)->first()->nombre;
+        $actividad['persona'] = Persona::where('id_persona', $actividad->id_persona)->first()->nombre;
 
         $crits = Criterio::where('id_actividad', $actividad->id)->get();
         foreach ($crits as $crit) {
-            $elems[] = Elemcalidad::where('id_elem_calidad', $crit->elem_calidad)->first();
+            $elems[] = Elemcalidad::where('id', $crit->elem_calidad)->first();
         }
 
         return view('visorauditoria', compact(['actividad', 'elems']));
@@ -71,14 +72,14 @@ class ActividadController extends Controller
 
         $crits = Criterio::where('id_actividad', $actividad->id)->get();
         foreach ($crits as $crit) {
-            $elemsAct[] = Elemcalidad::where('id_elem_calidad', $crit->elem_calidad)->first();
+            $elemsAct[] = Elemcalidad::where('id', $crit->elem_calidad)->first();
         }
 
         foreach ($elemsAct as $elem) {
-            $ids[] = $elem->id_elem_calidad;
+            $ids[] = $elem->id;
         }
 
-        $elems = Elemcalidad::whereNotIn('id_elem_calidad', $ids)->get();
+        $elems = Elemcalidad::whereNotIn('id', $ids)->get();
 
         return view('editarauditoria', compact(['actividad', 'elems', 'jdc', 'elemsAct']));
     }

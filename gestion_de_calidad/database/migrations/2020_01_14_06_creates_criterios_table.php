@@ -23,7 +23,7 @@ class CreatesCriteriosTable extends Migration
         });
 
         Schema::table('criterios', function ($table){
-            $table->foreign('elem_calidad')->references('id_elem_calidad')->on('elemCalidads');
+            $table->foreign('elem_calidad')->references('id')->on('elemCalidads');
             $table->foreign('id_actividad')->references('id')->on('actividads')->onDelete('cascade');
         });
     }

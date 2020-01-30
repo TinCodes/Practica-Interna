@@ -57,7 +57,11 @@
     </section>
 
     <div class="container">
-        <input class="form-control" id="myInput" type="text" placeholder="Buscar..">
+        <form action="/search" method="POST" class="form-inline mr-auto">
+            @csrf
+            <input class="form-control" id="search" name="search" type="text" placeholder="Buscar..">
+            <button type="submit" id="go" name="go" class="btn btn-primary btn-login">Buscar</button>
+        </form>
         <br>
         <a href="/banderas?by=Todas" class="btn btn-login">Todas</a>
         <a href="/banderas?by=Banderas" class="btn btn-login">Banderas</a>
@@ -77,6 +81,7 @@
                 <th>Descripción</th>
                 <th>Persona de Contacto</th>
                 <th>Elem de Calidad</th>
+                <th>Link</th>
             </tr>
             </thead>
             <tbody id="myTable">
@@ -89,9 +94,10 @@
                             <th>{{ $elem->estado }}</th>
                             <th>{{ $actividad->auditor }}</th>
                             <th>{{ $actividad->macroproceso }}</th>
-                            <th>{{ $actividad->descripcion }}</th>
+                            <th>{{ $elem->descripcion }}</th>
                             <th>{{ $actividad->pdc }}</th>
                             <th>{{ $elem->nombre }}</th>
+                            <th><a href="/modbanderas/{{$actividad->id}}/{{$elem->id}}/edit">Revisar</a></th>
                         </tr>
                     @endforeach
                 @empty
@@ -109,7 +115,21 @@
 <script type="text/javascript" src= "{{ URL::asset('js/app.js') }}"></script>
 <script>
 $(document).ready(function(){
-  $("#myInput").on("keyup", function() {
+    // Get the input field
+    var input = document.getElementById("search");
+
+    // Execute a function when the user releases a key on the keyboard
+    input.addEventListener("keyup", function(event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            document.getElementById("go").click();
+        }
+    });
+
+    $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#myTable tr").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
